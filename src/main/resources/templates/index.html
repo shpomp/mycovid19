@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Covid-19 Test Center</title>
+</head>
+<h1>Welcome to Corona Kviktest Center</h1>
+<body>
+<h2>User list:</h2>
+<form th:each="user : ${users}" action="/edit" method="post">
+  <input type="hidden" name="id" th:value="${user.user_id}">
+  <input type="text" name="first_name" th:value="${user.first_name}">
+  <input type="text" name="last_name" th:value="${user.last_name}">
+  <input type="text" name="date_of_birth" th:value="${user.date_of_birth}">
+  <input type="submit" name="delete" value="Delete">
+  <input type="submit" name="update" value="Update">
+</form>
+</body>
+</html>
