@@ -11,32 +11,32 @@ import java.sql.*;
 @Repository
 public class UserRepo {
 
-  private static String table = "user";
+  private final static String table = "user";
   private static JdbcTemplate jdbc;
 
 
   public UserRepo(JdbcTemplate jdbc) {
-    this.jdbc = jdbc;
+    UserRepo.jdbc = jdbc;
   }
 
-  public int addUser(User user){
-    String sql= "INSERT INTO " + table + " VALUES (?,?)";
-    return jdbc.update(sql, null, user.getUser_id());
+  public static int addUser(User user){
+    String sql= "INSERT INTO " + table + " VALUES (?,?,?,?)";
+    return jdbc.update(sql, null, user.getFirst_name(), user.getLast_name(), user.getDate_of_birth());
   }
 
   public static List<User> fetchAll() throws SQLException{
-    String sql = " SELECT * FROM " + table + " ORDER BY first_name ASC ";
+    String sql = " SELECT * FROM " + table + " ORDER BY first_name ";
     RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
     return jdbc.query(sql, rowMapper);
   }
 
-  public int updateUser(User user){
-    String sql = " UPDATE " + table + " SET first_name = ?, last_name = ?, date_of_birth = ?" + "WHERE user_id = ? ";
-    return jdbc.update(sql, user.getFirst_name(), user.getLast_name(), user.getDate_of_birth(), user.getUser_id());
+  public static int deleteUser(int user_id){
+    String sql = " DELETE FROM " + table + " WHERE user_id = ? ";
+    return jdbc.update(sql, user_id);
   }
 
-  public int delete(int user_id){
-    String sql = " DELETE FROM " + table + " WHERE user_id = ?";
-    return jdbc.update(sql, user_id);
+  public static int updateUser(User user){
+    String sql = " UPDATE " + table + " SET first_name = ?, last_name = ?, date_of_birth = ? WHERE user_id = ? ";
+    return jdbc.update(sql, user.getFirst_name(), user.getLast_name(), user.getDate_of_birth(), user.getUser_id());
   }
 }
