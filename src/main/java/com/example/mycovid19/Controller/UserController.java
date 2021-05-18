@@ -19,7 +19,7 @@ public class UserController {
   private UserRepo userRepo;
 
   @GetMapping("/users")
-  public String user(Model model) throws SQLException {
+  public String users(Model model) throws SQLException {
     model.addAttribute("users", userRepo.fetchAll());
     return "/users";
   }

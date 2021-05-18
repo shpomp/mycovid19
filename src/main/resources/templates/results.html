@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Results</title>
+</head>
+<h1>Test Results:</h1>
+<body>
+<table>
+  <tr>
+  <th>First Name</th>
+  <th>Last Name</th>
+  <th>Test Status</th>
+  <th>Test Diagnosis</th>
+  </tr>
+</table>
+  <tr>
+    <div th:each="result : ${results}">
+    <div th:text="${result}"></div>
+    </div>
+  </tr>
+
+</body>
+<button type="button"><a href="/">Back to Home</a></button>
+</html>
