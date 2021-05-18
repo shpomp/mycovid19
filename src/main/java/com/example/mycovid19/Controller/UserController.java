@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
-
+  private int user_id = 3;
   @Autowired
   private UserRepo userRepo;
 
   @GetMapping("/users")
   public String users(Model model) throws SQLException {
-    model.addAttribute("users", userRepo.fetchAll());
+    model.addAttribute("users", userRepo.fetchAll(user_id));
     return "/users";
   }
 

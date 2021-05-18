@@ -1,15 +1,16 @@
-package com.example.mycovid19.Model;
+package com.example.mycovid19.Service;
 
+import com.example.mycovid19.Model.TestResult;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
-public class ResultSet {
+public class TestResultService {
 
-    static ArrayList<String> list = new ArrayList<>();
+    static ArrayList<TestResult> list = new ArrayList<>();
 
-    public static ArrayList<String> ResultSet() {
+    public static ArrayList<TestResult> ResultSet() {
 
       //DB setup
       String username = "mycovid19";
@@ -34,7 +35,12 @@ public class ResultSet {
             String test_status = resultSet.getString("test_status");
             String test_diagnosis = resultSet.getString("test_diagnosis");
 
-            list.add(first_name + " " + last_name + " "+ test_status + " " + test_diagnosis);
+            TestResult testResult = new TestResult("", "", "", "");
+            testResult.setFn(first_name);
+            testResult.setLn(last_name);
+            testResult.setTs(test_status);
+            testResult.setTd(test_diagnosis);
+            list.add(testResult);
           }
 
         } else {

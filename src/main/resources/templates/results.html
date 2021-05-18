@@ -13,13 +13,13 @@
   <th>Test Status</th>
   <th>Test Diagnosis</th>
   </tr>
+<tr th:each="result : ${testResult}">
+  <td th:text="${result.fn}"></td>
+  <td th:text="${result.ln}"></td>
+  <td th:text="${result.ts}"></td>
+  <td th:text="${result.td}"></td>
+</tr>
 </table>
-  <tr>
-    <div th:each="result : ${results}">
-    <div th:text="${result}"></div>
-    </div>
-  </tr>
-
 </body>
 <button type="button"><a href="/">Back to Home</a></button>
 </html>

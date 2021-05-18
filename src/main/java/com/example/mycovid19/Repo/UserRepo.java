@@ -23,8 +23,8 @@ public class UserRepo {
     return jdbc.update(sql, null, user.getFirst_name(), user.getLast_name(), user.getDate_of_birth());
   }
 
-  public List<User> fetchAll() throws SQLException {
-    String sql = " SELECT * FROM " + table + " ORDER BY first_name ";
+  public List<User> fetchAll(int user_id) throws SQLException {
+    String sql = " SELECT * FROM " + table + " WHERE user_id = " + user_id;
     RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
     return jdbc.query(sql, rowMapper);
   }
