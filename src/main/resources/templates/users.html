@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Covid-19 Test Center</title>
+    <style>
+      form a {
+        text-decoration: none;
+        color: black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Add User</h2>
+
+    <form method="post" action="/user/create">
+      <input type="text" name="first_name" />
+      <input type="text" name="last_name" />
+      <input type="date" name="date_of_birth" />
+      <input type="submit" value="Add user" />
+    </form>
+
+    <h2>User list:</h2>
+
+    <form th:each="user : ${users}" action="/user/update" method="post">
+      <input type="hidden" name="user_id" th:value="${user.user_id}" />
+      <input type="text" name="first_name" th:value="${user.first_name}" />
+      <input type="text" name="last_name" th:value="${user.last_name}" />
+      <input
+        type="text"
+        name="date_of_birth"
+        th:value="${user.date_of_birth}"
+      />
+      <button type="button">
+        <a th:href="@{/user/delete/{id}(id = ${user.user_id})}">Delete</a>
+      </button>
+      <input type="submit" value="Update" />
+    </form>
+  </body>
+</html>

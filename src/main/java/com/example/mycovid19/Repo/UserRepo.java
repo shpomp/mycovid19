@@ -12,30 +12,29 @@ import java.sql.*;
 public class UserRepo {
 
   private final static String table = "user";
-  private static JdbcTemplate jdbc;
-
+  private JdbcTemplate jdbc;
 
   public UserRepo(JdbcTemplate jdbc) {
-    UserRepo.jdbc = jdbc;
+    this.jdbc = jdbc;
   }
 
-  public static int addUser(User user){
-    String sql= "INSERT INTO " + table + " VALUES (?,?,?,?)";
+  public int addUser(User user) {
+    String sql = "INSERT INTO " + table + " VALUES (?,?,?,?)";
     return jdbc.update(sql, null, user.getFirst_name(), user.getLast_name(), user.getDate_of_birth());
   }
 
-  public static List<User> fetchAll() throws SQLException{
+  public List<User> fetchAll() throws SQLException {
     String sql = " SELECT * FROM " + table + " ORDER BY first_name ";
     RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
     return jdbc.query(sql, rowMapper);
   }
 
-  public static int deleteUser(int user_id){
+  public int deleteUser(int user_id) {
     String sql = " DELETE FROM " + table + " WHERE user_id = ? ";
     return jdbc.update(sql, user_id);
   }
 
-  public static int updateUser(User user){
+  public int updateUser(User user) {
     String sql = " UPDATE " + table + " SET first_name = ?, last_name = ?, date_of_birth = ? WHERE user_id = ? ";
     return jdbc.update(sql, user.getFirst_name(), user.getLast_name(), user.getDate_of_birth(), user.getUser_id());
   }

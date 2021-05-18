@@ -6,7 +6,9 @@ import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -16,27 +18,27 @@ public class UserController {
   @Autowired
   private UserRepo userRepo;
 
-  @GetMapping("/user")
+  @GetMapping("/users")
   public String user(Model model) throws SQLException {
     model.addAttribute("users", userRepo.fetchAll());
-    return "/user";
+    return "/users";
   }
 
-  @PostMapping("/create")
-  public String addUser(User user){
+  @PostMapping("/user/create")
+  public String addUser(User user) {
     userRepo.addUser(user);
-    return "redirect:/user";
+    return "redirect:/users";
   }
 
-  @PostMapping(value = "/edit", params="delete")
-  public String deleteUser(@RequestParam("user_id") int user_id){
+  @GetMapping("/user/delete/{user_id}")
+  public String deleteUser(@PathVariable("user_id") int user_id) {
     userRepo.deleteUser(user_id);
-    return "redirect:/user";
+    return "redirect:/users";
   }
 
-  @PostMapping(value = "/edit", params="update")
-  public String updateUser(User user){
+  @PostMapping("/user/update")
+  public String updateUser(User user) {
     userRepo.updateUser(user);
-    return "redirect:/user";
+    return "redirect:/users";
   }
 }
