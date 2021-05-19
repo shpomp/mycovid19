@@ -27,7 +27,7 @@ public class TestResultService {
                + "FROM user u JOIN test t\n"
                + "ON u.user_id = t.user_id\n"
                + "JOIN test_result r ON t.test_id = r.test_test_id\n"
-               + " WHERE test_status = 'done'";
+               + " WHERE t.test_status='done' AND u.user_id=30";
 
           PreparedStatement ps = conn.prepareStatement(sql);
           java.sql.ResultSet resultSet = ps.executeQuery();
