@@ -19,13 +19,14 @@ public class MyTestsRepo {
   }
 
   public static List<Test> fetchAll() throws SQLException {
-    String sql = " SELECT * FROM " + table + " WHERE (test_status = 'booked' OR test_status = 'done') AND user_id = 30 ORDER BY test_date ";
+    String sql = " SELECT * FROM " + table + " WHERE (test_status = 'booked' OR test_status = 'done') "
+        + "AND user_id = 30 ORDER BY test_date ";
     RowMapper<Test> rowMapper = new BeanPropertyRowMapper<>(Test.class);
     return jdbc.query(sql, rowMapper);
   }
 
-  public static int cancelTest(int test_id){
-    String sql = " UPDATE " + table + " SET test_status = 'available' WHERE test_id = ? ";
+  public static int cancelTest(int test_id) {
+    String sql = " UPDATE " + table + " SET test_status = 'available', user_id = NULL WHERE test_id = ? ";
     return jdbc.update(sql, test_id);
   }
 
