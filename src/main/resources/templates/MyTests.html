@@ -7,7 +7,7 @@
 <h1>My Tests:</h1>
 <body>
 
-<form th:each="test : ${mytests}" action="/editTest" method="post">
+<form th:each="test : ${mytests}" action="/editMyTest" method="post">
   <input type="hidden" name="test_id" th:value="${test.test_id}">
   <input type="text" name="date_and_time" th:value="${test.test_date}">
   <input type="text" name="date_and_time" th:value="${test.test_time}">
