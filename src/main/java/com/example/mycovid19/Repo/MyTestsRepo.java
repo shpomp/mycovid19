@@ -19,8 +19,7 @@ public class MyTestsRepo {
   }
 
   public static List<Test> fetchAll() throws SQLException {
-    String sql = " SELECT * FROM " + table + " WHERE (test_status = 'booked' OR test_status = 'done')\n"
-               + " AND user_id = 30 ORDER BY test_date ";
+    String sql = " SELECT * FROM " + table + " WHERE (test_status = 'booked' OR test_status = 'done') AND user_id = 30 ORDER BY test_date ";
     RowMapper<Test> rowMapper = new BeanPropertyRowMapper<>(Test.class);
     return jdbc.query(sql, rowMapper);
   }
