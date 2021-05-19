@@ -353,7 +353,7 @@
 
 
 
-        <form th:each="user : ${usersInfo}" action="/usersInfo/update" method="post">
+        <form th:each="user : ${usersInfo}" action="/update_user" method="post">
           <input th:value="${user.userId}"type="hidden" name="userID" value="userId" />
           <input th:value="${user.userEmail}"
                  class="
@@ -391,7 +391,8 @@
                 "
                  type="text"
                  name="password"
-          /><br />
+          />
+          <input type="submit" name="update" value="update"><br />
           <button
               class="
                   bg-blue-900
@@ -402,7 +403,7 @@
                   rounded
                   mt-5
                 "
-              type="submit"
+              type="button"
               name="update"
               value="Update"
           >
