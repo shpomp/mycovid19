@@ -9,23 +9,17 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class TestRepo {
-
+public class MyTestsRepo {
   private final static String table = "test";
   private static JdbcTemplate jdbc;
 
 
-  public TestRepo(JdbcTemplate jdbc) {
-    TestRepo.jdbc = jdbc;
-  }
-
-  public static int addTest(Test test){
-    String sql= "INSERT INTO " + table + " VALUES (?,?,?,?)";
-    return jdbc.update(sql, null, test.getTest_date(), test.getTest_time(), test.getTest_status());
+  public MyTestsRepo(JdbcTemplate jdbc) {
+    MyTestsRepo.jdbc = jdbc;
   }
 
   public static List<Test> fetchAll() throws SQLException {
-    String sql = " SELECT * FROM " + table + " WHERE test_status = 'available' ORDER BY test_date ";
+    String sql = " SELECT * FROM " + table + " WHERE (test_status = 'booked' OR test_status = 'done') AND user_id = 30 ORDER BY test_date ";
     RowMapper<Test> rowMapper = new BeanPropertyRowMapper<>(Test.class);
     return jdbc.query(sql, rowMapper);
   }
@@ -35,9 +29,5 @@ public class TestRepo {
     return jdbc.update(sql, test_id);
   }
 
-  public static int bookTest(int test_id){
-    String sql = " UPDATE " + table + " SET test_status = 'booked' WHERE test_id = ? ";
-    return jdbc.update(sql, test_id);
-  }
-
 }
+

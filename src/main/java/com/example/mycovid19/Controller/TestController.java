@@ -22,13 +22,13 @@ public class TestController {
     return "/test";
   }
 
-  @PostMapping("/createTest")
+  /*@PostMapping("/createTest")
   public String addTest(Test test){
     testRepo.addTest(test);
     return "redirect:/test";
-  }
+  }*/
 
-  @PostMapping(value = "/editTest", params="delete")
+  @PostMapping(value = "/editTest", params="cancel")
   public String cancelTest(@RequestParam("test_id") int test_id){
     testRepo.cancelTest(test_id);
     return "redirect:/test";
