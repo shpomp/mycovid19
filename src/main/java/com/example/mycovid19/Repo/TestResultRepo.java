@@ -9,7 +9,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class TestResultRepo {
 
+  private static int user_id;
+
   public static List<TestResult> createJoin() throws SQLException {
-    return TestResultService.ResultSet();
+    return TestResultService.ResultSet(user_id);
   }
 }

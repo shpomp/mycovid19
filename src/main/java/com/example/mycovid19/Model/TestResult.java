@@ -2,57 +2,58 @@ package com.example.mycovid19.Model;
 
 
 public class TestResult {
-  private String fn;
-  private String ln;
-  private String ts;
-  private String td;
+  private String firstName;
+  private String lastName;
+  private String testStatus;
+  private String testDiagnosis;
 
-  public TestResult(String fn, String ln, String ts, String td) {
-    this.fn = fn;
-    this.ln = ln;
-    this.ts = ts;
-    this.td = td;
+  public TestResult(String firstName, String lastName, String testStatus,
+      String testDiagnosis) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.testStatus = testStatus;
+    this.testDiagnosis = testDiagnosis;
   }
 
-  public String getFn() {
-    return fn;
+  public String getFirstName() {
+    return firstName;
   }
 
-  public void setFn(String fn) {
-    this.fn = fn;
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
   }
 
-  public String getLn() {
-    return ln;
+  public String getLastName() {
+    return lastName;
   }
 
-  public void setLn(String ln) {
-    this.ln = ln;
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
   }
 
-  public String getTs() {
-    return ts;
+  public String getTestStatus() {
+    return testStatus;
   }
 
-  public void setTs(String ts) {
-    this.ts = ts;
+  public void setTestStatus(String testStatus) {
+    this.testStatus = testStatus;
   }
 
-  public String getTd() {
-    return td;
+  public String getTestDiagnosis() {
+    return testDiagnosis;
   }
 
-  public void setTd(String td) {
-    this.td = td;
+  public void setTestDiagnosis(String testDiagnosis) {
+    this.testDiagnosis = testDiagnosis;
   }
 
   @Override
   public String toString() {
     return "TestResult{" +
-        "fn='" + fn + '\'' +
-        ", ln='" + ln + '\'' +
-        ", ts='" + ts + '\'' +
-        ", td='" + td + '\'' +
+        "firstName='" + firstName + '\'' +
+        ", lastName='" + lastName + '\'' +
+        ", testStatus='" + testStatus + '\'' +
+        ", testDiagnosis='" + testDiagnosis + '\'' +
         '}';
   }
 }

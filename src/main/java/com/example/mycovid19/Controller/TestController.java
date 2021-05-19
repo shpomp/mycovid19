@@ -1,6 +1,5 @@
 package com.example.mycovid19.Controller;
 
-import com.example.mycovid19.Model.Test;
 import com.example.mycovid19.Repo.TestRepo;
 import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +27,11 @@ public class TestController {
     return "redirect:/test";
   }*/
 
-  @PostMapping(value = "/editTest", params="cancel")
+  /*@PostMapping(value = "/editTest", params="cancel")
   public String cancelTest(@RequestParam("test_id") int test_id){
     testRepo.cancelTest(test_id);
     return "redirect:/test";
-  }
+  }*/
 
   @PostMapping(value = "/editTest", params="update")
   public String bookTest(@RequestParam("test_id") int test_id){

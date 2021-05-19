@@ -18,7 +18,7 @@ public class UserInfoRepo {
   }
 
   public int updateUser(UserInfo user) {
-    String sql = " UPDATE " + table + " SET email = ?, password = ? WHERE user_id = 3 ";
+    String sql = " UPDATE " + table + " SET email = ?, password = ? WHERE user_id = ? ";
     return jdbc.update(sql, user.getUserEmail(), user.getUserPassword());
   }
 
