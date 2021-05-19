@@ -36,7 +36,7 @@ public class TestRepo {
   }
 
   public static int bookTest(int test_id){
-    String sql = " UPDATE " + table + " SET test_status = 'booked' WHERE test_id = ? ";
+    String sql = " UPDATE " + table + " SET test_status = 'booked', user_id = 30 WHERE test_id = ? ";
     return jdbc.update(sql, test_id);
   }
 
