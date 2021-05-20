@@ -13,7 +13,7 @@
   <th>Test Status</th>
   <th>Test Diagnosis</th>
   </tr>
-<tr th:each="result : ${testResult}">
+<tr th:each="result : ${myTestsResults}">
   <td th:text="${result.firstName}"></td>
   <td th:text="${result.lastName}"></td>
   <td th:text="${result.testStatus}"></td>

@@ -17,7 +17,7 @@ public class MyProfileRepo {
   }
 
 
-  public static List<MyProfile> createJoin() throws SQLException {
+  public static List<MyProfile> joinUserProfileInfo() throws SQLException {
     return MyProfileService.ResultSet();
   }
 

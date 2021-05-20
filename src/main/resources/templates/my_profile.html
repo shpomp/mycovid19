@@ -308,7 +308,7 @@
             </th>
           </tr>
 
-          <tr  th:each="user : ${usersInfo}">
+          <tr  th:each="user : ${userProfileInfo}">
             <td class="p-4 border border-blue-200" th:text="${user.firstName}"></td>
             <td class="p-4 border border-blue-200" th:text="${user.lastName}"></td>
             <td class="p-4 border border-blue-200" th:text="${user.dateOfBirth}"></td>
@@ -336,7 +336,7 @@
 
 
 
-          <tr th:each="user : ${usersInfo}">
+          <tr th:each="user : ${userProfileInfo}">
 
             <td class="p-4 border border-blue-200" th:text="${user.phoneNumber}"></td>
             <td class="p-4 border border-blue-200" th:text="${user.streetName}"></td>
@@ -353,7 +353,7 @@
 
 
 
-        <form th:each="user : ${usersInfo}" action="/update_user" method="post">
+        <form th:each="user : ${userProfileInfo}" action="/update_user" method="post">
           <input th:value="${user.userId}"type="hidden" name="userID" value="userId" />
           <input th:value="${user.userEmail}"
                  class="

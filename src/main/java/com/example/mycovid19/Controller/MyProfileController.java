@@ -16,13 +16,13 @@ public class MyProfileController {
   private MyProfileRepo myProfileRepo;
 
   @GetMapping("/my_profile")
-  public String usersInfo(Model model) throws SQLException {
-    model.addAttribute("usersInfo", myProfileRepo.createJoin());
+  public String userProfileInfo(Model model) throws SQLException {
+    model.addAttribute("userProfileInfo", myProfileRepo.joinUserProfileInfo());
     return "my_profile";
   }
 
   @PostMapping(value = "/update_user", params="update")
-  public String updateUser(MyProfile user) {
+  public String updateUserProfileInfo(MyProfile user) {
     myProfileRepo.updateUser(user);
     return "redirect:/my_profile";
   }
