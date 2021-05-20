@@ -33,16 +33,17 @@ public class MyTestsResultsService {
           java.sql.ResultSet resultSet = ps.executeQuery();
 
           while (resultSet.next()) {
-            String first_name = resultSet.getString("first_name");
-            String last_name = resultSet.getString("last_name");
-            String test_status = resultSet.getString("test_status");
-            String test_diagnosis = resultSet.getString("test_diagnosis");
+            String firstName = resultSet.getString("first_name");
+            String lastName = resultSet.getString("last_name");
+            String testStatus = resultSet.getString("test_status");
+            String testDiagnosis = resultSet.getString("test_diagnosis");
 
-            TestResult testResult = new TestResult("", "", "", "");
-            testResult.setFirstName(first_name);
-            testResult.setLastName(last_name);
-            testResult.setTestStatus(test_status);
-            testResult.setTestDiagnosis(test_diagnosis);
+            TestResult testResult = new TestResult(
+                    firstName,
+                    lastName,
+                    testStatus,
+                    testDiagnosis
+            );
             list.add(testResult);
           }
 

@@ -14,12 +14,12 @@ public class MyProfileService {
   public static ArrayList<MyProfile> ResultSet() {
 
     //DB setup
-    String username = "mycovid19";
-    String password  = "Constanza1.";
+    String DBusername = "mycovid19";
+    String DBpassword  = "Constanza1.";
     String database = "mycovid19";
-    String url = "jdbc:mysql://den1.mysql6.gear.host:3306/";
+    String DBurl = "jdbc:mysql://den1.mysql6.gear.host:3306/";
 
-    try(Connection conn = DriverManager.getConnection(url + database, username, password)){
+    try(Connection conn = DriverManager.getConnection(DBurl + database, DBusername, DBpassword)){
       if (!conn.isClosed()){
         String sql =
             "SELECT user.user_id, user.first_name, user.last_name, user.date_of_birth,\n "
@@ -33,31 +33,33 @@ public class MyProfileService {
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ResultSet resultSet = ps.executeQuery();
-        System.out.println(resultSet);
 
         while (resultSet.next()) {
-          String user_id = resultSet.getString("user_id");
-          String first_name = resultSet.getString("first_name");
-          String last_name = resultSet.getString("last_name");
-          String date_of_birth = resultSet.getString("date_of_birth");
-          String phone_number  = resultSet.getString("phone_number");
-          String street_name = resultSet.getString("street_name");
-          String home_number = resultSet.getString("home_number");
+          String userID = resultSet.getString("user_id");
+          String firstName = resultSet.getString("first_name");
+          String lastName = resultSet.getString("last_name");
+          String dateOfBirth = resultSet.getString("date_of_birth");
+          String phoneNumber  = resultSet.getString("phone_number");
+          String streetName = resultSet.getString("street_name");
+          String homeNumber = resultSet.getString("home_number");
           String district = resultSet.getString("district");
-          String email = resultSet.getString("email");
-          String pass = resultSet.getString("password");
+          String userEmail = resultSet.getString("email");
+          String userPassword = resultSet.getString("password");
 
-          MyProfile myProfile = new MyProfile("", "", "", "", "", "", "", "", "", "");
-          myProfile.setUserId(user_id);
-          myProfile.setFirstName(first_name);
-          myProfile.setLastName(last_name);
-          myProfile.setDateOfBirth(date_of_birth);
-          myProfile.setPhoneNumber(phone_number);
-          myProfile.setStreetName(street_name);
-          myProfile.setHomeNumber(home_number);
-          myProfile.setUserDistrict(district);
-          myProfile.setUserEmail(email);
-          myProfile.setUserPassword(pass);
+          MyProfile myProfile = new MyProfile(
+                  userID,
+                  firstName,
+                  lastName,
+                  dateOfBirth,
+                  phoneNumber,
+                  streetName,
+                  homeNumber,
+                  district,
+                  userEmail,
+                  userPassword
+          );
+
+
           list.add(myProfile);
         }
 
