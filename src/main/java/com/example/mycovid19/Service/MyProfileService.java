@@ -1,6 +1,6 @@
-package com.example.mycovid19.User.Service;
+package com.example.mycovid19.Service;
 
-import com.example.mycovid19.User.Model.MyProfile;
+import com.example.mycovid19.Model.MyProfile;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

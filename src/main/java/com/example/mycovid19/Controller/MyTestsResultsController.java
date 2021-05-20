@@ -1,6 +1,6 @@
-package com.example.mycovid19.User.Controller;
+package com.example.mycovid19.Controller;
 
-import com.example.mycovid19.User.Repo.MyTestsResultsRepo;
+import com.example.mycovid19.Repo.MyTestsResultsRepo;
 import java.sql.SQLException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,9 +11,9 @@ public class MyTestsResultsController {
 
   private MyTestsResultsRepo myTestsResultsRepo;
 
-  @GetMapping("templates/User/my_results")
+  @GetMapping("/my_results")
   public String results(Model model) throws SQLException {
     model.addAttribute("myTestsResults", myTestsResultsRepo.joinTestsResults());
-    return "templates/User/my_results";
+    return "my_results";
   }
 }

@@ -1,4 +1,4 @@
-package com.example.mycovid19.User.Model;
+package com.example.mycovid19.Model;
 
 import java.sql.Date;
 import java.sql.Time;

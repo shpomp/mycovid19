@@ -1,6 +1,6 @@
-package com.example.mycovid19.User.Controller;
+package com.example.mycovid19.Controller;
 
-import com.example.mycovid19.User.Repo.MyTestsRepo;
+import com.example.mycovid19.Repo.MyTestsRepo;
 import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,16 +15,16 @@ public class MyTestsController {
     @Autowired
     private MyTestsRepo myTestsRepo;
 
-    @GetMapping("templates/User/my_tests")
+    @GetMapping("/my_tests")
     public String MyTests(Model model) throws SQLException {
       model.addAttribute("mytests", myTestsRepo.fetchAll());
-      return "templates/User/my_tests";
+      return "my_tests";
     }
 
     @PostMapping(value = "/edit_my_tests", params="cancel")
     public String cancelTest(@RequestParam("test_id") int test_id){
       myTestsRepo.cancelTest(test_id);
-      return "redirect:templates/User/my_tests.html";
+      return "redirect:/my_tests";
     }
 
     /////
