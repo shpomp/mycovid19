@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Users list</title>
+</head>
+<h1>Users List</h1>
+<body>
+<h3>The list:</h3>
+<form th:each="user : ${usersProfileInfo}" action="/edit" method="post">
+  <input type="hidden" name="id" th:value="${user.userId}">
+  <input type="text" name="name" th:value="${user.firstName}">
+  <input type="text" name="name" th:value="${user.lastName}">
+  <input type="text" name="name" th:value="${user.dateOfBirth}">
+  <input type="text" name="name" th:value="${user.phoneNumber}">
+  <input type="text" name="name" th:value="${user.streetName}">
+  <input type="text" name="name" th:value="${user.homeNumber}">
+  <input type="text" name="name" th:value="${user.userDistrict}">
+  <input type="text" name="name" th:value="${user.userEmail}">
+  <input type="text" name="name" th:value="${user.userPassword}">
+  <input type="submit" name="delete" value="Delete">
+  <input type="submit" name="update" value="Update">
+</form>
+</body>
+</html>
