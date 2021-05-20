@@ -10,21 +10,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class MyTestController {
+public class MyTestsController {
 
     @Autowired
     private MyTestsRepo myTestsRepo;
 
-    @GetMapping("/MyTests")
+    @GetMapping("/my_tests")
     public String MyTests(Model model) throws SQLException {
       model.addAttribute("mytests", myTestsRepo.fetchAll());
-      return "/MyTests";
+      return "my_tests";
     }
 
-    @PostMapping(value = "/editMyTest", params="cancel")
+    @PostMapping(value = "/edit_my_tests", params="cancel")
     public String cancelTest(@RequestParam("test_id") int test_id){
       myTestsRepo.cancelTest(test_id);
-      return "redirect:/MyTests";
+      return "redirect:/my_tests";
     }
 
 }

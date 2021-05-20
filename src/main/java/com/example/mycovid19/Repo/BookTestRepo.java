@@ -9,14 +9,14 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class TestRepo {
+public class BookTestRepo {
 
   private final static String table = "test";
   private static JdbcTemplate jdbc;
 
 
-  public TestRepo(JdbcTemplate jdbc) {
-    TestRepo.jdbc = jdbc;
+  public BookTestRepo(JdbcTemplate jdbc) {
+    BookTestRepo.jdbc = jdbc;
   }
 
   /*public static int addTest(Test test){

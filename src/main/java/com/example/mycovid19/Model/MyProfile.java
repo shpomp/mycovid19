@@ -1,7 +1,7 @@
 package com.example.mycovid19.Model;
 
 
-public class UserInfo {
+public class MyProfile {
   private String userId;
   private String firstName;
   private String lastName;
@@ -13,10 +13,10 @@ public class UserInfo {
   private String userEmail;
   private String userPassword;
 
-  public UserInfo() {
+  public MyProfile() {
   }
 
-  public UserInfo(String userId, String firstName, String lastName, String dateOfBirth,
+  public MyProfile(String userId, String firstName, String lastName, String dateOfBirth,
       String phoneNumber, String streetName, String homeNumber, String userDistrict,
       String userEmail, String userPassword) {
     this.userId = userId;

@@ -1,27 +1,27 @@
 package com.example.mycovid19.Repo;
 
-import com.example.mycovid19.Model.UserInfo;
-import com.example.mycovid19.Service.UserInfoService;
+import com.example.mycovid19.Model.MyProfile;
+import com.example.mycovid19.Service.MyProfileService;
 import java.sql.SQLException;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserInfoRepo {
+public class MyProfileRepo {
 
   String table = "user_credentials";
   private static JdbcTemplate jdbc;
-  public UserInfoRepo(JdbcTemplate jdbc) {
-    UserInfoRepo.jdbc = jdbc;
+  public MyProfileRepo(JdbcTemplate jdbc) {
+    MyProfileRepo.jdbc = jdbc;
   }
 
 
-  public static List<UserInfo> createJoin() throws SQLException {
-    return UserInfoService.ResultSet();
+  public static List<MyProfile> createJoin() throws SQLException {
+    return MyProfileService.ResultSet();
   }
 
-  public int updateUser(UserInfo user) {
+  public int updateUser(MyProfile user) {
     System.out.println(user.getUserEmail());
     System.out.println(user.getUserPassword());
 

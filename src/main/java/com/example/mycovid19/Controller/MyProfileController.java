@@ -1,9 +1,8 @@
 package com.example.mycovid19.Controller;
 
-import com.example.mycovid19.Model.UserInfo;
-import com.example.mycovid19.Repo.UserInfoRepo;
+import com.example.mycovid19.Model.MyProfile;
+import com.example.mycovid19.Repo.MyProfileRepo;
 import java.sql.SQLException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,20 +10,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class UserInfoController {
+public class MyProfileController {
 
   @Autowired
-  private UserInfoRepo userInfoRepo;
+  private MyProfileRepo myProfileRepo;
 
-  @GetMapping("/usersInfo")
+  @GetMapping("/my_profile")
   public String usersInfo(Model model) throws SQLException {
-    model.addAttribute("usersInfo", userInfoRepo.createJoin());
-    return "/usersInfo";
+    model.addAttribute("usersInfo", myProfileRepo.createJoin());
+    return "my_profile";
   }
 
   @PostMapping(value = "/update_user", params="update")
-  public String updateUser(UserInfo user) {
-    userInfoRepo.updateUser(user);
-    return "redirect:/usersInfo";
+  public String updateUser(MyProfile user) {
+    myProfileRepo.updateUser(user);
+    return "redirect:/my_profile";
   }
 }

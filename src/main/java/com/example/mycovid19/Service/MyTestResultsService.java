@@ -1,13 +1,13 @@
 package com.example.mycovid19.Service;
 
 import com.example.mycovid19.Model.TestResult;
-import com.example.mycovid19.Model.UserInfo;
+import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.util.ArrayList;
 
-public class TestResultService {
+public class MyTestResultsService {
+
 
     static ArrayList<TestResult> list = new ArrayList<>();
     static int user_id;

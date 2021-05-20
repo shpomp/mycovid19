@@ -1,17 +1,17 @@
 package com.example.mycovid19.Service;
 
-import com.example.mycovid19.Model.UserInfo;
+import com.example.mycovid19.Model.MyProfile;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class UserInfoService {
+public class MyProfileService {
 
-  static ArrayList<UserInfo> list = new ArrayList<>();
+  static ArrayList<MyProfile> list = new ArrayList<>();
 
-  public static ArrayList<UserInfo> ResultSet() {
+  public static ArrayList<MyProfile> ResultSet() {
 
     //DB setup
     String username = "mycovid19";
@@ -47,18 +47,18 @@ public class UserInfoService {
           String email = resultSet.getString("email");
           String pass = resultSet.getString("password");
 
-          UserInfo userInfo = new UserInfo("", "", "", "", "", "", "", "", "", "");
-          userInfo.setUserId(user_id);
-          userInfo.setFirstName(first_name);
-          userInfo.setLastName(last_name);
-          userInfo.setDateOfBirth(date_of_birth);
-          userInfo.setPhoneNumber(phone_number);
-          userInfo.setStreetName(street_name);
-          userInfo.setHomeNumber(home_number);
-          userInfo.setUserDistrict(district);
-          userInfo.setUserEmail(email);
-          userInfo.setUserPassword(pass);
-          list.add(userInfo);
+          MyProfile myProfile = new MyProfile("", "", "", "", "", "", "", "", "", "");
+          myProfile.setUserId(user_id);
+          myProfile.setFirstName(first_name);
+          myProfile.setLastName(last_name);
+          myProfile.setDateOfBirth(date_of_birth);
+          myProfile.setPhoneNumber(phone_number);
+          myProfile.setStreetName(street_name);
+          myProfile.setHomeNumber(home_number);
+          myProfile.setUserDistrict(district);
+          myProfile.setUserEmail(email);
+          myProfile.setUserPassword(pass);
+          list.add(myProfile);
         }
 
       } else {
