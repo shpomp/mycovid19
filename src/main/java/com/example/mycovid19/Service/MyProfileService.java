@@ -1,17 +1,17 @@
-package com.example.mycovid19.Admin.Service;
+package com.example.mycovid19.Service;
 
-import com.example.mycovid19.Admin.Model.User;
+import com.example.mycovid19.Model.MyProfile;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class UsersProfileInfoService {
+public class MyProfileService {
 
-  static ArrayList<User> list = new ArrayList<>();
+  static ArrayList<MyProfile> list = new ArrayList<>();
 
-  public static ArrayList<User> ResultSet() {
+  public static ArrayList<MyProfile> ResultSet() {
 
     //DB setup
     String DBusername = "mycovid19";
@@ -28,7 +28,8 @@ public class UsersProfileInfoService {
           + "user_credentials.email, user_credentials.password\n"
           + "FROM user  JOIN user_contact_data \n"
           + "ON user.user_id = user_contact_data.user_id\n"
-          + "JOIN user_credentials  ON user_contact_data.user_id = user_credentials.user_id\n";
+          + "JOIN user_credentials  ON user_contact_data.user_id = user_credentials.user_id\n"
+          + "WHERE user.user_id = 3";
 
         PreparedStatement ps = conn.prepareStatement(sql);
         ResultSet resultSet = ps.executeQuery();
@@ -45,7 +46,7 @@ public class UsersProfileInfoService {
           String userEmail = resultSet.getString("email");
           String userPassword = resultSet.getString("password");
 
-          User user = new User(
+          MyProfile myProfile = new MyProfile(
                   userID,
                   firstName,
                   lastName,
@@ -58,7 +59,8 @@ public class UsersProfileInfoService {
                   userPassword
           );
 
-          list.add(user);
+
+          list.add(myProfile);
         }
 
       } else {

@@ -1,13 +1,13 @@
-package com.example.mycovid19.Admin.Repository;
+package com.example.mycovid19.Repo;
 
-import com.example.mycovid19.User.Model.TestResult;
-import com.example.mycovid19.User.Service.MyTestsResultsService;
+import com.example.mycovid19.Model.TestResult;
+import com.example.mycovid19.Service.MyTestsResultsService;
 import java.sql.SQLException;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UsersTestsResultsRepo {
+public class MyTestsResultsRepo {
 
   private static int user_id;
 

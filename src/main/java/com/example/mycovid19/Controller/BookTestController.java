@@ -1,6 +1,6 @@
-package com.example.mycovid19.User.Controller;
+package com.example.mycovid19.Controller;
 
-import com.example.mycovid19.User.Repo.BookTestRepo;
+import com.example.mycovid19.Repo.BookTestRepo;
 import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,10 +15,10 @@ public class BookTestController {
   @Autowired
   private BookTestRepo bookTestRepo;
 
-  @GetMapping("templates/User/book_tests.html")
+  @GetMapping("/book_tests")
   public String test(Model model) throws SQLException {
     model.addAttribute("tests", bookTestRepo.fetchAll());
-    return "templates/User/test.html";
+    return "book_tests";
   }
 
   /*@PostMapping("/createTest")
@@ -36,7 +36,7 @@ public class BookTestController {
   @PostMapping(value = "/edit_book_test", params="update")
   public String bookTest(@RequestParam("test_id") int test_id){
     bookTestRepo.bookTest(test_id);
-    return "redirect:templates/User/book_tests.html";
+    return "redirect:/book_tests";
   }
 
 }

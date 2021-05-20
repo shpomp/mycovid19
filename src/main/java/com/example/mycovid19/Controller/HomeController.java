@@ -1,13 +1,12 @@
-package com.example.mycovid19;
+package com.example.mycovid19.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-class HomeController {
+public class HomeController {
 
   @GetMapping("/")
-  public String Home() {
-    return "index"; }
+  public String Home() { return "index"; }
 
 }

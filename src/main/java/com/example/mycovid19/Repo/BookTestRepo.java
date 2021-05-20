@@ -1,6 +1,6 @@
-package com.example.mycovid19.Admin.Repository;
+package com.example.mycovid19.Repo;
 
-import com.example.mycovid19.User.Model.Test;
+import com.example.mycovid19.Model.Test;
 import java.sql.SQLException;
 import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -9,14 +9,14 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class TestsRepo {
+public class BookTestRepo {
 
   private final static String table = "test";
   private static JdbcTemplate jdbc;
 
 
-  public TestsRepo(JdbcTemplate jdbc) {
-    TestsRepo.jdbc = jdbc;
+  public BookTestRepo(JdbcTemplate jdbc) {
+    BookTestRepo.jdbc = jdbc;
   }
 
   /*public static int addTest(Test test){

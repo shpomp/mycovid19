@@ -1,7 +1,7 @@
-package com.example.mycovid19.User.Controller;
+package com.example.mycovid19.Controller;
 
-import com.example.mycovid19.User.Model.MyProfile;
-import com.example.mycovid19.User.Repo.MyProfileRepo;
+import com.example.mycovid19.Model.MyProfile;
+import com.example.mycovid19.Repo.MyProfileRepo;
 import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,15 +15,15 @@ public class MyProfileController {
   @Autowired
   private MyProfileRepo myProfileRepo;
 
-  @GetMapping("templates/User/my_profile.html")
+  @GetMapping("/my_profile")
   public String userProfileInfo(Model model) throws SQLException {
     model.addAttribute("userProfileInfo", myProfileRepo.joinUserProfileInfo());
-    return "templates/User/my_profile.html";
+    return "my_profile";
   }
 
   @PostMapping(value = "/update_user", params="update")
   public String updateUserProfileInfo(MyProfile user) {
     myProfileRepo.updateUser(user);
-    return "redirect:templates/User/my_profile.html";
+    return "redirect:/my_profile";
   }
 }
