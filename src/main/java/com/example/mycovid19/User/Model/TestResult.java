@@ -1,4 +1,4 @@
-package com.example.mycovid19.Model;
+package com.example.mycovid19.User.Model;
 
 
 public class TestResult {

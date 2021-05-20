@@ -1,7 +1,7 @@
-package com.example.mycovid19.Repo;
+package com.example.mycovid19.User.Repo;
 
-import com.example.mycovid19.Model.MyProfile;
-import com.example.mycovid19.Service.MyProfileService;
+import com.example.mycovid19.User.Model.MyProfile;
+import com.example.mycovid19.User.Service.MyProfileService;
 import java.sql.SQLException;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
