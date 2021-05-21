@@ -28,8 +28,8 @@
   <input type="submit" value="Add credentials">
 </form>
 
-<form th:each = "user : ${usersProfileInfo}" action="update_user_info" method="post">
-  <!--<input type="hidden" name="user_id" th:value="${user.userId}"/>-->
+<form th:each = "user : ${usersProfileInfo}" action="/update_user_info" method="post">
+  <input type="hidden" name="user_id" th:value="${user.userId}"/>
   <input type="text" name="first_name" style="width: 100px;" th:value="${user.firstName}">
   <input type="text" name= "last_name" style="width: 100px;"th:value="${user.lastName}">
   <input type="text" name="date_of_birth" style="width: 100px;"th:value="${user.dateOfBirth}">
