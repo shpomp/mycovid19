@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class SeeAllUsersRepo {
 
+
   static SeeAllUsersService seeAllUsersService;
   JdbcTemplate jdbc;
 
@@ -17,6 +18,7 @@ public class SeeAllUsersRepo {
     this.jdbc = jdbc;
   }
 
+  // Juan, here
   public List<MyProfile> fetchAllUsers() throws SQLException {
     return seeAllUsersService.ResultSet();
   }
@@ -59,18 +61,20 @@ public class SeeAllUsersRepo {
     return jdbc.update(sql, user.getUserEmail(), user.getUserPassword());
   }
 
-  /*public int deleteUser (int user_id){
+  public int deleteUser (int user_id){
     //delete user by id
-    String sql = "DELETE FROM user WHERE user_id = 168";
+    String sql = "DELETE FROM user WHERE user_id = ?";
     return jdbc.update(sql, user_id);
-  }*/
+  }
 
   // once again, works with hard-coding, not with passing in an id.
   // is this beceause we are trying to fecth an id from a result set that is coming from a join?
 
-  public int deleteUser (){
+  /*public int deleteUser(){
     //delete user by id
     String sql = "DELETE FROM user WHERE user_id = 168";
     return jdbc.update(sql);
   }
+  */
+
 }

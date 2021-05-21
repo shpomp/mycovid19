@@ -13,19 +13,21 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ManageTestsRepo {
 
-  JdbcTemplate jdbc;
+  private final static String testTable = "test";
+
+  private static JdbcTemplate jdbc;
 
   public ManageTestsRepo(JdbcTemplate jdbc) {
-    this.jdbc = jdbc;
+    ManageTestsRepo.jdbc = jdbc;
   }
 
   public List<Test> fetchAllTests() throws SQLException {
-    String sql= " SELECT * FROM test" ;
+    String sql= " SELECT * FROM " + testTable + " WHERE test_status = 'available' ORDER BY test_date " ;
     RowMapper<Test> rowMapper = new BeanPropertyRowMapper<>(Test.class);
     return jdbc.query(sql, rowMapper);
   }
 
-  // does not work
+/*
   public int addTest (Test test){
     //test table
     System.out.println("breaks");
@@ -36,7 +38,15 @@ public class ManageTestsRepo {
 
     return jdbc.update(sql, LocalDate.now(), LocalTime.now(), "available");
     // tihis works. So it is not reading the Test object
+  }*/
+
+  public int addTest (Test test){
+    //test table
+    System.out.println(test.toString());
+    String sql = " INSERT INTO " + testTable +" (test_id, test_date, test_time, test_status) VALUES (?,?,?,?)";
+    return jdbc.update(sql, null, test.getTestDate(), test.getTestTime(), test.getTestStatus());
   }
+
 
   public int updateTest (Test test){
     //update test table

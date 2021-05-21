@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ManageTestsController {
 
   @Autowired
-  ManageTestsRepo manageTestsRepo;
+  private ManageTestsRepo manageTestsRepo;
 
   @GetMapping("/admin/all_tests")
   public String testList(Model model) throws SQLException {

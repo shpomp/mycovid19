@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SeeAllUsersController {
 
   @Autowired
-  SeeAllUsersRepo seeAllUsersRepo;
+  private SeeAllUsersRepo seeAllUsersRepo;
 
   //fetch all the users information through the join built in SeeAllUsersService
   @GetMapping("/admin/all_users")
@@ -54,15 +54,15 @@ public class SeeAllUsersController {
   }
 
 
-  /*@PostMapping(value = "/update_user_info", params="delete")
+  @PostMapping(value = "/update_user_info", params="delete")
   public String deleteUser(@RequestParam("user_id") int user_id){
     seeAllUsersRepo.deleteUser(user_id);
     return "redirect:/admin/all_users";
-  } */
-
+  }
+/*
   @PostMapping(value = "/update_user_info", params="delete")
   public String deleteUser(){
     seeAllUsersRepo.deleteUser();
     return "redirect:/admin/all_users";
-  }
+  }*/
 }
