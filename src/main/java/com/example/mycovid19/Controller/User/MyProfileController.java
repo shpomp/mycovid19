@@ -15,15 +15,15 @@ public class MyProfileController {
   @Autowired
   private MyProfileRepo myProfileRepo;
 
-  @GetMapping("/my_profile")
+  @GetMapping("/user/my_profile")
   public String userProfileInfo(Model model) throws SQLException {
     model.addAttribute("userProfileInfo", myProfileRepo.joinUserProfileInfo());
-    return "my_profile";
+    return "/user/my_profile";
   }
 
   @PostMapping(value = "/update_profile", params="update")
   public String updateUserProfileInfo(MyProfile user) {
     myProfileRepo.updateUserCredentials(user);
-    return "redirect:/my_profile";
+    return "redirect:/user/my_profile";
   }
 }

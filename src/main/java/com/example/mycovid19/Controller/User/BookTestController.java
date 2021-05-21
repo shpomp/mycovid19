@@ -15,10 +15,10 @@ public class BookTestController {
   @Autowired
   private BookTestRepo bookTestRepo;
 
-  @GetMapping("/book_tests")
+  @GetMapping("/user/book_tests")
   public String test(Model model) throws SQLException {
     model.addAttribute("tests", bookTestRepo.fetchAll());
-    return "book_tests";
+    return "/user/book_tests";
   }
 
   /*@PostMapping("/createTest")
@@ -36,7 +36,7 @@ public class BookTestController {
   @PostMapping(value = "/edit_book_test", params="update")
   public String bookTest(@RequestParam("test_id") int test_id){
     bookTestRepo.bookTest(test_id);
-    return "redirect:/book_tests";
+    return "redirect:/user/book_tests";
   }
 
 }

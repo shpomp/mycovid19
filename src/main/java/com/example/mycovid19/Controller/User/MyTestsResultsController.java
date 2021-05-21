@@ -11,9 +11,9 @@ public class MyTestsResultsController {
 
   private MyTestsResultsRepo myTestsResultsRepo;
 
-  @GetMapping("/my_results")
+  @GetMapping("/user/my_results")
   public String results(Model model) throws SQLException {
     model.addAttribute("myTestsResults", myTestsResultsRepo.joinTestsResults());
-    return "my_results";
+    return "/user/my_results";
   }
 }

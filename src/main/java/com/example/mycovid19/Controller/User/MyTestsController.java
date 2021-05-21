@@ -15,16 +15,16 @@ public class MyTestsController {
     @Autowired
     private MyTestsRepo myTestsRepo;
 
-    @GetMapping("/my_tests")
+    @GetMapping("/user/my_tests")
     public String MyTests(Model model) throws SQLException {
       model.addAttribute("mytests", myTestsRepo.fetchAll());
-      return "my_tests";
+      return "/user/my_tests";
     }
 
     @PostMapping(value = "/edit_my_tests", params="cancel")
     public String cancelTest(@RequestParam("test_id") int test_id){
       myTestsRepo.cancelTest(test_id);
-      return "redirect:/my_tests";
+      return "redirect:/user/my_tests";
     }
 
     /////
