@@ -2,6 +2,8 @@ package com.example.mycovid19.Repo.Admin;
 
 import com.example.mycovid19.Model.Test;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -28,10 +30,12 @@ public class ManageTestsRepo {
     //test table
     System.out.println("breaks");
 
-    String sql = " INSERT INTO test VALUES (?,?,?,?,NULL)";
+    String sql = " INSERT INTO test (test_date, test_time, test_status) VALUES (?,?,?)";
     System.out.println(test.toString());
+    // Test{testId=0, testDate=null, testTime=null, testStatus='null'}
 
-    return jdbc.update(sql,null,test.getTestDate(), test.getTestTime(), test.getTestStatus());
+    return jdbc.update(sql, LocalDate.now(), LocalTime.now(), "available");
+    // tihis works. So it is not reading the Test object
   }
 
   public int updateTest (Test test){
