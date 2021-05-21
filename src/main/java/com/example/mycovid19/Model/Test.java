@@ -53,6 +53,16 @@ public class Test {
   public void setTestStatus(String testStatus) {
     this.testStatus = testStatus;
   }
+
+  @Override
+  public String toString() {
+    return "Test{" +
+            "testId=" + testId +
+            ", testDate=" + testDate +
+            ", testTime=" + testTime +
+            ", testStatus='" + testStatus + '\'' +
+            '}';
+  }
 }
 
 

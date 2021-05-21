@@ -23,10 +23,15 @@ public class ManageTestsRepo {
     return jdbc.query(sql, rowMapper);
   }
 
+  // does not work
   public int addTest (Test test){
     //test table
-    String sql = " INSERT INTO test VALUES (?,?,?,?)";
-    return jdbc.update(sql, null, test.getTestDate(), test.getTestTime(), test.getTestStatus());
+    System.out.println("breaks");
+
+    String sql = " INSERT INTO test VALUES (?,?,?,?,NULL)";
+    System.out.println(test.toString());
+
+    return jdbc.update(sql,null,test.getTestDate(), test.getTestTime(), test.getTestStatus());
   }
 
   public int updateTest (Test test){
@@ -34,6 +39,8 @@ public class ManageTestsRepo {
     String sql = "UPDATE test SET test_date = ?, test_time = ?, test_status = ?";
     return jdbc.update(sql, test.getTestDate(), test.getTestTime(), test.getTestStatus());
   }
+
+
 
   public int deleteTest (int test_id){
     //delete test by id
