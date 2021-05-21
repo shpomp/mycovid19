@@ -1,6 +1,6 @@
-package com.example.mycovid19.Controller;
+package com.example.mycovid19.Controller.User;
 
-import com.example.mycovid19.Repo.BookTestRepo;
+import com.example.mycovid19.Repo.User.BookTestRepo;
 import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

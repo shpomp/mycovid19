@@ -1,4 +1,4 @@
-package com.example.mycovid19.Service;
+package com.example.mycovid19.Service.User;
 
 import com.example.mycovid19.Model.MyProfile;
 import java.sql.Connection;

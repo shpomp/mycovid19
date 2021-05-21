@@ -353,7 +353,7 @@
 
 
 
-        <form th:each="user : ${userProfileInfo}" action="/update_user" method="post">
+        <form th:each="user : ${userProfileInfo}" action="/update_profile" method="post">
           <input th:value="${user.userId}"type="hidden" name="userID" value="userId" />
           <input th:value="${user.userEmail}"
                  class="

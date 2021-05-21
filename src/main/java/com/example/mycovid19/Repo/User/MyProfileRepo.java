@@ -1,7 +1,7 @@
-package com.example.mycovid19.Repo;
+package com.example.mycovid19.Repo.User;
 
 import com.example.mycovid19.Model.MyProfile;
-import com.example.mycovid19.Service.MyProfileService;
+import com.example.mycovid19.Service.User.MyProfileService;
 import java.sql.SQLException;
 import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,11 +17,13 @@ public class MyProfileRepo {
   }
 
 
+  //public  List<MyProfile> fetchAllUsers(){  }
+
   public static List<MyProfile> joinUserProfileInfo() throws SQLException {
     return MyProfileService.ResultSet();
   }
 
-  public int updateUser(MyProfile user) {
+  public int updateUserCredentials(MyProfile user) {
     System.out.println(user.getUserEmail());
     System.out.println(user.getUserPassword());
 

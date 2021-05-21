@@ -1,4 +1,4 @@
-package com.example.mycovid19.Repo;
+package com.example.mycovid19.Repo.User;
 
 import com.example.mycovid19.Model.Test;
 import java.sql.SQLException;

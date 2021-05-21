@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tests List</title>
+</head>
+<body>
+<h2>Create test</h2>
+<form method="post" action="/create_test">
+  <input type="date" name="test_date">
+  <input type="time" name="test_time">
+  <input type="text" name="test_status">
+  <input type="submit" value="Add test">
+</form>
+
+<form th:each = "test : ${seeAllTests}" action="update_test" method="post">
+  <input type="date" name="test_date" th:value="${test.testDate}">
+  <input type="time" name= "test_time" th:value="${test.testTime}">
+  <input type="text" name="test_status" th:value="${test.testStatus}">
+</form>
+<button type="button"><a href="/">Back to Home</a></button>
+
+</body>
+</html>

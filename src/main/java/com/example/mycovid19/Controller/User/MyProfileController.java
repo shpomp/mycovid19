@@ -1,7 +1,7 @@
-package com.example.mycovid19.Controller;
+package com.example.mycovid19.Controller.User;
 
 import com.example.mycovid19.Model.MyProfile;
-import com.example.mycovid19.Repo.MyProfileRepo;
+import com.example.mycovid19.Repo.User.MyProfileRepo;
 import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,9 +21,9 @@ public class MyProfileController {
     return "my_profile";
   }
 
-  @PostMapping(value = "/update_user", params="update")
+  @PostMapping(value = "/update_profile", params="update")
   public String updateUserProfileInfo(MyProfile user) {
-    myProfileRepo.updateUser(user);
+    myProfileRepo.updateUserCredentials(user);
     return "redirect:/my_profile";
   }
 }

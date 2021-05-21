@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All users</title>
+</head>
+<h1>Users List</h1>
+<body>
+<h2>Create user</h2>
+<form method="post" action="/create_user">
+  <input type="text" name="first_name">
+  <input type="text" name="last_name">
+  <input type="text" name="date_of_birth">
+  <input type="submit" value="Add user">
+</form>
+
+<form method="post" action="/add_user_contact_data">
+  <input type="text" name="phone_number">
+  <input type="text" name="street_name">
+  <input type="text" name="home_number">
+  <input type="text" name="user_district">
+  <input type="submit" value="Add contact data">
+</form>
+
+<form method="post" action="/add_user_credentials">
+  <input type="text" name="user_email">
+  <input type="text" name="user_password">
+  <input type="submit" value="Add credentials">
+</form>
+
+<form th:each = "user : ${usersProfileInfo}" action="update_user_info" method="post">
+  <!--<input type="hidden" name="user_id" th:value="${user.userId}"/>-->
+  <input type="text" name="first_name" style="width: 100px;" th:value="${user.firstName}">
+  <input type="text" name= "last_name" style="width: 100px;"th:value="${user.lastName}">
+  <input type="text" name="date_of_birth" style="width: 100px;"th:value="${user.dateOfBirth}">
+  <input type="text" name="phone_number" style="width: 100px;"th:value="${user.phoneNumber}">
+  <input type="text" name="street_name" style="width: 100px;"th:value="${user.streetName}">
+  <input type="text" name="home_number" style="width: 100px;"th:value="${user.homeNumber}">
+  <input type="text" name="user_district" style="width: 130px;"th:value="${user.userDistrict}">
+  <input type="text" name= "user_email" style="width: 200px;"th:value="${user.userEmail}">
+  <input type="text" name= "user_password" style="width: 130px;"th:value="${user.userPassword}">
+  <input type="submit" name="update" value="Update">
+  <input type="submit" name="delete" value="Delete">
+</form>
+<button type="button"><a href="/">Back to Home</a></button>
+</body>
+</html>
