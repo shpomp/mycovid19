@@ -14,29 +14,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ManageTestsController {
 
   @Autowired
-  ManageTestsRepo manageTestsRepo;
+  private ManageTestsRepo manageTestsRepo;
 
-  @GetMapping("/all_tests")
+  @GetMapping("/admin/all_tests")
   public String testList(Model model) throws SQLException {
     model.addAttribute("seeAllTests", manageTestsRepo.fetchAllTests());
-    return "all_tests";
+    return "/admin/all_tests";
   }
 
   @PostMapping("/create_test")
   public String addTest(Test test){
     manageTestsRepo.addTest(test);
-    return "redirect:/all_tests";
+    return "redirect:/admin/all_tests";
   }
 
   @PostMapping(value = "/update_test", params="update")
   public String updateTest(Test test) {
     manageTestsRepo.updateTest(test);
-    return "redirect:/all_tests";
+    return "redirect:/admin/all_tests";
   }
 
     @PostMapping(value = "/update_test", params="delete")
     public String deleteTest(@RequestParam("test_id") int test_id){
       manageTestsRepo.deleteTest(test_id);
-      return "redirect:/all_tests";
+      return "redirect:/admin/all_tests";
     }
 }
