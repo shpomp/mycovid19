@@ -7,9 +7,9 @@
   <body>
     <h2>Create test</h2>
     <form method="post" action="/create_test">
-      <input type="date" name="testDate" />
+      <input id="minDate "type="date" name="testDate" min="2021-05-01"/>
       <input type="time" name="testTime" />
-      <input type="text" name="testStatus" />
+      <input type="text" name="testStatus" value="available"/>
       <input type="submit" value="Add test" />
     </form>
 
@@ -19,5 +19,7 @@
       <input type="text" name="test_status" th:value="${test.testStatus}" />
     </form>
     <button type="button"><a href="/">Back to Home</a></button>
+
   </body>
+
 </html>
