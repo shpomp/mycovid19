@@ -7,7 +7,7 @@ import org.springframework.data.annotation.Id;
 public class Test {
 
   @Id
-  private int testId;
+  private int test_id;
   private Date testDate;
   private String testTime;
   private String testStatus;
@@ -16,18 +16,18 @@ public class Test {
   }
 
   public Test(int testId, Date testDate, String testTime, String testStatus) {
-    this.testId = testId;
+    this.test_id = testId;
     this.testDate = testDate;
     this.testTime = testTime;
     this.testStatus = testStatus;
   }
 
-  public int getTestId() {
-    return testId;
+  public int getTest_id() {
+    return test_id;
   }
 
-  public void setTestId(int testId) {
-    this.testId = testId;
+  public void setTest_id(int test_id) {
+    this.test_id = test_id;
   }
 
   public Date getTestDate() {
@@ -57,7 +57,7 @@ public class Test {
   @Override
   public String toString() {
     return "Test{" +
-            "testId=" + testId +
+            "testId=" + test_id +
             ", testDate=" + testDate +
             ", testTime=" + testTime +
             ", testStatus='" + testStatus + '\'' +

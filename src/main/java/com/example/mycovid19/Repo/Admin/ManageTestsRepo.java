@@ -2,8 +2,6 @@ package com.example.mycovid19.Repo.Admin;
 
 import com.example.mycovid19.Model.Test;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -37,15 +35,18 @@ public class ManageTestsRepo {
 
   public int updateTest (Test test){
     //update test table
-    String sql = "UPDATE test SET test_date = ?, test_time = ?, test_status = ?";
-    return jdbc.update(sql, test.getTestDate(), test.getTestTime(), test.getTestStatus());
+    System.out.print(test.toString());
+    String sql = "UPDATE test SET test_date = ?, test_time = ?, test_status = ? WHERE test_id = ?";
+    return jdbc.update(sql, test.getTestDate(), test.getTestTime(), test.getTestStatus(), test.getTest_id());
   }
 
 
 
   public int deleteTest (int test_id){
+    System.out.print(test_id);
+    // here we could add functionality to put into a file?
     //delete test by id
-    String sql = "DELETE FROM test WHERE test_id = ?";
+   String sql = "DELETE FROM test WHERE test_id = ?";
     return jdbc.update(sql, test_id);
   }
 
