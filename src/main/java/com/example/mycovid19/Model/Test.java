@@ -1,7 +1,7 @@
 package com.example.mycovid19.Model;
 
 import java.sql.Date;
-import java.sql.Time;
+
 import org.springframework.data.annotation.Id;
 
 public class Test {
@@ -9,13 +9,13 @@ public class Test {
   @Id
   private int testId;
   private Date testDate;
-  private Time testTime;
+  private String testTime;
   private String testStatus;
 
   public Test() {
   }
 
-  public Test(int testId, Date testDate, Time testTime, String testStatus) {
+  public Test(int testId, Date testDate, String testTime, String testStatus) {
     this.testId = testId;
     this.testDate = testDate;
     this.testTime = testTime;
@@ -38,11 +38,11 @@ public class Test {
     this.testDate = testDate;
   }
 
-  public Time getTestTime() {
+  public String getTestTime() {
     return testTime;
   }
 
-  public void setTestTime(Time testTime) {
+  public void setTestTime(String testTime) {
     this.testTime = testTime;
   }
 

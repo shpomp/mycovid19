@@ -27,24 +27,11 @@ public class ManageTestsRepo {
     return jdbc.query(sql, rowMapper);
   }
 
-/*
-  public int addTest (Test test){
-    //test table
-    System.out.println("breaks");
-
-    String sql = " INSERT INTO test (test_date, test_time, test_status) VALUES (?,?,?)";
-    System.out.println(test.toString());
-    // Test{testId=0, testDate=null, testTime=null, testStatus='null'}
-
-    return jdbc.update(sql, LocalDate.now(), LocalTime.now(), "available");
-    // tihis works. So it is not reading the Test object
-  }*/
 
   public int addTest (Test test){
     //test table
-    System.out.println(test.toString());
-    String sql = " INSERT INTO " + testTable +" (test_id, test_date, test_time, test_status) VALUES (?,?,?,?)";
-    return jdbc.update(sql, null, test.getTestDate(), test.getTestTime(), test.getTestStatus());
+    String sql = " INSERT INTO " + testTable +" VALUES (?,?,?,?,?)";
+    return jdbc.update(sql, null, test.getTestDate(), test.getTestTime(), test.getTestStatus(), null);
   }
 
 
