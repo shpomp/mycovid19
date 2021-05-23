@@ -34,9 +34,9 @@ public class ManageTestsRepo {
     return manageTestsService.ResultSet();
   }
 
-  public int updateResult (TestResult testResult, Test test) {
+  public int updateResult (TestResult testResult) {
     String sql = " UPDATE " + resultTable + " SET test_diagnosis = ? WHERE test_test_id = ?";
-    return jdbc.update(sql, testResult.getTestDiagnosis(), test.getTest_id());
+    return jdbc.update(sql, testResult.getTestDiagnosis(), testResult.getTest_id());
   }
 
 

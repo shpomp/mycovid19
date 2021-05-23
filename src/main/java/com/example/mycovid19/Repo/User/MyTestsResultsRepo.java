@@ -1,7 +1,6 @@
 package com.example.mycovid19.Repo.User;
 
 import com.example.mycovid19.Model.TestResult;
-import com.example.mycovid19.Service.User.MyTestsResultsService;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,7 +18,7 @@ public class MyTestsResultsRepo {
   private JdbcTemplate jdbc;
 
   public List<TestResult> joinTestsResults() throws SQLException {
-    String sql = "SELECT first_name, last_name, test_date, test_time, test_status, test_diagnosis\n"
+    String sql = "SELECT first_name, last_name, test_id, test_date, test_time, test_status, test_diagnosis\n"
         + "FROM user u JOIN test t\n" + "ON u.user_id = t.user_id\n"
         + "JOIN test_result r ON t.test_id = r.test_test_id\n" + " WHERE t.test_status='done' AND u.user_id=30";
 
@@ -29,12 +28,13 @@ public class MyTestsResultsRepo {
       public TestResult mapRow(ResultSet rs, int rowNum) throws SQLException {
         String firstName = rs.getString("first_name");
         String lastName = rs.getString("last_name");
+        String test_id = rs.getString("test_id");
         String testDate = rs.getString("test_date");
         String testTime = rs.getString("test_time");
         String testStatus = rs.getString("test_status");
         String testDiagnosis = rs.getString("test_diagnosis");
 
-        return new TestResult(firstName, lastName, testDate, testTime, testStatus, testDiagnosis);
+        return new TestResult(firstName, lastName, test_id, testDate, testTime, testStatus, testDiagnosis);
       }
 
     });

@@ -23,8 +23,8 @@ public class ManageTestsResultsController {
   }
 
   @PostMapping(value = "/update_result", params="update")
-  public String updateResult(TestResult testResult, Test test) {
-    manageTestsRepo.updateResult(testResult, test);
+  public String updateResult(TestResult testResult) {
+    manageTestsRepo.updateResult(testResult);
     return "redirect:/admin/all_tests_results";
   }
 }

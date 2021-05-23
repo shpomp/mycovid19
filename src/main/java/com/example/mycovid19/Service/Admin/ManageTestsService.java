@@ -21,7 +21,7 @@ public class ManageTestsService {
     try(Connection conn = DriverManager.getConnection(url + database, username, password)){
       if (!conn.isClosed()){
         String sql =
-            "SELECT first_name, last_name, test_date, test_time, test_status, test_diagnosis\n"
+            "SELECT first_name, last_name, test_id, test_date, test_time, test_status, test_diagnosis\n"
                 + "FROM user u JOIN test t\n"
                 + "ON u.user_id = t.user_id\n"
                 + "JOIN test_result r ON t.test_id = r.test_test_id\n"
@@ -33,6 +33,7 @@ public class ManageTestsService {
         while (resultSet.next()) {
           String firstName = resultSet.getString("first_name");
           String lastName = resultSet.getString("last_name");
+          String test_id = resultSet.getString("test_id");
           String testDate = resultSet.getString("test_date");
           String testTime = resultSet.getString("test_time");
           String testStatus = resultSet.getString("test_status");
@@ -41,6 +42,7 @@ public class ManageTestsService {
           TestResult testResult = new TestResult(
               firstName,
               lastName,
+              test_id,
               testDate,
               testTime,
               testStatus,

@@ -21,6 +21,7 @@
   <form th:each="result : ${adminResults}" action="/update_result" method="post">
     <input type="text" name="firstName"th:value="${result.firstName}">
     <input type="text" name="lastName"th:value="${result.lastName}">
+    <input type="hidden" name="test_id" th:value="${result.test_id}">
     <input type="date" name="testDate"th:value="${result.testDate}">
     <input type="time" name="testTime"th:value="${result.testTime}">
     <input type="text" name="testStatus"th:value="${result.testStatus}">
