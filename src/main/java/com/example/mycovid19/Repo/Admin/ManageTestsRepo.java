@@ -1,6 +1,8 @@
 package com.example.mycovid19.Repo.Admin;
 
 import com.example.mycovid19.Model.Test;
+import com.example.mycovid19.Model.TestResult;
+import com.example.mycovid19.Service.Admin.ManageTestsService;
 import java.sql.SQLException;
 import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -12,6 +14,9 @@ import org.springframework.stereotype.Repository;
 public class ManageTestsRepo {
 
   private final static String testTable = "test";
+  private final static String resultTable = "test_result";
+
+  private static ManageTestsService manageTestsService;
 
   private static JdbcTemplate jdbc;
 
@@ -23,6 +28,15 @@ public class ManageTestsRepo {
     String sql= " SELECT * FROM " + testTable + " WHERE test_status = 'available' ORDER BY test_date " ;
     RowMapper<Test> rowMapper = new BeanPropertyRowMapper<>(Test.class);
     return jdbc.query(sql, rowMapper);
+  }
+
+  public List<TestResult> fetchAllTestsResults() throws SQLException {
+    return manageTestsService.ResultSet();
+  }
+
+  public int updateResult (TestResult testResult, Test test) {
+    String sql = " UPDATE " + resultTable + " SET test_diagnosis = ? WHERE test_test_id = ?";
+    return jdbc.update(sql, testResult.getTestDiagnosis(), test.getTest_id());
   }
 
 
@@ -46,7 +60,7 @@ public class ManageTestsRepo {
     System.out.print(test_id);
     // here we could add functionality to put into a file?
     //delete test by id
-   String sql = "DELETE FROM test WHERE test_id = ?";
+   String sql = "DELETE FROM" + testTable + "WHERE test_id = ?";
     return jdbc.update(sql, test_id);
   }
 
