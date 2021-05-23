@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 public class ManageTestsRepo {
 
   private final static String testTable = "test";
+  private final static String resultTable = "test_result";
 
   private static ManageTestsService manageTestsService;
 
@@ -31,6 +32,11 @@ public class ManageTestsRepo {
 
   public List<TestResult> fetchAllTestsResults() throws SQLException {
     return manageTestsService.ResultSet();
+  }
+
+  public int updateResult (TestResult testResult, Test test) {
+    String sql = " UPDATE " + resultTable + " SET test_diagnosis = ? WHERE test_test_id = ?";
+    return jdbc.update(sql, testResult.getTestDiagnosis(), test.getTest_id());
   }
 
 
@@ -54,7 +60,7 @@ public class ManageTestsRepo {
     System.out.print(test_id);
     // here we could add functionality to put into a file?
     //delete test by id
-   String sql = "DELETE FROM test WHERE test_id = ?";
+   String sql = "DELETE FROM" + testTable + "WHERE test_id = ?";
     return jdbc.update(sql, test_id);
   }
 
