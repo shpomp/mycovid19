@@ -1,6 +1,8 @@
 package com.example.mycovid19.Repo.Admin;
 
 import com.example.mycovid19.Model.Test;
+import com.example.mycovid19.Model.TestResult;
+import com.example.mycovid19.Service.Admin.ManageTestsService;
 import java.sql.SQLException;
 import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -13,6 +15,8 @@ public class ManageTestsRepo {
 
   private final static String testTable = "test";
 
+  private static ManageTestsService manageTestsService;
+
   private static JdbcTemplate jdbc;
 
   public ManageTestsRepo(JdbcTemplate jdbc) {
@@ -23,6 +27,10 @@ public class ManageTestsRepo {
     String sql= " SELECT * FROM " + testTable + " WHERE test_status = 'available' ORDER BY test_date " ;
     RowMapper<Test> rowMapper = new BeanPropertyRowMapper<>(Test.class);
     return jdbc.query(sql, rowMapper);
+  }
+
+  public List<TestResult> fetchAllTestsResults() throws SQLException {
+    return manageTestsService.ResultSet();
   }
 
 

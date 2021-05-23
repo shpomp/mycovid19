@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tests Results</title>
+</head>
+
+<h1>Tests Results</h1>
+<body>
+<button type="button"><a href="/">Back to Home</a></button>
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Test Date</th>
+    <th>Test Time</th>
+    <th>Test Status</th>
+    <th>Test Diagnosis</th>
+  </tr>
+</table>
+  <form th:each="result : ${adminResults}">
+    <input type="text" name="firstName"th:value="${result.firstName}">
+    <input type="text" name="lastName"th:value="${result.lastName}">
+    <input type="date" name="testDate"th:value="${result.testDate}">
+    <input type="time" name="testTime"th:value="${result.testTime}">
+    <input type="text" name="testStatus"th:value="${result.testStatus}">
+    <input type="text" name="testDiagnosis"th:value="${result.testDiagnosis}">
+    <!--<input type="submit" name="delete" value="Delete">
+    <input type="submit" name="update" value="Update">-->
+  </form>
+</body>
+</html>

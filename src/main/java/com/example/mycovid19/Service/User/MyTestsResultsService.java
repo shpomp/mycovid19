@@ -10,7 +10,7 @@ public class MyTestsResultsService {
 
 
     static ArrayList<TestResult> list = new ArrayList<>();
-    static int user_id;
+
 
     public static ArrayList<TestResult> ResultSet(int user_id) {
 
