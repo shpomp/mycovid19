@@ -24,27 +24,9 @@ public class MyProfileRepo {
   }
 
   public int updateUserCredentials(MyProfile user) {
-    System.out.println(user.getUserEmail());
-    System.out.println(user.getUserPassword());
-
     String sql = " UPDATE " + table + " SET email = ?, password = ? WHERE user_id = ? ";
     return jdbc.update(sql, user.getUserEmail(), user.getUserPassword(), user.getUserId());
   }
-  // need fix : above the user is null
 
-  /*
-  String sql = " UPDATE " + table + " SET email = ?, password = ? WHERE user_id =  ";
-    return jdbc.update(sql, user.getUserEmail(), user.getUserPassword(), user.getUserId());
-  }
-
-  String sql = " UPDATE " + table + " SET email = ?, password = ? WHERE user_id = 3 ";
-    return jdbc.update(sql, user.getUserEmail(), user.getUserPassword());
-  }
-
-  public int updateUser(UserInfo user) {
-    String sql = " UPDATE " + table + " SET email = 'banana', password = 'banana' WHERE user_id = 3 ";
-    return jdbc.update(sql);
-  }
-  */
 
 }

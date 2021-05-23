@@ -354,7 +354,7 @@
 
 
         <form th:each="user : ${userProfileInfo}" action="/update_profile" method="post">
-          <input th:value="${user.userId}"type="hidden" name="userID" value="userId" />
+          <input th:value="${user.userId}"type="hidden" name="userId" value="userId" />
           <input th:value="${user.userEmail}"
                  class="
                   text-sm
@@ -371,7 +371,7 @@
                   h-10
                 "
                  type="text"
-                 name="email"
+                 name="userEmail"
           /><br />
           <input th:value="${user.userPassword}"
                  class="
@@ -389,10 +389,12 @@
                   h-10
                   mt-3
                 "
-                 type="text"
-                 name="password"
-          />
-          <input type="submit" name="update" value="update"><br />
+                 id="userPassword"
+                 type="password"
+                 name="userPassword"
+          /> <input type="checkbox" id="passwordVisibility" onclick="togglePassword()">
+          <label for="passwordVisibility">show password</label><br>
+
           <button
               class="
                   bg-blue-900
@@ -403,11 +405,10 @@
                   rounded
                   mt-5
                 "
-              type="button"
+              type="submit"
               name="update"
               value="Update"
-          >
-            update
+          >update
           </button>
         </form>
       </div>
@@ -503,6 +504,15 @@
       t = t.parentNode;
     }
     return false;
+  }
+
+  function togglePassword() {
+    let passwordInput = document.getElementById("userPassword");
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+    } else {
+      passwordInput.type = "password";
+    }
   }
 </script>
 </body>
