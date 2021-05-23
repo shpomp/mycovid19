@@ -59,6 +59,7 @@ public class SeeAllUsersController {
     seeAllUsersRepo.deleteUser(user_id);
     return "redirect:/admin/all_users";
   }
+
 /*
   @PostMapping(value = "/update_user_info", params="delete")
   public String deleteUser(){
