@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Signup</title>
+  </head>
+  <body>
+    <form th:action="@{/signup}" th:method="POST">
+      <input type="text" th:name="email" placeholder="Email" />
+      <br />
+      <input type="password" th:name="password" placeholder="Password" />
+      <br />
+      <input type="text" th:name="firstName" placeholder="First name" />
+      <br />
+      <input type="text" th:name="lastName" placeholder="Last name" />
+      <br />
+      <input type="date" th:name="dateOfBirth" />
+      <br />
+      <input type="text" th:name="phoneNumber" placeholder="Phone number" />
+      <br />
+      <input type="text" th:name="streetName" placeholder="Street name" />
+      <br />
+      <input type="text" th:name="homeNumber" placeholder="Home number" />
+      <br />
+      <input type="text" th:name="district" placeholder="District" />
+      <br />
+      <input type="submit" />
+    </form>
+  </body>
+</html>
