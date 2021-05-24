@@ -26,10 +26,10 @@ public class SeeAllUsersService {
                   + "user_contact_data.phone_number, user_contact_data.street_name, "
                   + "user_contact_data.home_number, user_contact_data.district, \n"
                   + "user_credentials.email, user_credentials.password\n"
-                  + "FROM user  JOIN user_contact_data \n"
+                  + "FROM user  LEFT JOIN user_contact_data \n"
                   + "ON user.user_id = user_contact_data.user_id\n"
-                  + "JOIN user_credentials  ON user_contact_data.user_id = user_credentials.user_id\n"
-                  + "ORDER BY user.first_name";
+                  + "LEFT JOIN user_credentials  ON user_contact_data.user_id = user_credentials.user_id\n"
+                  + "ORDER BY user.date_of_birth";
 
           PreparedStatement ps = conn.prepareStatement(sql);
           ResultSet resultSet = ps.executeQuery();
