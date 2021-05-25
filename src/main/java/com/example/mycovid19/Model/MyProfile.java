@@ -17,8 +17,8 @@ public class MyProfile {
   }
 
   public MyProfile(String userId, String firstName, String lastName, String dateOfBirth,
-      String phoneNumber, String streetName, String homeNumber, String userDistrict,
-      String userEmail, String userPassword) {
+                   String phoneNumber, String streetName, String homeNumber, String userDistrict,
+                   String userEmail, String userPassword) {
     this.userId = userId;
     this.firstName = firstName;
     this.lastName = lastName;
