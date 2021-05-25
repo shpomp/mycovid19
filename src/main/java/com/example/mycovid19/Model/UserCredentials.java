@@ -1,4 +1,4 @@
-/*
+
 package com.example.mycovid19.Model;
 
 
@@ -59,4 +59,3 @@ public class UserCredentials implements UserDetails {
   }
 
 }
-*/

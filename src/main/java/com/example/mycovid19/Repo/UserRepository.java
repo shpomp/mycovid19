@@ -1,4 +1,4 @@
-/*
+
 package com.example.mycovid19.Repo;
 
 
@@ -120,4 +120,3 @@ public class UserRepository {
     return true;
   }
 }
-*/
