@@ -1,4 +1,6 @@
+/*
 package com.example.mycovid19.Repo;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -118,3 +120,4 @@ public class UserRepository {
     return true;
   }
 }
+*/

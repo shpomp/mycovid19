@@ -1,4 +1,7 @@
+/*
+
 package com.example.mycovid19.Service;
+
 
 import com.example.mycovid19.DTO.UserDTO;
 import com.example.mycovid19.Model.User;
@@ -37,3 +40,6 @@ public class UserService implements UserDetailsService {
     return userRepository.addUser(user);
   }
 }
+
+*/
+

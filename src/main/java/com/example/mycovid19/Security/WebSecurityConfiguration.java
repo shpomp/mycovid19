@@ -1,4 +1,6 @@
+/*
 package com.example.mycovid19.Security;
+
 
 import com.example.mycovid19.Service.UserService;
 
@@ -42,3 +44,4 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     return dap;
   }
 }
+*/
