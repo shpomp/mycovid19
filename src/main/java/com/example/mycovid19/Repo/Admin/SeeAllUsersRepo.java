@@ -5,7 +5,6 @@ import com.example.mycovid19.Service.Admin.SeeAllUsersService;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.springframework.data.repository.query.Param;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -22,6 +21,7 @@ public class SeeAllUsersRepo {
 
   // Juan, here
   public List<MyProfile> fetchAllUsers() throws SQLException {
+    System.out.println(seeAllUsersService.ResultSet());
     return seeAllUsersService.ResultSet();
   }
 
@@ -32,19 +32,22 @@ public class SeeAllUsersRepo {
     String sql = " INSERT INTO user VALUES (?,?,?,?)";
     return jdbc.update(sql, null, user.getFirstName(), user.getLastName(), user.getDateOfBirth());
   }
-/*
+
   public int addUserContactData (MyProfile user){
     //user contact data table
-    String sql = " INSERT INTO user_contact_data VALUES (?,?,?,?)";
-    return jdbc.update(sql, user.getPhoneNumber(), user.getStreetName(), user.getHomeNumber(), user.getUserDistrict());
+    String sql = " INSERT INTO user_contact_data VALUES (?,?,?,?,?)";
+    return jdbc.update(sql, user.getPhoneNumber(), user.getStreetName(), user.getHomeNumber(), user.getUserDistrict(), user.getUserId());
   }
 
   public int addUserCredentials (MyProfile user){
     //user credentials table
-    String sql = "INSERT INTO user_credentials VALUES (?,?)";
-    return jdbc.update(sql, user.getUserEmail(), user.getUserPassword());
+    //user.setUserEmail(user.getUserEmail());
+    //user.setUserPassword(user.getUserPassword());
+    String sql = "INSERT INTO user_credentials VALUES (?,?,?)";
+    System.out.println(user.toString());
+    return jdbc.update(sql, user.getUserEmail(), user.getUserPassword(), user.getUserId());
   }
- */
+
 
   public int updateUser (MyProfile user){
     //update user table

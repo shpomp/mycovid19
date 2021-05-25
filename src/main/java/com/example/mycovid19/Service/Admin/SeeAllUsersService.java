@@ -29,7 +29,7 @@ public class SeeAllUsersService {
                   + "FROM user  LEFT JOIN user_contact_data \n"
                   + "ON user.user_id = user_contact_data.user_id\n"
                   + "LEFT JOIN user_credentials  ON user_contact_data.user_id = user_credentials.user_id\n"
-                  + "ORDER BY user.date_of_birth";
+                  + "ORDER BY user.user_id DESC";
 
           PreparedStatement ps = conn.prepareStatement(sql);
           ResultSet resultSet = ps.executeQuery();

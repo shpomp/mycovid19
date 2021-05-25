@@ -1,8 +1,11 @@
 package com.example.mycovid19.Controller.Admin;
 
+import com.example.mycovid19.DTO.UserDTO;
 import com.example.mycovid19.Model.MyProfile;
 import com.example.mycovid19.Repo.Admin.SeeAllUsersRepo;
 import java.sql.SQLException;
+
+import com.example.mycovid19.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +19,9 @@ public class SeeAllUsersController {
   @Autowired
   private SeeAllUsersRepo seeAllUsersRepo;
 
+  @Autowired
+  private UserService userService;
+
   //fetch all the users information through the join built in SeeAllUsersService
   @GetMapping("/admin/all_users")
   public String usersProfileInfo(Model model) throws SQLException {
@@ -23,13 +29,24 @@ public class SeeAllUsersController {
     return "/admin/all_users";
   }
 
-
+/*
   @PostMapping("/create_user")
   public String addUser(MyProfile user){
     seeAllUsersRepo.addUser(user);
+    //seeAllUsersRepo.addUserContactData(user);
+    //seeAllUsersRepo.addUserCredentials(user);
+
     return "redirect:/admin/all_users";
   }
-/*
+  */
+
+  @PostMapping("/create_user")
+  public String addUser(UserDTO user){
+      userService.signUpUser(user);
+    return "redirect:/admin/all_users";
+  }
+
+
   @PostMapping("/add_user_contact_data")
   public String addUserContactData(MyProfile user){
     seeAllUsersRepo.addUserContactData(user);
@@ -41,7 +58,7 @@ public class SeeAllUsersController {
     seeAllUsersRepo.addUserCredentials(user);
     return "redirect:/admin/all_users";
   }
- */
+
 
   @PostMapping(value = "/update_user_info", params="update")
   public String updateUser(MyProfile user){
