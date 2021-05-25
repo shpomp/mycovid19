@@ -1,4 +1,6 @@
+/*
 package com.example.mycovid19.Model;
+
 
 import java.util.Collection;
 
@@ -57,3 +59,4 @@ public class UserCredentials implements UserDetails {
   }
 
 }
+*/
