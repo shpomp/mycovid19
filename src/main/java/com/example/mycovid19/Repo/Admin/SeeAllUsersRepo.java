@@ -4,6 +4,8 @@ import com.example.mycovid19.Model.MyProfile;
 import com.example.mycovid19.Service.Admin.SeeAllUsersService;
 import java.sql.SQLException;
 import java.util.List;
+
+import org.springframework.data.repository.query.Param;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -11,8 +13,8 @@ import org.springframework.stereotype.Repository;
 public class SeeAllUsersRepo {
 
 
-  static SeeAllUsersService seeAllUsersService;
-  JdbcTemplate jdbc;
+  private static SeeAllUsersService seeAllUsersService;
+  private static JdbcTemplate jdbc;
 
   public SeeAllUsersRepo(JdbcTemplate jdbc) {
     this.jdbc = jdbc;
@@ -23,14 +25,14 @@ public class SeeAllUsersRepo {
     return seeAllUsersService.ResultSet();
   }
 
+
+
   public int addUser (MyProfile user){
     //user table
     String sql = " INSERT INTO user VALUES (?,?,?,?)";
-    //addUserContactData(user);
-    //addUserCredentials(user);
     return jdbc.update(sql, null, user.getFirstName(), user.getLastName(), user.getDateOfBirth());
   }
-
+/*
   public int addUserContactData (MyProfile user){
     //user contact data table
     String sql = " INSERT INTO user_contact_data VALUES (?,?,?,?)";
@@ -42,6 +44,7 @@ public class SeeAllUsersRepo {
     String sql = "INSERT INTO user_credentials VALUES (?,?)";
     return jdbc.update(sql, user.getUserEmail(), user.getUserPassword());
   }
+ */
 
   public int updateUser (MyProfile user){
     //update user table
@@ -51,21 +54,26 @@ public class SeeAllUsersRepo {
 
   public int updateUserContactData (MyProfile user){
     //update user contact data table
-    String sql = "UPDATE user_contact_data SET phone_number = ?, street_name = ?, home_number = ?, user_district = ? WHERE user_id = ?";
-    return jdbc.update(sql, user.getPhoneNumber(), user.getStreetName(), user.getHomeNumber(), user.getUserDistrict());
+    String sql = "UPDATE user_contact_data SET phone_number = ?, street_name = ?, home_number = ?, district = ? WHERE user_id = ?";
+    return jdbc.update(sql, user.getPhoneNumber(), user.getStreetName(), user.getHomeNumber(), user.getUserDistrict(), user.getUserId());
   }
 
   public int updateUserCredentials (MyProfile user){
     //update user credentials table
-    String sql = "UPDATE user_credentials SET user_email = ?, user_password = ?";
-    return jdbc.update(sql, user.getUserEmail(), user.getUserPassword());
+    String sql = "UPDATE user_credentials SET email = ?, password = ? WHERE user_id = ?";
+    return jdbc.update(sql, user.getUserEmail(), user.getUserPassword(), user.getUserId());
   }
 
-  public int deleteUser (int user_id){
+
+
+  public int deleteUser (String user_id){
     //delete user by id
+    System.out.println(user_id);
     String sql = "DELETE FROM user WHERE user_id = ?";
     return jdbc.update(sql, user_id);
   }
+
+
 
 
 }

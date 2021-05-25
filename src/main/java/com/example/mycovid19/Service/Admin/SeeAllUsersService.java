@@ -34,6 +34,7 @@ public class SeeAllUsersService {
           PreparedStatement ps = conn.prepareStatement(sql);
           ResultSet resultSet = ps.executeQuery();
 
+          list.clear();
           while (resultSet.next()) {
             String userID = resultSet.getString("user_id");
             String firstName = resultSet.getString("first_name");
