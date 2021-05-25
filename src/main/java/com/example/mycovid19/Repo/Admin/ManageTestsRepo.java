@@ -60,7 +60,7 @@ public class ManageTestsRepo {
     System.out.print(test_id);
     // here we could add functionality to put into a file?
     //delete test by id
-   String sql = "DELETE FROM" + testTable + "WHERE test_id = ?";
+   String sql = "DELETE FROM " + testTable + " WHERE test_id = ?";
     return jdbc.update(sql, test_id);
   }
 
