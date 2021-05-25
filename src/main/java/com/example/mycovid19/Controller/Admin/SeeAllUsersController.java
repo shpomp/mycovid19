@@ -65,7 +65,6 @@ public class SeeAllUsersController {
     seeAllUsersRepo.updateUser(user);
     seeAllUsersRepo.updateUserContactData(user);
     seeAllUsersRepo.updateUserCredentials(user);
-    System.out.println(user.toString());
     return "redirect:/admin/all_users";
   }
 
