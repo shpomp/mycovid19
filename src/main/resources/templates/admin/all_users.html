@@ -20,26 +20,71 @@
 <body>
 <button type="button"><a href="/">Back to Home</a></button>
 
-<form method="post" action="/create_user">
-  <input type="text" name="firstName">
-  <input type="text" name="lastName">
-  <input type="text" name="dateOfBirth">
-  <input type="submit" value="Add user">
+
+<form th:action="@{/create_user}" th:method="POST">
+  <input type="text" th:name="email" placeholder="Email" />
+  <br />
+  <input type="password" th:name="password" placeholder="Password" />
+  <br />
+  <input type="text" th:name="firstName" placeholder="First name" />
+  <br />
+  <input type="text" th:name="lastName" placeholder="Last name" />
+  <br />
+  <input type="date" th:name="dateOfBirth" />
+  <br />
+  <input type="text" th:name="phoneNumber" placeholder="Phone number" />
+  <br />
+  <input type="text" th:name="streetName" placeholder="Street name" />
+  <br />
+  <input type="text" th:name="homeNumber" placeholder="Home number" />
+  <br />
+  <input type="text" th:name="district" placeholder="District" />
+  <br />
+  <input type="submit" />
 </form>
+<!--
+<div class="grid grid-cols-3 gap-4">
+  <form class="grid grid-cols-1" method="post" action="/create_user">
+    <input type="text" name="firstName">
+    <input type="text" name="lastName">
+    <input type="text" name="dateOfBirth">
+    <input type="submit" value="Add user">
+  </form>
+
+
+  <form class="grid grid-cols-1" method="post" action="/add_user_contact_data">
+    <input type="text" name="userId">
+    <input type="text" name="phoneNumber">
+    <input type="text" name="streetName">
+    <input type="text" name="homeNumber">
+    <input type="text" name="userDistrict">
+    <input type="submit" value="Add contact data">
+  </form>
+
+  <form class="grid grid-cols-1" method="post" action="/add_user_credentials">
+    <input type="text" name="userEmail" class="mb-2 bg-gray-300" placeholder="email">
+    <input type="text" name="userPassword" class="mb-2 bg-gray-300" placeholder="password">
+    <input type="text" name="userId" class="mb-2 bg-gray-300" placeholder="id"/>
+    <input type="submit" value="Add credentials">
+  </form>
+</div>
+-->
+
+
 
 <!-- <form action="/admin/all_users" method="get" >
   <input id="txtSearch" type="text" name="keyword">
   <button type="submit">search</button>
 </form> -->
 
-<!--
+
 <form action="/admin/all_users" method="get" >
   <input id="txtSearch" type="text" placeholder="user name or last name" onkeyup="userSearch()">
- <button onclick="userSearch()" type="submit">search</button>
-</form> -->
+ <button onclick="userSearch()" type="button">search</button>
+</form>
 
 
-<table id="usersTable" class="ml-auto mr-auto table-auto p-5 text-gray-700" >
+<table id="usersTable" class="table-auto" >
   <tr>
     <th>ID</th>
     <th>Name</th>
@@ -58,10 +103,10 @@
 <form th:each = "user : ${usersProfileInfo}" action="/update_user_info" method="post">
   <tr>
     <td>
-      <input name="userId" th:value="${user.userId}"/>
+      <input style="width:35px" name="userId" th:value="${user.userId}"/>
     </td>
     <td>
-      <input id="name" type="text" name="firstName"  th:value="${user.firstName}">
+      <input  id="name" type="text" name="firstName"  th:value="${user.firstName}">
     </td>
     <td>
       <input id="lastName" type="text" name= "lastName" th:value="${user.lastName}">
@@ -79,7 +124,7 @@
     <td>
       <input type="text" name="homeNumber"  th:value="${user.homeNumber != null} ? ${user.homeNumber} : 'n/a'">
     </td>
-    <td>
+    <td >
       <input type="text" name="userDistrict" th:value="${user.userDistrict != null} ? ${user.userDistrict} : 'n/a'">
     </td>
     <td>
@@ -88,73 +133,47 @@
     <td>
       <input type="text" name= "userPassword"  th:value="${user.userPassword != null} ? ${user.userPassword} : 'n/a'">
     </td>
-    <td>
+    <td >
       <input type="submit" name="delete" value="Delete">
-      <input type="submit" name="update" value="Update">
+      <!-- <input th:unless="${user.phoneNumber == null or user.userEmail == null}" type="submit" name="update" value="Update"> -->
+      <input  type="submit" name="update" value="Update">
 
     </td>
     </tr>
 </form>
 </table>
+
+
+
+
+
+
+
+
 <script>
-  $( document ).ready(function() {
-    console.log( "ready!" );
-    const userSearch = () => {
-      let input = document.getElementById("txtSearch");
-      let key = input.value.toUpperCase();
-      let usersTable = document.getElementById("myTable");
-      let tr = usersTable.getElementsByTagName("tr");
 
-      for (let i = 0; i < tr.length; i++) {
-        let tdName = tr[i].getElementsByTagName("td")[0];
-        let nameInput = tdName.getElementById("name").value;
+  console.log( "ready!" );
+  const userSearch = () => {
+    let input = document.getElementById("txtSearch");
+    let key = input.value.toUpperCase();
+    let usersTable = document.getElementById("usersTable");
 
-        let tdLastName = tr[i].getElementsByTagName("td")[1];
-        let innerLastNameInput = tdLastName.getElementById("lastName").value;
-        console.log(nameInput);
-        console.log(innerLastNameInput);
+    let tr = usersTable.getElementsByTagName("tr");
+    let name = document.getElementById("usersTable").rows[1].cells[1].getElementsByTagName('input')[0].value;
+    console.log(tr)
 
 
-        if (tdName && tdLastName) {
-          if (tdName.contains(key) || innerLastNameInput.contains(key)) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
-        }
+    for (let i = 1; i < tr.length; i++) {
+      let name = document.getElementById("usersTable").rows[i].cells[1].getElementsByTagName('input')[0].value.toUpperCase();
+      let lastName = document.getElementById("usersTable").rows[i].cells[2].getElementsByTagName('input')[0].value.toUpperCase();
 
+      if (name.includes(key) || lastName.includes(key)) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
       }
     }
-  });
-/*
-  window.addEventListener("DOMContentLoaded", function() {
-    function userSearch() {
-      let input = document.getElementById("txtSearch");
-      let key = input.value.toUpperCase();
-      let usersTable = document.getElementById("myTable");
-      let tr = usersTable.getElementsByTagName("tr");
-
-      for (let i = 0; i < tr.length; i++) {
-        let tdName = tr[i].getElementsByTagName("td")[0];
-        let nameInput = tdName.getElementById("name").value;
-
-        let tdLastName = tr[i].getElementsByTagName("td")[1];
-        let innerLastNameInput = tdLastName.getElementById("lastName").value;
-        console.log(nameInput);
-        console.log(innerLastNameInput);
-
-
-        if (tdName && tdLastName) {
-          if (tdName.contains(key) || innerLastNameInput.contains(key)) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
-        }
-
-      }
-    }  }, false);
-*/
+  }
 </script>
 </body>
 </html>
