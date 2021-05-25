@@ -5,6 +5,7 @@ import com.example.mycovid19.Service.Admin.SeeAllUsersService;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.example.mycovid19.Service.Backup.BackupService;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -22,6 +23,7 @@ public class SeeAllUsersRepo {
   // Juan, here
   public List<MyProfile> fetchAllUsers() throws SQLException {
     System.out.println(seeAllUsersService.ResultSet());
+    //BackupService.printMemberList();
     return seeAllUsersService.ResultSet();
   }
 
