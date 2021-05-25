@@ -1,4 +1,4 @@
-package com.example.mycovid19.Security;
+/*package com.example.mycovid19.Security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,3 +11,5 @@ public class PasswordEncoder {
     return new BCryptPasswordEncoder();
   }
 }
+
+ */

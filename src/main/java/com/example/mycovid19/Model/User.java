@@ -1,4 +1,6 @@
+/*
 package com.example.mycovid19.Model;
+
 
 public class User {
 
@@ -48,3 +50,4 @@ public class User {
     return userCredentials;
   }
 }
+*/
