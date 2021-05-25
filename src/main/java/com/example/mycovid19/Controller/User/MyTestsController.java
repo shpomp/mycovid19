@@ -27,7 +27,6 @@ public class MyTestsController {
       return "redirect:/user/my_tests";
     }
 
-    /////
 
 
 }

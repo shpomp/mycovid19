@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>PROFILE shmovid-19</title>
-    <meta name="description" content="description here" />
-    <meta name="keywords" content="keywords,here" />
-
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -18,268 +15,11 @@
       href="https://unpkg.com/tailwindcss@next/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <!--Replace with your tailwind.css once created-->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"
-      integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ="
-      crossorigin="anonymous"
-    ></script>
   </head>
 
   <body class="bg-blue-100 font-sans leading-normal tracking-normal">
-    <nav id="header" class="bg-white fixed w-full z-10 top-0 shadow">
-      <div
-        class="
-          w-full
-          container
-          mx-auto
-          flex flex-wrap
-          items-center
-          mt-0
-          pt-3
-          pb-3
-          md:pb-0
-        "
-      >
-        <!-- Hi, user toggle -->
-        <div class="w-1/2 pr-0">
-          <div class="flex relative inline-block float-right">
-            <div class="relative text-sm">
-              <button
-                id="userButton"
-                class="mr-40 flex items-center focus:outline-none mr-3"
-              >
-                <img
-                  class="w-8 h-8 rounded-full mr-4"
-                  src="https://pbs.twimg.com/profile_images/589081644989943810/TCsr9vN6_400x400.jpg"
-                  alt="Avatar of User"
-                />
-                <span class="hidden md:inline-block font-bold">Hi, User </span>
-                <svg
-                  class="pl-2 h-2"
-                  version="1.1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 129 129"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  enable-background="new 0 0 129 129"
-                >
-                  <g>
-                    <path
-                      d="m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z"
-                    />
-                  </g>
-                </svg>
-              </button>
-              <div
-                id="userMenu"
-                class="
-                  bg-white
-                  rounded
-                  shadow-md
-                  mt-2
-                  absolute
-                  mt-12
-                  top-0
-                  right-0
-                  min-w-full
-                  overflow-auto
-                  z-30
-                  invisible
-                "
-              >
-                <ul class="list-reset">
-                  <li>
-                    <a
-                      href="#"
-                      class="
-                        px-4
-                        py-2
-                        block
-                        text-gray-900
-                        hover:bg-gray-400
-                        no-underline
-                        hover:no-underline
-                      "
-                      >Message</a
-                    >
-                  </li>
-                  <li>
-                    <hr class="border-t mx-2 border-gray-400" />
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="
-                        px-4
-                        py-2
-                        block
-                        text-pink-900
-                        hover:bg-gray-400
-                        no-underline
-                        hover:no-underline
-                      "
-                      >Logout</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
 
-            <div class="block lg:hidden pr-4">
-              <button
-                id="nav-toggle"
-                class="
-                  flex
-                  items-center
-                  px-3
-                  py-2
-                  border
-                  rounded
-                  text-gray-500
-                  border-gray-600
-                  hover:text-gray-900
-                  hover:border-teal-500
-                  appearance-none
-                  focus:outline-none
-                "
-              >
-                <svg
-                  class="fill-current h-3 w-3"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <title>Menu</title>
-                  <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-        <!-- Hi, user toggle ENDS -->
-
-        <div
-          class="
-            w-full
-            flex-grow
-            lg:flex
-            lg:items-center
-            lg:w-auto
-            hidden
-            lg:block
-            mt-2
-            lg:mt-0
-            bg-white
-            z-20
-          "
-          id="nav-content"
-        >
-          <ul class="list-reset lg:flex flex-1 items-center px-4 md:px-0">
-            <!-- ******* HOME *******-->
-            <li class="mr-6 my-2 md:my-0">
-              <a
-                href="/"
-                class="
-                  block
-                  py-1
-                  md:py-3
-                  pl-1
-                  align-middle
-                  text-gray-600
-                  no-underline
-                  hover:text-gray-900
-                  border-b-2 border-white
-                  hover:border-pink-600
-                "
-              >
-                <i class="fas fa-home fa-fw mr-1"></i
-                ><span class="pb-1 md:pb-0 text-sm">Home?</span>
-              </a>
-            </li>
-            <!-- ******* HOME ends ******* -->
-
-            <!-- ******* PROFILE ******* -->
-            <li class="mr-6 my-2 md:my-0">
-              <a
-                href="#"
-                class="
-                  block
-                  py-1
-                  md:py-3
-                  pl-1
-                  align-middle
-                  text-blue-500
-                  no-underline
-                  border-b-2 border-blue-600
-                "
-              >
-                <i class="fas fa-user fa-fw mr-1 text-blue-600"></i
-                ><span class="pb-1 md:pb-0 text-sm">View my profile</span>
-                <!--his info from user and user_contact data tables and can edit any data. -->
-                <!--everything is already an input field. form validation and confimraiton-->
-              </a>
-            </li>
-            <!-- ******* PROFILE ends ******* -->
-
-            <!-- ******* BOOK TEST ******* -->
-            <li class="mr-6 my-2 md:my-0">
-              <a
-                href="#"
-                class="
-                  block
-                  py-1
-                  md:py-3
-                  pl-1
-                  align-middle
-                  text-gray-500
-                  no-underline
-                  hover:text-gray-900
-                  border-b-2 border-white
-                  hover:border-purple-500
-                "
-              >
-                <i class="fa fa-syringe fa-fw mr-1"></i
-                ><button class="pb-1 md:pb-0 text-sm">Book a test</button>
-                <!--see all avaulable tests, can book -->
-                <!--when press book book book , cancle right way, confirmation button, it disappears and is put into my tests  -->
-                <!--confrm button sends you to my tests tab-->
-              </a>
-            </li>
-            <!-- ******* BOOK TEST ends ******* -->
-
-            <!-- *******MY TESTS *******-->
-            <li class="mr-6 my-2 md:my-0">
-              <a
-                href="#"
-                class="
-                  block
-                  py-1
-                  md:py-3
-                  pl-1
-                  align-middle
-                  text-gray-500
-                  no-underline
-                  hover:text-gray-900
-                  border-b-2 border-white
-                  hover:border-green-500
-                "
-              >
-                <i class="fas fa-microscope fa-fw mr-1"></i
-                ><span class="pb-1 md:pb-0 text-sm">My tests</span>
-                <!--see all my tests, one table with all statuseses and results. if not done, results is empty or whateverk -->
-                <!--thymeleaf here nees to have an IF statement: one table for upcoming test no result,
-              these you can cancel, aother for doene test with results -->
-                <!-- if I cancel, I stay on the same page, but it updates and the test is gone -->
-
-                <!-- add LOG OUT BUTOn SOMEWHERE-->
-              </a>
-            </li>
-            <!-- ******* MY TESTS ends ******* -->
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- ------ ------- -------------- ----------NAV PART ENDS------------------------------------------ ----------- -->
-
+  <nav id="header" th:replace="fragments/user_fragments/user_nav_profile :: profile"></nav>
     <!--Container-->
     <div class="container w-full mx-auto pt-20">
       <div
@@ -297,28 +37,28 @@
             <i class="fas fa-user-shield text-gray-600 text-xl p-4 fa-fw"></i>
             <table class="table-auto p-5 text-gray-700">
               <tr class="bg-gray-100">
-                <th class="p-4 border border-blue-200 text-left text-blue-900">
+                <th class="p-4 border border-blue-200 text-center text-blue-900">
                   First name
                 </th>
-                <th class="p-4 border border-blue-200 text-left text-blue-900">
+                <th class="p-4 border border-blue-200 text-center text-blue-900">
                   Last name
                 </th>
-                <th class="p-4 border border-blue-200 text-left text-blue-900">
+                <th class="p-4 border border-blue-200 text-center text-blue-900">
                   Date of birth
                 </th>
               </tr>
 
               <tr>
                 <td
-                  class="p-4 border border-blue-200"
+                  class="text-center p-4 border border-blue-200"
                   th:text="${user.firstName}"
                 ></td>
                 <td
-                  class="p-4 border border-blue-200"
+                  class="text-center p-4 border border-blue-200"
                   th:text="${user.lastName}"
                 ></td>
                 <td
-                  class="p-4 border border-blue-200"
+                  class="text-center p-4 border border-blue-200"
                   th:text="${user.dateOfBirth}"
                 ></td>
               </tr>
@@ -328,35 +68,35 @@
             <i class="fas fa-home text-gray-600 text-xl p-4 fa-fw mt-10"></i>
             <table class="table-auto p-5 text-gray-700">
               <tr class="bg-gray-100">
-                <th class="p-4 border border-blue-200 text-left text-blue-900">
+                <th class="p-4 border border-blue-200 text-center text-blue-900">
                   Phone number
                 </th>
-                <th class="p-4 border border-blue-200 text-left text-blue-900">
+                <th class="p-4 border border-blue-200 text-center text-blue-900">
                   Street
                 </th>
-                <th class="p-4 border border-blue-200 text-left text-blue-900">
+                <th class="p-4 border border-blue-200 text-center text-blue-900">
                   House number
                 </th>
-                <th class="p-4 border border-blue-200 text-left text-blue-900">
+                <th class="p-4 border border-blue-200 text-center text-blue-900">
                   District
                 </th>
               </tr>
 
               <tr>
                 <td
-                  class="p-4 border border-blue-200"
+                  class="text-center p-4 border border-blue-200"
                   th:text="${user.phoneNumber}"
                 ></td>
                 <td
-                  class="p-4 border border-blue-200"
+                  class="text-center p-4 border border-blue-200"
                   th:text="${user.streetName}"
                 ></td>
                 <td
-                  class="p-4 border border-blue-200"
+                  class="text-center p-4 border border-blue-200"
                   th:text="${user.homeNumber}"
                 ></td>
                 <td
-                  class="p-4 border border-blue-200"
+                  class="text-center p-4 border border-blue-200"
                   th:text="${user.userDistrict}"
                 ></td>
               </tr>
@@ -447,33 +187,10 @@
     </div>
     <!--/container-->
 
-    <footer class="bg-white border-t border-gray-400 shadow">
-      <div class="container max-w-md mx-auto flex py-8">
-        <div class="w-full mx-auto flex flex-wrap">
-          <div class="flex w-full md:w-1/2">
-            <div class="px-8">
-              <h3 class="font-bold font-bold text-gray-900">Contact support</h3>
-              <ul class="list-reset items-center text-sm pt-3">
-                <li>
-                  <a
-                    class="
-                      inline-block
-                      text-gray-600
-                      no-underline
-                      hover:text-gray-900
-                      hover:underline
-                      py-1
-                    "
-                    href="#"
-                    >Add social link</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <!-- footer -->
+    <div th:replace="fragments/user_fragments/user_footer :: footer">&nbsp;</div>
+
+
 
     <script>
       /*Toggle dropdown list*/

@@ -30,20 +30,6 @@ public class MyTestsRepo {
     return jdbc.update(sql, test_id);
   }
 
-  // need to set user_id to null when test is canceled
-  // did not work:
-  // String sql = " UPDATE " + table + " SET test_status = 'available', user_id = default WHERE test_id = ? ";
-  // String sql = " UPDATE " + table + " SET test_status = 'available', user_id = 'default' WHERE test_id = ? ";
-  // String sql = " UPDATE " + table + " SET test_status = 'available', user_id = 'null' WHERE test_id = ? ";
-  // String sql = " UPDATE " + table + " SET test_status = 'available', user_id = null WHERE test_id = ? ";
-
-  // String sql = " UPDATE " + table + " SET test_status = 'available', user_id = ? WHERE test_id = ? ";
-  // return jdbc.update(sql, test_id);
-
-  // String sql = " UPDATE " + table + " SET test_status = 'available', user_id = ? WHERE test_id = ? ";
-  // return jdbc.update(sql, null,test_id);
-
-
 
 
 

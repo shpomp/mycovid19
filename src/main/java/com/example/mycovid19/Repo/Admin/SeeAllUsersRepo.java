@@ -45,13 +45,13 @@ public class SeeAllUsersRepo {
 
   public int updateUser (MyProfile user){
     //update user table
-    String sql = "UPDATE user SET first_name = ?, last_name = ?, date_of_birth = ?";
-    return jdbc.update(sql, user.getFirstName(), user.getLastName(), user.getDateOfBirth());
+    String sql = "UPDATE user SET first_name = ?, last_name = ?, date_of_birth = ? WHERE user_id = ?";
+    return jdbc.update(sql, user.getFirstName(), user.getLastName(), user.getDateOfBirth(), user.getUserId());
   }
 
   public int updateUserContactData (MyProfile user){
     //update user contact data table
-    String sql = "UPDATE user_contact_data SET phone_number = ?, street_name = ?, home_number = ?, user_district = ?";
+    String sql = "UPDATE user_contact_data SET phone_number = ?, street_name = ?, home_number = ?, user_district = ? WHERE user_id = ?";
     return jdbc.update(sql, user.getPhoneNumber(), user.getStreetName(), user.getHomeNumber(), user.getUserDistrict());
   }
 
@@ -67,14 +67,5 @@ public class SeeAllUsersRepo {
     return jdbc.update(sql, user_id);
   }
 
-  // once again, works with hard-coding, not with passing in an id.
-  // is this beceause we are trying to fecth an id from a result set that is coming from a join?
-
-  /*public int deleteUser(){
-    //delete user by id
-    String sql = "DELETE FROM user WHERE user_id = 168";
-    return jdbc.update(sql);
-  }
-  */
 
 }
