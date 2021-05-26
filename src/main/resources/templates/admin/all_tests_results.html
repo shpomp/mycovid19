@@ -1,80 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Tests Results</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>RESULTS shmovid-19</title>
+  <link
+          rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+          crossorigin="anonymous"
+  />
+  <link
+          href="https://unpkg.com/tailwindcss@next/dist/tailwind.min.css"
+          rel="stylesheet"
+  />
 </head>
 
-<h1>Tests Results</h1>
-<body>
-<form action="/admin/all_users" method="get" >
-  <input id="txtSearch" type="text" placeholder="user name or last name" onkeyup="userSearch()">
-  <!-- <button onclick="userSearch()" type="button">search</button> -->
-</form>
+<body class="bg-pink-100 font-sans leading-normal tracking-normal">
 
-<button type="button"><a href="/">Back to Home</a></button>
-<table id="resultsTable">
-  <tr>
-    <th>User ID</th>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Test ID</th>
-    <th>Test date</th>
-    <th>Test time</th>
-    <th>Test status</th>
-    <th>Diagnosis</th>
-  </tr>
+<nav id="header" th:replace="fragments/admin_fragments/admin_nav_results :: all_results"></nav>
+<!--Container-->
+<div class="container w-full mx-auto pt-20">
+  <div
+          class="w-full px-4 md:px-0 md:mt-8 my-20 text-gray-800 leading-normal"
+  >
+    <!--Console Content-->
 
-  <form th:each="result : ${adminResults}" action="/update_result" method="post">
-    <tr>
-    <td>
-      <input type="text" name="userId"th:value="${result.userId}" disabled>
-    </td>
-    <td>
-      <input type="text" name="firstName"th:value="${result.firstName}" disabled>
-    </td>
-    <td>
-      <input type="text" name="lastName"th:value="${result.lastName}" disabled>
-    </td>
-    <td>
-      <input type="text" name="test_id"th:value="${result.test_id}" >
-    </td>
-    <td>
-      <input type="date" name="testDate"th:value="${result.testDate}" disabled>
-    </td>
-    <td>
-      <input type="time" name="testTime"th:value="${result.testTime}" disabled>
-    </td>
-    <td>
-      <input type="text" name="testDiagnosis"th:value="${result.testDiagnosis}">
-    </td>
-    <td>
-      <input type="submit" name="update" value="Update">
-      <input type="submit" name="delete" value="Delete">
-    </td>
-    </tr>
+    <!--Table Card-->
+    <div class="bg-white border rounded shadow my-30">
+      <div class="border-b p-3">
+        <h5 class="font-bold uppercase text-gray-600 ml-3">MY RESULTS</h5>
+      </div>
+      <div class="ml-10 my-20 p-5">
 
-  </form>
-</table>
+
+
+
+        <form action="/admin/all_users" method="get" >
+          <input id="txtSearch" type="text" placeholder="user name or last name" onkeyup="userSearch()">
+          <!-- <button onclick="userSearch()" type="button">search</button> -->
+        </form>
+
+        <button type="button"><a href="/">Back to Home</a></button>
+        <table id="resultsTable">
+          <tr>
+            <th>User ID</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Test ID</th>
+            <th>Test date</th>
+            <th>Test time</th>
+            <th>Test status</th>
+            <th>Diagnosis</th>
+          </tr>
+
+          <form th:each="result : ${adminResults}" action="/update_result" method="post">
+            <tr>
+              <td>
+                <input type="text" name="userId"th:value="${result.userId}" disabled>
+              </td>
+              <td>
+                <input type="text" name="firstName"th:value="${result.firstName}" disabled>
+              </td>
+              <td>
+                <input type="text" name="lastName"th:value="${result.lastName}" disabled>
+              </td>
+              <td>
+                <input type="text" name="test_id"th:value="${result.test_id}" >
+              </td>
+              <td>
+                <input type="date" name="testDate"th:value="${result.testDate}" disabled>
+              </td>
+              <td>
+                <input type="time" name="testTime"th:value="${result.testTime}" disabled>
+              </td>
+              <td>
+                <input type="text" name="testDiagnosis"th:value="${result.testDiagnosis}">
+              </td>
+              <td>
+                <input type="submit" name="update" value="Update">
+                <input type="submit" name="delete" value="Delete">
+              </td>
+            </tr>
+
+          </form>
+        </table>
+
+
+
+
+
+      </div>
+    </div>
+    <!--/table Card-->
+
+    <!--/ Console Content-->
+  </div>
+</div>
+<!--/container-->
+
+<!-- footer -->
+<div class="mt-30" th:replace="fragments/admin_fragments/admin_footer :: footer">&nbsp;</div>
+
+
+
 <script>
-  const userSearch = () => {
-    let input = document.getElementById("txtSearch");
-    let key = input.value.toUpperCase();
-    let usersTable = document.getElementById("resultsTable");
+  /*Toggle dropdown list*/
+  /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
 
-    let tr = usersTable.getElementsByTagName("tr");
-    let name = document.getElementById("usersTable").rows[1].cells[1].getElementsByTagName('input')[0].value;
-    console.log(tr)
+  var userMenuDiv = document.getElementById("userMenu");
+  var userMenu = document.getElementById("userButton");
 
-    for (let i = 1; i < tr.length; i++) {
-      let name = document.getElementById("usersTable").rows[i].cells[1].getElementsByTagName('input')[0].value.toUpperCase();
-      let lastName = document.getElementById("usersTable").rows[i].cells[2].getElementsByTagName('input')[0].value.toUpperCase();
+  var navMenuDiv = document.getElementById("nav-content");
+  var navMenu = document.getElementById("nav-toggle");
 
-      if (name.includes(key) || lastName.includes(key)) {
-        tr[i].style.display = "";
+  document.onclick = check;
+
+  function check(e) {
+    var target = (e && e.target) || (event && event.srcElement);
+
+    //User Menu
+    if (!checkParent(target, userMenuDiv)) {
+      // click NOT on the menu
+      if (checkParent(target, userMenu)) {
+        // click on the link
+        if (userMenuDiv.classList.contains("invisible")) {
+          userMenuDiv.classList.remove("invisible");
+        } else {
+          userMenuDiv.classList.add("invisible");
+        }
       } else {
-        tr[i].style.display = "none";
+        // click both outside link and outside menu, hide menu
+        userMenuDiv.classList.add("invisible");
       }
+    }
+
+    //Nav Menu
+    if (!checkParent(target, navMenuDiv)) {
+      // click NOT on the menu
+      if (checkParent(target, navMenu)) {
+        // click on the link
+        if (navMenuDiv.classList.contains("hidden")) {
+          navMenuDiv.classList.remove("hidden");
+        } else {
+          navMenuDiv.classList.add("hidden");
+        }
+      } else {
+        // click both outside link and outside menu, hide menu
+        navMenuDiv.classList.add("hidden");
+      }
+    }
+  }
+
+  function checkParent(t, elm) {
+    while (t.parentNode) {
+      if (t == elm) {
+        return true;
+      }
+      t = t.parentNode;
+    }
+    return false;
+  }
+
+  function togglePassword() {
+    let passwordInput = document.getElementById("userPassword");
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+    } else {
+      passwordInput.type = "password";
     }
   }
 </script>
