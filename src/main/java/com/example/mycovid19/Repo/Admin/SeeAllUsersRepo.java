@@ -68,7 +68,7 @@ public class SeeAllUsersRepo {
     return jdbc.update(sql, user.getUserEmail(), user.getUserPassword(), user.getUserId());
   }
 
-  public int deleteUser (int userId){
+  public int deleteUser (String userId){
     //delete user by id
     System.out.println(userId);
     String sql = "DELETE FROM user WHERE user_id = ?";
