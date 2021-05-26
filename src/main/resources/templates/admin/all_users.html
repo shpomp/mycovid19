@@ -42,45 +42,11 @@
   <br />
   <input type="submit" />
 </form>
-<!--
-<div class="grid grid-cols-3 gap-4">
-  <form class="grid grid-cols-1" method="post" action="/create_user">
-    <input type="text" name="firstName">
-    <input type="text" name="lastName">
-    <input type="text" name="dateOfBirth">
-    <input type="submit" value="Add user">
-  </form>
-
-
-  <form class="grid grid-cols-1" method="post" action="/add_user_contact_data">
-    <input type="text" name="userId">
-    <input type="text" name="phoneNumber">
-    <input type="text" name="streetName">
-    <input type="text" name="homeNumber">
-    <input type="text" name="userDistrict">
-    <input type="submit" value="Add contact data">
-  </form>
-
-  <form class="grid grid-cols-1" method="post" action="/add_user_credentials">
-    <input type="text" name="userEmail" class="mb-2 bg-gray-300" placeholder="email">
-    <input type="text" name="userPassword" class="mb-2 bg-gray-300" placeholder="password">
-    <input type="text" name="userId" class="mb-2 bg-gray-300" placeholder="id"/>
-    <input type="submit" value="Add credentials">
-  </form>
-</div>
--->
-
-
-
-<!-- <form action="/admin/all_users" method="get" >
-  <input id="txtSearch" type="text" name="keyword">
-  <button type="submit">search</button>
-</form> -->
 
 
 <form action="/admin/all_users" method="get" >
   <input id="txtSearch" type="text" placeholder="user name or last name" onkeyup="userSearch()">
- <button onclick="userSearch()" type="button">search</button>
+ <!-- <button onclick="userSearch()" type="button">search</button> -->
 </form>
 
 
@@ -143,16 +109,7 @@
 </form>
 </table>
 
-
-
-
-
-
-
-
 <script>
-
-  console.log( "ready!" );
   const userSearch = () => {
     let input = document.getElementById("txtSearch");
     let key = input.value.toUpperCase();
@@ -161,7 +118,6 @@
     let tr = usersTable.getElementsByTagName("tr");
     let name = document.getElementById("usersTable").rows[1].cells[1].getElementsByTagName('input')[0].value;
     console.log(tr)
-
 
     for (let i = 1; i < tr.length; i++) {
       let name = document.getElementById("usersTable").rows[i].cells[1].getElementsByTagName('input')[0].value.toUpperCase();
@@ -178,14 +134,3 @@
 </body>
 </html>
 
-<!--
-<input type="text" name="firstName" style="width: 100px;" th:value="${user.firstName}">
-  <input type="text" name= "lastName" style="width: 100px;"th:value="${user.lastName}">
-  <input type="text" name="dateOfBirth" style="width: 100px;"th:value="${user.dateOfBirth}">
-  <input type="text" name="phoneNumber" style="width: 100px;"th:value="${user.phoneNumber}">
-  <input type="text" name="streetName" style="width: 100px;"th:value="${user.streetName}">
-  <input type="text" name="streetName" style="width: 100px;"th:value="${user.homeNumber}">
-  <input type="text" name="userDistrict" style="width: 130px;"th:value="${user.userDistrict}">
-  <input type="text" name= "userEmail" style="width: 200px;"th:value="${user.userEmail}">
-  <input type="text" name= "userPassword" style="width: 130px;"th:value="${user.userPassword}">
--->

@@ -9,6 +9,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Repository
 public class ManageTestsRepo {
@@ -25,19 +27,11 @@ public class ManageTestsRepo {
   }
 
   public List<Test> fetchAllTests() throws SQLException {
-    String sql= " SELECT * FROM " + testTable + " WHERE test_status = 'available' ORDER BY test_date " ;
+    String sql= " SELECT * FROM " + testTable + " ORDER BY test_date " ;
     RowMapper<Test> rowMapper = new BeanPropertyRowMapper<>(Test.class);
     return jdbc.query(sql, rowMapper);
   }
-
-  public List<TestResult> fetchAllTestsResults() throws SQLException {
-    return manageTestsService.ResultSet();
-  }
-
-  public int updateResult (TestResult testResult) {
-    String sql = " UPDATE " + resultTable + " SET test_diagnosis = ? WHERE test_test_id = ?";
-    return jdbc.update(sql, testResult.getTestDiagnosis(), testResult.getTest_id());
-  }
+  // WHERE test_status = 'available'
 
 
   public int addTest (Test test){
@@ -49,19 +43,40 @@ public class ManageTestsRepo {
 
   public int updateTest (Test test){
     //update test table
-    String sql = "UPDATE test SET test_date = ?, test_time = ?, WHERE test_id = ?";
+    String sql = "UPDATE test SET test_date = ?, test_time = ? WHERE test_id = ?";
     return jdbc.update(sql, test.getTestDate(), test.getTestTime(), test.getTest_id());
   }
 
 
 
   public int deleteTest (int test_id){
-    // here we could add functionality to put into a file?
     //delete test by id
     System.out.println(test_id);
 
     String sql = "DELETE FROM " + testTable + " WHERE test_id = ?";
     return jdbc.update(sql, test_id);
   }
+
+  // RESULTS
+
+
+  public List<TestResult> fetchAllTestsResults() throws SQLException {
+    return manageTestsService.ResultSet();
+  }
+
+  public int updateResult (TestResult testResult) {
+    System.out.println(testResult.toString());
+    String sql = " UPDATE " + resultTable + " SET test_diagnosis = ? WHERE test_test_id = ?";
+    return jdbc.update(sql, testResult.getTestDiagnosis(), testResult.getTest_id());
+  }
+
+  public int deleteResult (int test_id){
+    //delete test by id
+    System.out.println(test_id);
+    String sql = "DELETE FROM " + testTable + " WHERE test_id = ?";
+    return jdbc.update(sql, test_id);
+  }
+
+
 
 }

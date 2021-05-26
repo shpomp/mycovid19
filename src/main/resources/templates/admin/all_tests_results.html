@@ -7,25 +7,76 @@
 
 <h1>Tests Results</h1>
 <body>
+<form action="/admin/all_users" method="get" >
+  <input id="txtSearch" type="text" placeholder="user name or last name" onkeyup="userSearch()">
+  <!-- <button onclick="userSearch()" type="button">search</button> -->
+</form>
+
 <button type="button"><a href="/">Back to Home</a></button>
-<!--<table>
+<table id="resultsTable">
   <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Test Date</th>
-    <th>Test Time</th>
-    <th>Test Status</th>
-    <th>Test Diagnosis</th>
+    <th>User ID</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Test ID</th>
+    <th>Test date</th>
+    <th>Test time</th>
+    <th>Test status</th>
+    <th>Diagnosis</th>
   </tr>
-</table>-->
+
   <form th:each="result : ${adminResults}" action="/update_result" method="post">
-    <input type="text" name="firstName"th:value="${result.firstName}">
-    <input type="text" name="lastName"th:value="${result.lastName}">
-    <input type="hidden" name="test_id" th:value="${result.test_id}">
-    <input type="date" name="testDate"th:value="${result.testDate}">
-    <input type="time" name="testTime"th:value="${result.testTime}">
-    <input type="text" name="testDiagnosis"th:value="${result.testDiagnosis}">
-    <input type="submit" name="update" value="Update">
+    <tr>
+    <td>
+      <input type="text" name="userId"th:value="${result.userId}" disabled>
+    </td>
+    <td>
+      <input type="text" name="firstName"th:value="${result.firstName}" disabled>
+    </td>
+    <td>
+      <input type="text" name="lastName"th:value="${result.lastName}" disabled>
+    </td>
+    <td>
+      <input type="text" name="test_id"th:value="${result.test_id}" >
+    </td>
+    <td>
+      <input type="date" name="testDate"th:value="${result.testDate}" disabled>
+    </td>
+    <td>
+      <input type="time" name="testTime"th:value="${result.testTime}" disabled>
+    </td>
+    <td>
+      <input type="text" name="testDiagnosis"th:value="${result.testDiagnosis}">
+    </td>
+    <td>
+      <input type="submit" name="update" value="Update">
+      <input type="submit" name="delete" value="Delete">
+    </td>
+    </tr>
+
   </form>
+</table>
+<script>
+  const userSearch = () => {
+    let input = document.getElementById("txtSearch");
+    let key = input.value.toUpperCase();
+    let usersTable = document.getElementById("resultsTable");
+
+    let tr = usersTable.getElementsByTagName("tr");
+    let name = document.getElementById("usersTable").rows[1].cells[1].getElementsByTagName('input')[0].value;
+    console.log(tr)
+
+    for (let i = 1; i < tr.length; i++) {
+      let name = document.getElementById("usersTable").rows[i].cells[1].getElementsByTagName('input')[0].value.toUpperCase();
+      let lastName = document.getElementById("usersTable").rows[i].cells[2].getElementsByTagName('input')[0].value.toUpperCase();
+
+      if (name.includes(key) || lastName.includes(key)) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+</script>
 </body>
 </html>
