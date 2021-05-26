@@ -1,44 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>All users</title>
-</head>
-<h1>Users List</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>ALL USERS shmovid-19</title>
+    <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+            integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+            crossorigin="anonymous"
+    />
+    <link
+            href="https://unpkg.com/tailwindcss@next/dist/tailwind.min.css"
+            rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
 <body>
 <button type="button"><a href="/">Back to Home</a></button>
 
-<h2>Create user</h2>
-<form method="post" action="/create_user">
-  <input type="text" name="firstName">
-  <input type="text" name="lastName">
-  <input type="text" name="dateOfBirth">
-  <input type="submit" value="Add user">
+
+<form th:action="@{/create_user}" th:method="POST">
+  <input type="text" th:name="email" placeholder="Email" />
+  <br />
+  <input type="password" th:name="password" placeholder="Password" />
+  <br />
+  <input type="text" th:name="firstName" placeholder="First name" />
+  <br />
+  <input type="text" th:name="lastName" placeholder="Last name" />
+  <br />
+  <input type="date" th:name="dateOfBirth" />
+  <br />
+  <input type="text" th:name="phoneNumber" placeholder="Phone number" />
+  <br />
+  <input type="text" th:name="streetName" placeholder="Street name" />
+  <br />
+  <input type="text" th:name="homeNumber" placeholder="Home number" />
+  <br />
+  <input type="text" th:name="district" placeholder="District" />
+  <br />
+  <input type="submit" />
 </form>
+<!--
+<div class="grid grid-cols-3 gap-4">
+  <form class="grid grid-cols-1" method="post" action="/create_user">
+    <input type="text" name="firstName">
+    <input type="text" name="lastName">
+    <input type="text" name="dateOfBirth">
+    <input type="submit" value="Add user">
+  </form>
+
+
+  <form class="grid grid-cols-1" method="post" action="/add_user_contact_data">
+    <input type="text" name="userId">
+    <input type="text" name="phoneNumber">
+    <input type="text" name="streetName">
+    <input type="text" name="homeNumber">
+    <input type="text" name="userDistrict">
+    <input type="submit" value="Add contact data">
+  </form>
+
+  <form class="grid grid-cols-1" method="post" action="/add_user_credentials">
+    <input type="text" name="userEmail" class="mb-2 bg-gray-300" placeholder="email">
+    <input type="text" name="userPassword" class="mb-2 bg-gray-300" placeholder="password">
+    <input type="text" name="userId" class="mb-2 bg-gray-300" placeholder="id"/>
+    <input type="submit" value="Add credentials">
+  </form>
+</div>
+-->
+
+
+
+<!-- <form action="/admin/all_users" method="get" >
+  <input id="txtSearch" type="text" name="keyword">
+  <button type="submit">search</button>
+</form> -->
+
+
+<form action="/admin/all_users" method="get" >
+  <input id="txtSearch" type="text" placeholder="user name or last name" onkeyup="userSearch()">
+ <button onclick="userSearch()" type="button">search</button>
+</form>
+
+
+<table id="usersTable" class="table-auto" >
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Last name</th>
+    <th>DoB</th>
+    <th>Phone nr</th>
+    <th>Street</th>
+    <th>House nr</th>
+    <th>District</th>
+    <th>Email</th>
+    <th>Password</th>
+    <th></th>
+  </tr>
+
 
 <form th:each = "user : ${usersProfileInfo}" action="/update_user_info" method="post">
-  <input type="hidden" name="userId" th:value="${user.userId}"/>
-  <input type="text" name="firstName"  th:value="${user.firstName}">
-  <input type="text" name= "lastName" th:value="${user.lastName}">
-  <input type="text" name="dateOfBirth" th:value="${user.dateOfBirth}">
-  <input type="text" name="phoneNumber"  th:value="${user.phoneNumber != null} ? ${user.phoneNumber} : 'n/a'">
-  <input type="text" name="streetName"  th:value="${user.streetName != null} ? ${user.streetName} : 'n/a'">
-  <input type="text" name="streetName"  th:value="${user.homeNumber != null} ? ${user.homeNumber} : 'n/a'">
-  <input type="text" name="userDistrict" th:value="${user.userDistrict != null} ? ${user.userDistrict} : 'n/a'">
-  <input type="text" name= "userEmail" th:value="${user.userEmail != null} ? ${user.userEmail} : 'n/a'">
-  <input type="text" name= "userPassword"  th:value="${user.userPassword != null} ? ${user.userPassword} : 'n/a'">
-  <input type="submit" name="update" value="Update">
-  <input type="submit" name="delete" value="Delete">
+  <tr>
+    <td>
+      <input style="width:35px" name="userId" th:value="${user.userId}"/>
+    </td>
+    <td>
+      <input  id="name" type="text" name="firstName"  th:value="${user.firstName}">
+    </td>
+    <td>
+      <input id="lastName" type="text" name= "lastName" th:value="${user.lastName}">
+    </td>
+    <td>
+      <input type="text" name="dateOfBirth" th:value="${user.dateOfBirth}">
 
+    </td>
+    <td>
+      <input type="text" name="phoneNumber"  th:value="${user.phoneNumber != null} ? ${user.phoneNumber} : 'n/a'">
+    </td>
+    <td>
+      <input type="text" name="streetName"  th:value="${user.streetName != null} ? ${user.streetName} : 'n/a'">
+    </td>
+    <td>
+      <input type="text" name="homeNumber"  th:value="${user.homeNumber != null} ? ${user.homeNumber} : 'n/a'">
+    </td>
+    <td >
+      <input type="text" name="userDistrict" th:value="${user.userDistrict != null} ? ${user.userDistrict} : 'n/a'">
+    </td>
+    <td>
+      <input type="text" name= "userEmail" th:value="${user.userEmail != null} ? ${user.userEmail} : 'n/a'">
+    </td>
+    <td>
+      <input type="text" name= "userPassword"  th:value="${user.userPassword != null} ? ${user.userPassword} : 'n/a'">
+    </td>
+    <td >
+      <input type="submit" name="delete" value="Delete">
+      <!-- <input th:unless="${user.phoneNumber == null or user.userEmail == null}" type="submit" name="update" value="Update"> -->
+      <input  type="submit" name="update" value="Update">
 
-
-
-
-
-
-
-
+    </td>
+    </tr>
 </form>
+</table>
+
+
+
+
+
+
+
+
+<script>
+
+  console.log( "ready!" );
+  const userSearch = () => {
+    let input = document.getElementById("txtSearch");
+    let key = input.value.toUpperCase();
+    let usersTable = document.getElementById("usersTable");
+
+    let tr = usersTable.getElementsByTagName("tr");
+    let name = document.getElementById("usersTable").rows[1].cells[1].getElementsByTagName('input')[0].value;
+    console.log(tr)
+
+
+    for (let i = 1; i < tr.length; i++) {
+      let name = document.getElementById("usersTable").rows[i].cells[1].getElementsByTagName('input')[0].value.toUpperCase();
+      let lastName = document.getElementById("usersTable").rows[i].cells[2].getElementsByTagName('input')[0].value.toUpperCase();
+
+      if (name.includes(key) || lastName.includes(key)) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+</script>
 </body>
 </html>
 

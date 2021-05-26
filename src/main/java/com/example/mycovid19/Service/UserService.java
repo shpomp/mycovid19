@@ -1,4 +1,4 @@
-/*
+
 
 package com.example.mycovid19.Service;
 
@@ -22,8 +22,8 @@ public class UserService implements UserDetailsService {
   @Autowired
   private UserRepository userRepository;
 
-  @Autowired
-  private BCryptPasswordEncoder BCryptPasswordEncoder;
+ // @Autowired
+  // private BCryptPasswordEncoder BCryptPasswordEncoder;
 
   @Override
   public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -32,14 +32,14 @@ public class UserService implements UserDetailsService {
   }
 
   public boolean signUpUser(UserDTO userDTO) {
-    String encodedPassword = BCryptPasswordEncoder.encode(userDTO.getPassword());
+    //String encodedPassword = BCryptPasswordEncoder.encode(userDTO.getPassword());
     User user = new User(userDTO.getFirstName(), userDTO.getLastName(), userDTO.getDateOfBirth(),
         new UserContactData(userDTO.getPhoneNumber(), userDTO.getStreetName(), userDTO.getHomeNumber(),
             userDTO.getDistrict()),
-        new UserCredentials(userDTO.getEmail(), encodedPassword));
+        new UserCredentials(userDTO.getEmail(), userDTO.getPassword()));
     return userRepository.addUser(user);
   }
 }
 
-*/
+
 

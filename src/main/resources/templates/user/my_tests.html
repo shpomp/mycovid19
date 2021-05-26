@@ -54,7 +54,7 @@
               <td
                       class="text-center p-1 border border-blue-200"
 
-              ><input class="text-center" type="hidden" name="test_id" th:value="${test.test_id}">
+              ><input class="text-center" type="hidden" name="test_id" th:value="${test.test_id}" >
 
                 <input class="text-center" type="text" name="date_and_time" th:value="${test.testDate}" disabled>
 
@@ -62,11 +62,11 @@
               <td
                       class="p-1 border border-blue-200"
 
-              >   <input class="text-center" type="text" name="date_and_time" th:value="${test.testTime}">
+              >   <input class="text-center" type="text" name="date_and_time" th:value="${test.testTime}" disabled>
 
               </td>
               <td class="text-center p-1 border border-blue-200">
-                <input class="text-center" type="text" name="test_status" th:value="${test.testStatus}"></td>
+                <input class="text-center" type="text" name="test_status" th:value="${test.testStatus}" disabled></td>
               <td th:switch="${test.testStatus}"
                       class="text-center p-1 border border-blue-200"
 
