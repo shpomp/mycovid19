@@ -2,6 +2,7 @@ package com.example.mycovid19.Model;
 
 
 public class TestResult {
+  private String userId;
   private String firstName;
   private String lastName;
   private String test_id;
@@ -10,8 +11,9 @@ public class TestResult {
   private String testStatus;
   private String testDiagnosis;
 
-  public TestResult(String firstName, String lastName, String test_id, String testDate, String testTime,
+  public TestResult(String userId, String firstName, String lastName, String test_id, String testDate, String testTime,
       String testStatus, String testDiagnosis) {
+    this.userId = userId;
     this.firstName = firstName;
     this.lastName = lastName;
     this.test_id = test_id;
@@ -19,6 +21,14 @@ public class TestResult {
     this.testTime = testTime;
     this.testStatus = testStatus;
     this.testDiagnosis = testDiagnosis;
+  }
+
+  public String getUserId() {
+    return userId;
+  }
+
+  public void setUserId(String userId) {
+    this.userId = userId;
   }
 
   public String getFirstName() {
