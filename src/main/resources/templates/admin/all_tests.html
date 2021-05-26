@@ -16,7 +16,7 @@
     </form>
 
     <form th:each="test : ${seeAllTests}" action="/update_test" method="post">
-      <input type="hidden" name="test_id" th:value="${test.test_id}">
+      <input type="text" name="test_id" th:value="${test.test_id}">
       <input type="date" name="testDate" th:value="${test.testDate}" />
       <input type="time" name="testTime" th:value="${test.testTime}" />
       <input type="text" name="testStatus" th:value="${test.testStatus}" />
