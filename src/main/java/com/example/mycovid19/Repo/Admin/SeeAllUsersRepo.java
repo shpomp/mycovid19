@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class SeeAllUsersRepo {
 
-
   private static SeeAllUsersService seeAllUsersService;
   private static JdbcTemplate jdbc;
 
@@ -20,37 +19,13 @@ public class SeeAllUsersRepo {
     this.jdbc = jdbc;
   }
 
-  // Juan, here
   public List<MyProfile> fetchAllUsers() throws SQLException {
     System.out.println(seeAllUsersService.ResultSet());
     //BackupService.printMemberList();
     return seeAllUsersService.ResultSet();
   }
 
-
-
-  public int addUser (MyProfile user){
-    //user table
-    String sql = " INSERT INTO user VALUES (?,?,?,?)";
-    return jdbc.update(sql, null, user.getFirstName(), user.getLastName(), user.getDateOfBirth());
-  }
-
-  public int addUserContactData (MyProfile user){
-    //user contact data table
-    String sql = " INSERT INTO user_contact_data VALUES (?,?,?,?,?)";
-    return jdbc.update(sql, user.getPhoneNumber(), user.getStreetName(), user.getHomeNumber(), user.getUserDistrict(), user.getUserId());
-  }
-
-  public int addUserCredentials (MyProfile user){
-    //user credentials table
-    //user.setUserEmail(user.getUserEmail());
-    //user.setUserPassword(user.getUserPassword());
-    String sql = "INSERT INTO user_credentials VALUES (?,?,?)";
-    System.out.println(user.toString());
-    return jdbc.update(sql, user.getUserEmail(), user.getUserPassword(), user.getUserId());
-  }
-
-
+  // UPDATE
   public int updateUser (MyProfile user){
     //update user table
     String sql = "UPDATE user SET first_name = ?, last_name = ?, date_of_birth = ? WHERE user_id = ?";
@@ -70,12 +45,12 @@ public class SeeAllUsersRepo {
   }
 
 
-
-  public int deleteUser (String user_id){
+  // DELETE
+  public int deleteUser (int userId){
     //delete user by id
-    System.out.println(user_id);
+    System.out.println(userId);
     String sql = "DELETE FROM user WHERE user_id = ?";
-    return jdbc.update(sql, user_id);
+    return jdbc.update(sql, userId);
   }
 
 
