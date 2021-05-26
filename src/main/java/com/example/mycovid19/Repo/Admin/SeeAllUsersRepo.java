@@ -26,6 +26,7 @@ public class SeeAllUsersRepo {
   }
 
   // UPDATE
+
   public int updateUser (MyProfile user){
     //update user table
     String sql = "UPDATE user SET first_name = ?, last_name = ?, date_of_birth = ? WHERE user_id = ?";
@@ -45,15 +46,11 @@ public class SeeAllUsersRepo {
   }
 
 
-  // DELETE
-  public int deleteUser (int userId){
+  public int deleteUser (String userId){
     //delete user by id
     System.out.println(userId);
     String sql = "DELETE FROM user WHERE user_id = ?";
     return jdbc.update(sql, userId);
   }
-
-
-
 
 }
