@@ -50,7 +50,6 @@ public class SeeAllUsersRepo {
     return jdbc.update(sql, user.getUserEmail(), user.getUserPassword(), user.getUserId());
   }
 
-
   public int updateUser (MyProfile user){
     //update user table
     String sql = "UPDATE user SET first_name = ?, last_name = ?, date_of_birth = ? WHERE user_id = ?";
@@ -69,16 +68,11 @@ public class SeeAllUsersRepo {
     return jdbc.update(sql, user.getUserEmail(), user.getUserPassword(), user.getUserId());
   }
 
-
-
-  public int deleteUser (String user_id){
+  public int deleteUser (int userId){
     //delete user by id
-    System.out.println(user_id);
+    System.out.println(userId);
     String sql = "DELETE FROM user WHERE user_id = ?";
-    return jdbc.update(sql, user_id);
+    return jdbc.update(sql, userId);
   }
-
-
-
 
 }
