@@ -21,7 +21,7 @@ public class ManageTestsRepo {
   private static JdbcTemplate jdbc;
 
   public ManageTestsRepo(JdbcTemplate jdbc) {
-    ManageTestsRepo.jdbc = jdbc;
+    this.jdbc = jdbc;
   }
 
   public List<Test> fetchAllTests() throws SQLException {
@@ -49,18 +49,18 @@ public class ManageTestsRepo {
 
   public int updateTest (Test test){
     //update test table
-    System.out.print(test.toString());
-    String sql = "UPDATE test SET test_date = ?, test_time = ?, test_status = ? WHERE test_id = ?";
-    return jdbc.update(sql, test.getTestDate(), test.getTestTime(), test.getTestStatus(), test.getTest_id());
+    String sql = "UPDATE test SET test_date = ?, test_time = ?, WHERE test_id = ?";
+    return jdbc.update(sql, test.getTestDate(), test.getTestTime(), test.getTest_id());
   }
 
 
 
   public int deleteTest (int test_id){
-    System.out.print(test_id);
     // here we could add functionality to put into a file?
     //delete test by id
-   String sql = "DELETE FROM" + testTable + "WHERE test_id = ?";
+    System.out.println(test_id);
+
+    String sql = "DELETE FROM " + testTable + " WHERE test_id = ?";
     return jdbc.update(sql, test_id);
   }
 
