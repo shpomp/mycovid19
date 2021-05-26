@@ -9,6 +9,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Repository
 public class ManageTestsRepo {
@@ -30,15 +32,6 @@ public class ManageTestsRepo {
     return jdbc.query(sql, rowMapper);
   }
   // WHERE test_status = 'available'
-
-  public List<TestResult> fetchAllTestsResults() throws SQLException {
-    return manageTestsService.ResultSet();
-  }
-
-  public int updateResult (TestResult testResult) {
-    String sql = " UPDATE " + resultTable + " SET test_diagnosis = ? WHERE test_test_id = ?";
-    return jdbc.update(sql, testResult.getTestDiagnosis(), testResult.getTest_id());
-  }
 
 
   public int addTest (Test test){
@@ -63,5 +56,27 @@ public class ManageTestsRepo {
     String sql = "DELETE FROM " + testTable + " WHERE test_id = ?";
     return jdbc.update(sql, test_id);
   }
+
+  // RESULTS
+
+
+  public List<TestResult> fetchAllTestsResults() throws SQLException {
+    return manageTestsService.ResultSet();
+  }
+
+  public int updateResult (TestResult testResult) {
+    System.out.println(testResult.toString());
+    String sql = " UPDATE " + resultTable + " SET test_diagnosis = ? WHERE test_test_id = ?";
+    return jdbc.update(sql, testResult.getTestDiagnosis(), testResult.getTest_id());
+  }
+
+  public int deleteResult (int test_id){
+    //delete test by id
+    System.out.println(test_id);
+    String sql = "DELETE FROM " + testTable + " WHERE test_id = ?";
+    return jdbc.update(sql, test_id);
+  }
+
+
 
 }
