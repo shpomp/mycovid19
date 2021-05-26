@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ManageTestsResultsController {
@@ -26,5 +27,11 @@ public class ManageTestsResultsController {
   public String updateResult(TestResult testResult) {
     manageTestsRepo.updateResult(testResult);
     return "redirect:/admin/all_tests_results";
+  }
+
+  @PostMapping(value = "/update_result", params="delete")
+  public String deleteTestResult(@RequestParam("test_id") int test_id){
+    manageTestsRepo.deleteResult(test_id);
+    return "redirect:/admin/all_users";
   }
 }
