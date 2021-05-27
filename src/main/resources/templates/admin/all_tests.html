@@ -1,29 +1,179 @@
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Tests List</title>
-  </head>
-  <body>
-  <button type="button"><a href="/">Back to Home</a></button>
 
-  <h2>Create test</h2>
-    <form method="post" action="/create_test">
-      <input type="date" name="testDate" min="2021-05-01"/>
-      <input type="time" name="testTime" />
-      <input type="text" name="testStatus" value="available"/>
-      <input type="submit" value="Add test" />
-    </form>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>MY TESTS shmovid-19</title>
+  <link
+          rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+          crossorigin="anonymous"
+  />
+  <link
+          href="https://unpkg.com/tailwindcss@next/dist/tailwind.min.css"
+          rel="stylesheet"
+  />
+</head>
 
-    <form th:each="test : ${seeAllTests}" action="/update_test" method="post">
-      <input type="text" name="test_id" th:value="${test.test_id}">
-      <input type="date" name="testDate" th:value="${test.testDate}" />
-      <input type="time" name="testTime" th:value="${test.testTime}" />
-      <input type="text" name="testStatus" th:value="${test.testStatus}" />
-      <input type="submit" name="delete" value="Delete">
-      <input type="submit" name="update" value="Update">
-    </form>
 
-  </body>
+<body class="bg-green-100 font-sans leading-normal tracking-normal">
+<nav id="header" th:replace="fragments/admin_fragments/admin_nav_tests :: all_tests"></nav>
 
+<div class="container w-full mx-auto pt-20">
+  <div
+          class="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal"
+  >
+
+    <div class="mb-100 bg-white border rounded shadow">
+      <div class="border-b p-3">
+        <h5 class="font-bold uppercase text-gray-600 ml-3">MY TESTS</h5>
+      </div>
+      <div class="ml-10 mb-5 p-5">
+
+
+
+
+        <button type="button"><a href="/">Back to Home</a></button>
+
+        <h2>Create test</h2>
+        <form method="post" action="/create_test">
+          <input type="date" name="testDate" min="2021-05-01"/>
+          <input type="time" name="testTime" />
+          <input type="text" name="testStatus" value="available"/>
+          <input type="submit" value="Add test" />
+        </form>
+
+        <form th:each="test : ${seeAllTests}" action="/update_test" method="post">
+          <input type="text" name="test_id" th:value="${test.test_id}">
+          <input type="date" name="testDate" th:value="${test.testDate}" />
+          <input type="time" name="testTime" th:value="${test.testTime}" />
+          <input type="text" name="testStatus" th:value="${test.testStatus}" />
+          <input type="submit" name="delete" value="Delete">
+          <input type="submit" name="update" value="Update">
+        </form>
+
+
+
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div th:replace="fragments/admin_fragments/admin_footer :: footer">&nbsp;</div>
+
+
+<script>
+  /*Toggle dropdown list*/
+  /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
+
+  var userMenuDiv = document.getElementById("userMenu");
+  var userMenu = document.getElementById("userButton");
+
+  var navMenuDiv = document.getElementById("nav-content");
+  var navMenu = document.getElementById("nav-toggle");
+
+  document.onclick = check;
+
+  function check(e) {
+    var target = (e && e.target) || (event && event.srcElement);
+
+    //User Menu
+    if (!checkParent(target, userMenuDiv)) {
+      // click NOT on the menu
+      if (checkParent(target, userMenu)) {
+        // click on the link
+        if (userMenuDiv.classList.contains("invisible")) {
+          userMenuDiv.classList.remove("invisible");
+        } else {
+          userMenuDiv.classList.add("invisible");
+        }
+      } else {
+        // click both outside link and outside menu, hide menu
+        userMenuDiv.classList.add("invisible");
+      }
+    }
+
+    //Nav Menu
+    if (!checkParent(target, navMenuDiv)) {
+      // click NOT on the menu
+      if (checkParent(target, navMenu)) {
+        // click on the link
+        if (navMenuDiv.classList.contains("hidden")) {
+          navMenuDiv.classList.remove("hidden");
+        } else {
+          navMenuDiv.classList.add("hidden");
+        }
+      } else {
+        // click both outside link and outside menu, hide menu
+        navMenuDiv.classList.add("hidden");
+      }
+    }
+  }
+
+  function checkParent(t, elm) {
+    while (t.parentNode) {
+      if (t == elm) {
+        return true;
+      }
+      t = t.parentNode;
+    }
+    return false;
+  }
+
+  function togglePassword() {
+    let passwordInput = document.getElementById("userPassword");
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+    } else {
+      passwordInput.type = "password";
+    }
+  }
+</script>
+
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
