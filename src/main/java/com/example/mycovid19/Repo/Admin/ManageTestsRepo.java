@@ -37,7 +37,7 @@ public class ManageTestsRepo {
   public int addTest (Test test){
     //test table
     String sql = " INSERT INTO " + testTable +" VALUES (?,?,?,?,?)";
-    return jdbc.update(sql, null, test.getTestDate(), test.getTestTime(), test.getTestStatus(), null);
+    return jdbc.update(sql, null, test.getTestDate(), test.getTestTime(), "available", null);
   }
 
 
