@@ -1,154 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>RESULTS shmovid-19</title>
-  <link
-          rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-          crossorigin="anonymous"
-  />
-  <link
-          href="https://unpkg.com/tailwindcss@next/dist/tailwind.min.css"
-          rel="stylesheet"
-  />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>MY RESULTS shmovid-19</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@next/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-<body class="bg-pink-100 font-sans leading-normal tracking-normal">
+  <body class="bg-pink-100 font-sans leading-normal tracking-normal">
+    <nav
+      id="header"
+      th:replace="fragments/user_fragments/user_nav_results :: my_results"
+    ></nav>
+    <!--Container-->
+    <div class="container w-full mx-auto pt-20">
+      <div
+        class="w-full px-4 md:px-0 md:mt-8 my-20 text-gray-800 leading-normal"
+      >
+        <!--Console Content-->
 
-<nav id="header" th:replace="fragments/user_fragments/user_nav_results :: my_results"></nav>
-<!--Container-->
-<div class="container w-full mx-auto pt-20">
-  <div
-          class="w-full px-4 md:px-0 md:mt-8 my-20 text-gray-800 leading-normal"
-  >
-    <!--Console Content-->
+        <!--Table Card-->
+        <div class="bg-white border rounded shadow my-30">
+          <div class="border-b p-3">
+            <h5 class="font-bold uppercase text-gray-600 ml-3">MY RESULTS</h5>
+          </div>
+          <div class="ml-10 my-20 p-5">
+            <table class="mt-20 mb-40 mx-auto table-auto p-5 text-gray-700">
+              <tr class="bg-gray-100">
+                <th
+                  class="p-4 border border-blue-200 text-center text-pink-900"
+                >
+                  First name
+                </th>
+                <th
+                  class="p-4 border border-blue-200 text-center text-pink-900"
+                >
+                  Last name
+                </th>
+                <th
+                  class="p-4 border border-blue-200 text-center text-pink-900"
+                >
+                  Test date
+                </th>
+                <th
+                  class="p-4 border border-blue-200 text-center text-pink-900"
+                >
+                  Test time
+                </th>
+                <th
+                  class="p-4 border border-blue-200 text-center text-pink-900"
+                >
+                  Test diagnosis
+                </th>
+              </tr>
 
-    <!--Table Card-->
-    <div class="bg-white border rounded shadow my-30">
-      <div class="border-b p-3">
-        <h5 class="font-bold uppercase text-gray-600 ml-3">MY RESULTS</h5>
-      </div>
-      <div class="ml-10 my-20 p-5">
+              <tr th:each="result : ${myTestsResults}">
+                <td
+                  class="text-center p-4 border border-blue-200"
+                  th:text="${result.firstName}"
+                ></td>
+                <td
+                  class="text-center p-4 border border-blue-200"
+                  th:text="${result.lastName}"
+                ></td>
+                <td
+                  class="text-center p-4 border border-blue-200"
+                  th:text="${result.testDate}"
+                ></td>
+                <td
+                  class="text-center p-4 border border-blue-200"
+                  th:text="${result.testTime}"
+                ></td>
+                <div th:switch="${result.testDiagnosis}">
+                  <td
+                    th:case="'negative'"
+                    class="
+                      text-green-200 text-center
+                      p-4
+                      border border-blue-200
+                    "
+                    th:text="${result.testDiagnosis}"
+                  ></td>
+                  <td
+                    th:case="'positive'"
+                    class="text-red-200 text-center p-4 border border-blue-200"
+                    th:text="${result.testDiagnosis}"
+                  ></td>
+                </div>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <!--/table Card-->
 
-        <table class="mt-20 mb-40 mx-auto table-auto p-5 text-gray-700">
-          <tr class="bg-gray-100">
-            <th class="p-4 border border-blue-200 text-center text-pink-900">
-              First name
-            </th>
-            <th class="p-4 border border-blue-200 text-center text-pink-900">
-              Last name
-            </th>
-            <th class="p-4 border border-blue-200 text-center text-pink-900">
-              Test date
-            </th>
-            <th class="p-4 border border-blue-200 text-center text-pink-900">
-              Test time
-            </th>
-            <th class="p-4 border border-blue-200 text-center text-pink-900">
-              Test diagnosis
-            </th>
-          </tr>
-
-          <tr th:each="result : ${myTestsResults}">
-            <td class="text-center p-4 border border-blue-200" th:text="${result.firstName}"></td>
-            <td class="text-center p-4 border border-blue-200" th:text="${result.lastName}"></td>
-            <td class="text-center p-4 border border-blue-200" th:text="${result.testDate}"></td>
-            <td class="text-center p-4 border border-blue-200" th:text="${result.testTime}"></td>
-            <div th:switch="${result.testDiagnosis}">
-              <td th:case="'negative'" class="text-green-200 text-center p-4 border border-blue-200" th:text="${result.testDiagnosis}"></td>
-              <td th:case="'positive'" class="text-red-200 text-center p-4 border border-blue-200" th:text="${result.testDiagnosis}"></td>
-
-            </div>
-
-          </tr>
-        </table>
-
-
-
+        <!--/ Console Content-->
       </div>
     </div>
-    <!--/table Card-->
+    <!--/container-->
 
-    <!--/ Console Content-->
-  </div>
-</div>
-<!--/container-->
+    <!-- footer -->
+    <div
+      class="mt-30"
+      th:replace="fragments/user_fragments/user_footer :: footer"
+    >
+      &nbsp;
+    </div>
 
-<!-- footer -->
-<div class="mt-30" th:replace="fragments/user_fragments/user_footer :: footer">&nbsp;</div>
+    <script>
+      /*Toggle dropdown list*/
+      /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
 
+      var userMenuDiv = document.getElementById("userMenu");
+      var userMenu = document.getElementById("userButton");
 
+      var navMenuDiv = document.getElementById("nav-content");
+      var navMenu = document.getElementById("nav-toggle");
 
-<script>
-  /*Toggle dropdown list*/
-  /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
+      document.onclick = check;
 
-  var userMenuDiv = document.getElementById("userMenu");
-  var userMenu = document.getElementById("userButton");
+      function check(e) {
+        var target = (e && e.target) || (event && event.srcElement);
 
-  var navMenuDiv = document.getElementById("nav-content");
-  var navMenu = document.getElementById("nav-toggle");
-
-  document.onclick = check;
-
-  function check(e) {
-    var target = (e && e.target) || (event && event.srcElement);
-
-    //User Menu
-    if (!checkParent(target, userMenuDiv)) {
-      // click NOT on the menu
-      if (checkParent(target, userMenu)) {
-        // click on the link
-        if (userMenuDiv.classList.contains("invisible")) {
-          userMenuDiv.classList.remove("invisible");
-        } else {
-          userMenuDiv.classList.add("invisible");
+        //User Menu
+        if (!checkParent(target, userMenuDiv)) {
+          // click NOT on the menu
+          if (checkParent(target, userMenu)) {
+            // click on the link
+            if (userMenuDiv.classList.contains("invisible")) {
+              userMenuDiv.classList.remove("invisible");
+            } else {
+              userMenuDiv.classList.add("invisible");
+            }
+          } else {
+            // click both outside link and outside menu, hide menu
+            userMenuDiv.classList.add("invisible");
+          }
         }
-      } else {
-        // click both outside link and outside menu, hide menu
-        userMenuDiv.classList.add("invisible");
-      }
-    }
 
-    //Nav Menu
-    if (!checkParent(target, navMenuDiv)) {
-      // click NOT on the menu
-      if (checkParent(target, navMenu)) {
-        // click on the link
-        if (navMenuDiv.classList.contains("hidden")) {
-          navMenuDiv.classList.remove("hidden");
-        } else {
-          navMenuDiv.classList.add("hidden");
+        //Nav Menu
+        if (!checkParent(target, navMenuDiv)) {
+          // click NOT on the menu
+          if (checkParent(target, navMenu)) {
+            // click on the link
+            if (navMenuDiv.classList.contains("hidden")) {
+              navMenuDiv.classList.remove("hidden");
+            } else {
+              navMenuDiv.classList.add("hidden");
+            }
+          } else {
+            // click both outside link and outside menu, hide menu
+            navMenuDiv.classList.add("hidden");
+          }
         }
-      } else {
-        // click both outside link and outside menu, hide menu
-        navMenuDiv.classList.add("hidden");
       }
-    }
-  }
 
-  function checkParent(t, elm) {
-    while (t.parentNode) {
-      if (t == elm) {
-        return true;
+      function checkParent(t, elm) {
+        while (t.parentNode) {
+          if (t == elm) {
+            return true;
+          }
+          t = t.parentNode;
+        }
+        return false;
       }
-      t = t.parentNode;
-    }
-    return false;
-  }
 
-  function togglePassword() {
-    let passwordInput = document.getElementById("userPassword");
-    if (passwordInput.type === "password") {
-      passwordInput.type = "text";
-    } else {
-      passwordInput.type = "password";
-    }
-  }
-</script>
-</body>
+      function togglePassword() {
+        let passwordInput = document.getElementById("userPassword");
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+        } else {
+          passwordInput.type = "password";
+        }
+      }
+    </script>
+  </body>
 </html>
