@@ -1,176 +1,409 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>RESULTS shmovid-19</title>
-  <link
-          rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-          crossorigin="anonymous"
-  />
-  <link
-          href="https://unpkg.com/tailwindcss@next/dist/tailwind.min.css"
-          rel="stylesheet"
-  />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>RESULTS shmovid-19</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@next/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-<body class="bg-pink-100 font-sans leading-normal tracking-normal">
+  <body class="bg-blue-100 font-sans leading-normal tracking-normal">
+    <nav
+      id="header"
+      th:replace="fragments/admin_fragments/admin_nav_results :: all_results"
+    ></nav>
+    <!--Container-->
+    <div class="container w-full mx-auto pt-20">
+      <div
+        class="w-full px-4 md:px-0 md:mt-8 my-20 text-gray-800 leading-normal"
+      >
+        <!--Console Content-->
 
-<nav id="header" th:replace="fragments/admin_fragments/admin_nav_results :: all_results"></nav>
-<!--Container-->
-<div class="container w-full mx-auto pt-20">
-  <div
-          class="w-full px-4 md:px-0 md:mt-8 my-20 text-gray-800 leading-normal"
-  >
-    <!--Console Content-->
+        <!--Table Card-->
+        <div class="bg-white border rounded shadow my-30">
+          <div class="border-b p-3">
+            <h5 class="font-bold uppercase text-gray-600 ml-3">RESULTS</h5>
+          </div>
+          <div class="ml-10 my-10 p-5">
+            <form action="/admin/all_users" method="get">
+              <label
+                class="
+                  text-sm
+                  py-2
+                  px-3
+                  text-gray-500
+                  my-4
+                  leading-tight
+                  focus:outline-none
+                  focus:shadow-outline
+                "
+                >Find result:</label
+              >
+              <input
+                style="width: 250px"
+                class="
+                  text-sm
+                  bg-blue-50
+                  appearance-none
+                  rounded
+                  py-2
+                  px-3
+                  text-gray-700
+                  my-4
+                  leading-tight
+                  focus:outline-none
+                  focus:shadow-outline
+                "
+                id="txtSearch"
+                type="text"
+                placeholder="name or last name"
+                onkeyup="userSearch()"
+              />
+              <!-- <button onclick="userSearch()" type="button">search</button> -->
+            </form>
 
-    <!--Table Card-->
-    <div class="bg-white border rounded shadow my-30">
-      <div class="border-b p-3">
-        <h5 class="font-bold uppercase text-gray-600 ml-3">MY RESULTS</h5>
-      </div>
-      <div class="ml-10 my-20 p-5">
+            <!-- <button type="button"><a href="/">Back to Home</a></button> -->
+            <table
+              class="mt-20 mx-auto mb-40 table-auto p-5 text-gray-700"
+              id="resultsTable"
+            >
+              <tr>
+                <th
+                  class="
+                    text-xs
+                    p-4
+                    border
+                    bg-gray-50
+                    border-blue-100
+                    text-center text-blue-900
+                  "
+                >
+                  User ID
+                </th>
+                <th
+                  class="
+                    text-xs
+                    p-4
+                    border
+                    bg-gray-50
+                    border-blue-100
+                    text-center text-blue-900
+                  "
+                >
+                  First name
+                </th>
+                <th
+                  class="
+                    text-xs
+                    p-4
+                    border
+                    bg-gray-50
+                    border-blue-100
+                    text-center text-blue-900
+                  "
+                >
+                  Last name
+                </th>
+                <th
+                  class="
+                    text-xs
+                    p-4
+                    border
+                    bg-gray-50
+                    border-blue-100
+                    text-center text-blue-900
+                  "
+                >
+                  Test ID
+                </th>
+                <th
+                  class="
+                    text-xs
+                    p-4
+                    border
+                    bg-gray-50
+                    border-blue-100
+                    text-center text-blue-900
+                  "
+                >
+                  Test date
+                </th>
+                <th
+                  class="
+                    text-xs
+                    p-4
+                    border
+                    bg-gray-50
+                    border-blue-100
+                    text-center text-blue-900
+                  "
+                >
+                  Test time
+                </th>
+                <th
+                  class="
+                    text-xs
+                    p-4
+                    border
+                    bg-gray-50
+                    border-blue-100
+                    text-center text-blue-900
+                  "
+                >
+                  Test status
+                </th>
+                <th
+                  class="
+                    text-xs
+                    p-4
+                    border
+                    bg-gray-50
+                    border-blue-100
+                    text-center text-blue-900
+                  "
+                >
+                  Diagnosis
+                </th>
+                <th></th>
+              </tr>
 
+              <form
+                th:each="result : ${adminResults}"
+                action="/update_result"
+                method="post"
+              >
+                <tr>
+                  <td class="text-center text-xs border border-blue-100">
+                    <input
+                    class="bg-white text-center"
+                    style="width: 30px"
 
+                    type="text"
+                      name="userId"
 
+                      th:value="${result.userId}"
+                      disabled
+                    />
+                  </td>
+                  <td class="text-center text-xs border border-blue-100">
+                    <input
+                      class="bg-white text-center"
+                      type="text"
+                      name="firstName"
+                      th:value="${result.firstName}"
+                      disabled
+                    />
+                  </td>
+                  <td class="text-center text-xs border border-blue-100">
+                    <input
+                    class="bg-white text-center"
+                      type="text"
+                      name="lastName"
+                      th:value="${result.lastName}"
+                      disabled
+                    />
+                  </td>
+                  <td class="text-center text-xs border border-blue-100">
+                    <input
+                            class="bg-white text-center"
+                            style="width: 30px"
+                            type="text"
+                      name="test_id"
+                      th:value="${result.test_id}"
+                    />
+                  </td>
+                  <td class="text-center text-xs border border-blue-100">
+                    <input
+                            class="bg-white text-center"
+                            type="date"
+                      name="testDate"
+                      th:value="${result.testDate}"
+                      disabled
+                    />
+                  </td>
+                  <td class="text-center text-xs border border-blue-100">
+                    <input
+                            class="bg-white text-center"
+                            type="time"
+                      name="testTime"
+                      th:value="${result.testTime}"
+                      disabled
+                    />
+                  </td>
+                  <td class="text-center text-xs border border-blue-100">
+                    <input
+                            class="bg-white text-center"
+                            type="text"
+                      name="testStatus"
+                      th:value="${result.testStatus}"
+                    />
+                  </td>
+                  <td class="text-center text-xs border border-blue-100">
+                    <input
+                            class="bg-white text-center"
+                            type="text"
+                      name="testDiagnosis"
+                      th:value="${result.testDiagnosis}"
+                    />
+                  </td>
+                  <td >
+                <button
+                      class="
+                      ml-2
+                        bg-red-200
+                        appearance-none
+                        rounded
+                        py-2
+                        px-3
+                        text-white
+                        m-auto
+                        h-10
+                        w-15
+                        leading-tight
+                      "
+                      type="submit"
+                      name="delete"
+                    /><i class="text-sm far fa-trash-alt"></i></button>
+                    <!-- <input th:unless="${user.phoneNumber == null or user.userEmail == null}" type="submit" name="update" value="Update"> -->
+                    <button
+                      class="
+                        bg-green-400
+                        appearance-none
+                        rounded
+                        py-2
+                        px-3
+                        text-white
+                        m-auto
+                        h-10
+                        w-15
+                        leading-tight
+                      "
+                      type="submit"
+                      name="update"
+                    ><i class=" text-sm far fa-save"></i></button>
 
-        <form action="/admin/all_users" method="get" >
-          <input id="txtSearch" type="text" placeholder="user name or last name" onkeyup="userSearch()">
-          <!-- <button onclick="userSearch()" type="button">search</button> -->
-        </form>
+                  </td>
+                </tr>
+              </form>
+            </table>
+          </div>
+        </div>
+        <!--/table Card-->
 
-        <button type="button"><a href="/">Back to Home</a></button>
-        <table id="resultsTable">
-          <tr>
-            <th>User ID</th>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Test ID</th>
-            <th>Test date</th>
-            <th>Test time</th>
-            <th>Test status</th>
-            <th>Diagnosis</th>
-          </tr>
-
-          <form th:each="result : ${adminResults}" action="/update_result" method="post">
-            <tr>
-              <td>
-                <input type="text" name="userId"th:value="${result.userId}" disabled>
-              </td>
-              <td>
-                <input type="text" name="firstName"th:value="${result.firstName}" disabled>
-              </td>
-              <td>
-                <input type="text" name="lastName"th:value="${result.lastName}" disabled>
-              </td>
-              <td>
-                <input type="text" name="test_id"th:value="${result.test_id}" >
-              </td>
-              <td>
-                <input type="date" name="testDate"th:value="${result.testDate}" disabled>
-              </td>
-              <td>
-                <input type="time" name="testTime"th:value="${result.testTime}" disabled>
-              </td>
-              <td>
-                <input type="text" name="testDiagnosis"th:value="${result.testDiagnosis}">
-              </td>
-              <td>
-                <input type="submit" name="update" value="Update">
-                <input type="submit" name="delete" value="Delete">
-              </td>
-            </tr>
-
-          </form>
-        </table>
-
-
-
-
-
+        <!--/ Console Content-->
       </div>
     </div>
-    <!--/table Card-->
+    <!--/container-->
 
-    <!--/ Console Content-->
-  </div>
-</div>
-<!--/container-->
+    <!-- footer -->
+    <div
+      class="mt-30"
+      th:replace="fragments/admin_fragments/admin_footer :: footer"
+    >
+      &nbsp;
+    </div>
 
-<!-- footer -->
-<div class="mt-30" th:replace="fragments/admin_fragments/admin_footer :: footer">&nbsp;</div>
+    <script>
+      const userSearch = () => {
+        let input = document.getElementById("txtSearch");
+        let key = input.value.toUpperCase();
+        let usersTable = document.getElementById("resultsTable");
+
+        let tr = usersTable.getElementsByTagName("tr");
 
 
+        for (let i = 1; i < tr.length; i++) {
+          let name = document
+                  .getElementById("resultsTable")
+                  .rows[i].cells[1].getElementsByTagName("input")[0]
+                  .value.toUpperCase();
+          let lastName = document
+                  .getElementById("resultsTable")
+                  .rows[i].cells[2].getElementsByTagName("input")[0]
+                  .value.toUpperCase();
 
-<script>
-  /*Toggle dropdown list*/
-  /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
-
-  var userMenuDiv = document.getElementById("userMenu");
-  var userMenu = document.getElementById("userButton");
-
-  var navMenuDiv = document.getElementById("nav-content");
-  var navMenu = document.getElementById("nav-toggle");
-
-  document.onclick = check;
-
-  function check(e) {
-    var target = (e && e.target) || (event && event.srcElement);
-
-    //User Menu
-    if (!checkParent(target, userMenuDiv)) {
-      // click NOT on the menu
-      if (checkParent(target, userMenu)) {
-        // click on the link
-        if (userMenuDiv.classList.contains("invisible")) {
-          userMenuDiv.classList.remove("invisible");
-        } else {
-          userMenuDiv.classList.add("invisible");
+          if (name.includes(key) || lastName.includes(key)) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
         }
-      } else {
-        // click both outside link and outside menu, hide menu
-        userMenuDiv.classList.add("invisible");
-      }
-    }
+      };
+      /*Toggle dropdown list*/
+      /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
 
-    //Nav Menu
-    if (!checkParent(target, navMenuDiv)) {
-      // click NOT on the menu
-      if (checkParent(target, navMenu)) {
-        // click on the link
-        if (navMenuDiv.classList.contains("hidden")) {
-          navMenuDiv.classList.remove("hidden");
-        } else {
-          navMenuDiv.classList.add("hidden");
+      var userMenuDiv = document.getElementById("userMenu");
+      var userMenu = document.getElementById("userButton");
+
+      var navMenuDiv = document.getElementById("nav-content");
+      var navMenu = document.getElementById("nav-toggle");
+
+      document.onclick = check;
+
+      function check(e) {
+        var target = (e && e.target) || (event && event.srcElement);
+
+        //User Menu
+        if (!checkParent(target, userMenuDiv)) {
+          // click NOT on the menu
+          if (checkParent(target, userMenu)) {
+            // click on the link
+            if (userMenuDiv.classList.contains("invisible")) {
+              userMenuDiv.classList.remove("invisible");
+            } else {
+              userMenuDiv.classList.add("invisible");
+            }
+          } else {
+            // click both outside link and outside menu, hide menu
+            userMenuDiv.classList.add("invisible");
+          }
         }
-      } else {
-        // click both outside link and outside menu, hide menu
-        navMenuDiv.classList.add("hidden");
-      }
-    }
-  }
 
-  function checkParent(t, elm) {
-    while (t.parentNode) {
-      if (t == elm) {
-        return true;
+        //Nav Menu
+        if (!checkParent(target, navMenuDiv)) {
+          // click NOT on the menu
+          if (checkParent(target, navMenu)) {
+            // click on the link
+            if (navMenuDiv.classList.contains("hidden")) {
+              navMenuDiv.classList.remove("hidden");
+            } else {
+              navMenuDiv.classList.add("hidden");
+            }
+          } else {
+            // click both outside link and outside menu, hide menu
+            navMenuDiv.classList.add("hidden");
+          }
+        }
       }
-      t = t.parentNode;
-    }
-    return false;
-  }
 
-  function togglePassword() {
-    let passwordInput = document.getElementById("userPassword");
-    if (passwordInput.type === "password") {
-      passwordInput.type = "text";
-    } else {
-      passwordInput.type = "password";
-    }
-  }
-</script>
-</body>
+      function checkParent(t, elm) {
+        while (t.parentNode) {
+          if (t == elm) {
+            return true;
+          }
+          t = t.parentNode;
+        }
+        return false;
+      }
+
+      function togglePassword() {
+        let passwordInput = document.getElementById("userPassword");
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+        } else {
+          passwordInput.type = "password";
+        }
+      }
+    </script>
+  </body>
 </html>

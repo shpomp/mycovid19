@@ -1,232 +1,659 @@
-
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>USERS shmovid-19</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@next/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>BOOK shmovid-19</title>
-  <link
-          rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-          crossorigin="anonymous"
-  />
-  <link
-          href="https://unpkg.com/tailwindcss@next/dist/tailwind.min.css"
-          rel="stylesheet"
-  />
-</head>
+  <body class="bg-green-200 font-sans leading-normal tracking-normal">
+    <nav
+      id="header"
+      th:replace="fragments/admin_fragments/admin_nav_users :: users"
+    ></nav>
 
+    <div class="container w-full mx-auto pt-20">
+      <div
+        class="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal"
+      >
+        <div class="bg-white border rounded shadow">
+          <div class=" mb-5 p-5">
+            <!-- ----------------- USER REGISTRATION FORM ----------------- -->
+            <form
+              class="mx-20 border-2 border-green-200 grid grid-cols-4"
+              th:action="@{/create_user}"
+              th:method="POST"
+            >
+              <div class="p-2">
+                <input
+                  class="
+                    text-sm
+                    bg-green-50
+                    appearance-none
+                    rounded
+                    py-2
+                    px-3
+                    text-gray-700
+                    mb-1
+                    leading-tight
+                    focus:outline-none
+                    focus:shadow-outline
+                  "
+                  type="text"
+                  th:name="email"
+                  placeholder="Email"
+                  required
+                />
+                <input
+                  class="
+                    text-sm
+                    bg-green-50
+                    appearance-none
+                    rounded
+                    py-2
+                    px-3
+                    text-gray-700
+                    mb-1
+                    leading-tight
+                    focus:outline-none
+                    focus:shadow-outline
+                  "
+                  id="userPassword"
+                  type="password"
+                  th:name="password"
+                  placeholder="Password"
+                  required
+                />
+                <input
+                  type="checkbox"
+                  id="passwordVisibility"
+                  onclick="togglePassword()"
+                />
+              </div>
 
-<body class="bg-yellow-100 font-sans leading-normal tracking-normal">
-<nav id="header" th:replace="fragments/admin_fragments/admin_nav_users :: users"></nav>
+              <div class="p-2">
+                <input
+                  class="
+                    text-sm
+                    bg-green-50
+                    appearance-none
+                    rounded
+                    py-2
+                    px-3
+                    text-gray-700
+                    mb-1
+                    leading-tight
+                    focus:outline-none
+                    focus:shadow-outline
+                  "
+                  type="text"
+                  th:name="firstName"
+                  placeholder="First name"
+                  required
+                />
+                <input
+                  class="
+                    text-sm
+                    bg-green-50
+                    appearance-none
+                    rounded
+                    py-2
+                    px-3
+                    text-gray-700
+                    mb-1
+                    leading-tight
+                    focus:outline-none
+                    focus:shadow-outline
+                  "
+                  type="text"
+                  th:name="lastName"
+                  placeholder="Last name"
+                  required
+                />
+                <input
+                  class="
+                    text-sm
+                    bg-green-50
+                    appearance-none
+                    rounded
+                    py-2
+                    px-3
+                    text-gray-700
+                    mb-1
+                    leading-tight
+                    focus:outline-none
+                    focus:shadow-outline
+                  "
+                  type="date"
+                  th:name="dateOfBirth"
+                  required
+                />
+              </div>
 
+              <div class="p-2">
+                <input
+                  class="
+                    text-sm
+                    bg-green-50
+                    appearance-none
+                    rounded
+                    py-2
+                    px-3
+                    text-gray-700
+                    mb-1
+                    leading-tight
+                    focus:outline-none
+                    focus:shadow-outline
+                  "
+                  type="text"
+                  th:name="phoneNumber"
+                  placeholder="Phone number"
+                  required
+                />
+                <br />
+                <input
+                  class="
+                    text-sm
+                    bg-green-50
+                    appearance-none
+                    rounded
+                    py-2
+                    px-3
+                    text-gray-700
+                    mb-1
+                    leading-tight
+                    focus:outline-none
+                    focus:shadow-outline
+                  "
+                  type="text"
+                  th:name="streetName"
+                  placeholder="Street name"
+                  required
+                />
+                <input
+                  class="
+                    text-sm
+                    bg-green-50
+                    appearance-none
+                    rounded
+                    py-2
+                    px-3
+                    text-gray-700
+                    mb-1
+                    leading-tight
+                    focus:outline-none
+                    focus:shadow-outline
+                  "
+                  type="text"
+                  th:name="homeNumber"
+                  placeholder="Home number"
+                  required
+                />
+                <input
+                  class="
+                    text-sm
+                    bg-green-50
+                    appearance-none
+                    rounded
+                    py-2
+                    px-3
+                    text-gray-700
+                    mb-1
+                    leading-tight
+                    focus:outline-none
+                    focus:shadow-outline
+                  "
+                  type="text"
+                  th:name="district"
+                  placeholder="District"
+                  required
+                />
+              </div>
 
-<div class="container w-full mx-auto pt-20">
-  <div
-          class="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal"
-  >
-    <div class="bg-white border rounded shadow">
-      <div class="ml-10 mb-5 p-5">
+              <input
+                class="
+                  text-sm
+                  bg-green-400
+                  appearance-none
+                  rounded
+                  py-2
+                  px-3
+                  text-white
+                  m-auto
+                  h-10
+                  w-20
+                  leading-tight
+                "
+                type="submit"
+              />
+            </form>
+            <!-- ----------------- USER REGISTRATION FORM ends ----------------- -->
 
+            <!-- ----------------- SEARCH FORM ----------------- -->
 
+            <form action="/admin/all_users" method="get">
+              <label
+                class="
+                  text-sm
+                  py-2
+                  px-3
+                  text-gray-500
+                  my-4
+                  leading-tight
+                  focus:outline-none
+                  focus:shadow-outline
+                "
+                >Find user:</label
+              >
+              <input
+                class="
+                  text-sm
+                  bg-blue-50
+                  appearance-none
+                  rounded
+                  py-2
+                  px-3
+                  text-gray-700
+                  my-4
+                  leading-tight
+                  focus:outline-none
+                  focus:shadow-outline
+                "
+                id="txtSearch"
+                type="text"
+                placeholder="name or last name"
+                onkeyup="userSearch()"
+              />
+              <!-- <button onclick="userSearch()" type="button">search</button> -->
+            </form>
+            <!-- ----------------- SEARCH FORM ends ----------------- -->
 
-        <form th:action="@{/create_user}" th:method="POST">
-          <input type="text" th:name="email" placeholder="Email" />
-          <br />
-          <input type="password" th:name="password" placeholder="Password" />
-          <br />
-          <input type="text" th:name="firstName" placeholder="First name" />
-          <br />
-          <input type="text" th:name="lastName" placeholder="Last name" />
-          <br />
-          <input type="date" th:name="dateOfBirth" />
-          <br />
-          <input type="text" th:name="phoneNumber" placeholder="Phone number" />
-          <br />
-          <input type="text" th:name="streetName" placeholder="Street name" />
-          <br />
-          <input type="text" th:name="homeNumber" placeholder="Home number" />
-          <br />
-          <input type="text" th:name="district" placeholder="District" />
-          <br />
-          <input type="submit" />
-        </form>
+            <!-- ----------------- USERS TABLE ----------------- -->
+            <table
+              class="mb-50 table-auto text-gray-700"
+              id="usersTable"
+            >
+              <tr>
+                <th
+                  class="
+                    text-xs
+                    p-4
+                    border
+                    bg-gray-50
+                    border-green-100
+                    text-center text-green-900
+                  "
+                >
+                  ID
+                </th>
+                <th
+                  class="
+                    text-xs
+                    p-4
+                    border
+                    bg-gray-50
+                    border-green-100
+                    text-center text-green-900
+                  "
+                >
+                  Name
+                </th>
+                <th
+                  class="
+                    text-xs
+                    p-4
+                    border
+                    bg-gray-50
+                    border-green-100
+                    text-center text-green-900
+                  "
+                >
+                  Last name
+                </th>
+                <th
+                  class="
+                    text-xs
+                    p-4
+                    border
+                    bg-gray-50
+                    border-green-100
+                    text-center text-green-900
+                  "
+                >
+                  DoB
+                </th>
+                <th
+                  class="
+                    text-xs
+                    p-4
+                    border
+                    bg-gray-50
+                    border-green-100
+                    text-center text-green-900
+                  "
+                >
+                  Phone nr
+                </th>
+                <th
+                  class="
+                    text-xs
+                    p-4
+                    border
+                    bg-gray-50
+                    border-green-100
+                    text-center text-green-900
+                  "
+                >
+                  Street
+                </th>
+                <th
+                  class="
+                    text-xs
+                    p-4
+                    border
+                    bg-gray-50
+                    border-green-100
+                    text-center text-green-900
+                  "
+                >
+                  House nr
+                </th>
+                <th
+                  class="
+                    text-xs
+                    p-4
+                    border
+                    bg-gray-50
+                    border-green-100
+                    text-center text-green-900
+                  "
+                >
+                  District
+                </th>
+                <th
+                  class="
+                    text-xs
+                    p-4
+                    border
+                    bg-gray-50
+                    border-green-100
+                    text-center text-green-900
+                  "
+                >
+                  Email
+                </th>
+                <th
+                  class="
+                    text-xs
+                    p-4
+                    border
+                    bg-gray-50
+                    border-green-100
+                    text-center text-green-900
+                  "
+                >
+                  Password
+                </th>
+                <th
+                  class="
+                    p-4
+                    border
+                    bg-gray-50
+                    border-green-100
+                    text-center text-green-900
+                  "
+                ></th>
+              </tr>
 
-
-        <form action="/admin/all_users" method="get" >
-          <input id="txtSearch" type="text" placeholder="user name or last name" onkeyup="userSearch()">
-          <!-- <button onclick="userSearch()" type="button">search</button> -->
-        </form>
-
-
-
-
-        <table id="usersTable" class="table-auto" >
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Last name</th>
-            <th>DoB</th>
-            <th>Phone nr</th>
-            <th>Street</th>
-            <th>House nr</th>
-            <th>District</th>
-            <th>Email</th>
-            <th>Password</th>
-            <th></th>
-          </tr>
-
-
-          <form th:each = "user : ${usersProfileInfo}" action="/update_user_info" method="post">
-            <tr>
-              <td>
-                <input style="width:35px" name="userId" th:value="${user.userId}"/>
-              </td>
-              <td>
-                <input  id="name" type="text" name="firstName"  th:value="${user.firstName}">
-              </td>
-              <td>
-                <input id="lastName" type="text" name= "lastName" th:value="${user.lastName}">
-              </td>
-              <td>
-                <input type="text" name="dateOfBirth" th:value="${user.dateOfBirth}">
-
-              </td>
-              <td>
-                <input type="text" name="phoneNumber"  th:value="${user.phoneNumber != null} ? ${user.phoneNumber} : 'n/a'">
-              </td>
-              <td>
-                <input type="text" name="streetName"  th:value="${user.streetName != null} ? ${user.streetName} : 'n/a'">
-              </td>
-              <td>
-                <input type="text" name="homeNumber"  th:value="${user.homeNumber != null} ? ${user.homeNumber} : 'n/a'">
-              </td>
-              <td >
-                <input type="text" name="userDistrict" th:value="${user.userDistrict != null} ? ${user.userDistrict} : 'n/a'">
-              </td>
-              <td>
-                <input type="text" name= "userEmail" th:value="${user.userEmail != null} ? ${user.userEmail} : 'n/a'">
-              </td>
-              <td>
-                <input type="text" name= "userPassword"  th:value="${user.userPassword != null} ? ${user.userPassword} : 'n/a'">
-              </td>
-              <td >
-                <input type="submit" name="delete" value="Delete">
-                <!-- <input th:unless="${user.phoneNumber == null or user.userEmail == null}" type="submit" name="update" value="Update"> -->
-                <input  type="submit" name="update" value="Update">
-
-              </td>
-            </tr>
-          </form>
-        </table>
-
+              <form
+                th:each="user : ${usersProfileInfo}"
+                action="/update_user_info"
+                method="post"
+              >
+                <tr>
+                  <td class="text-center text-xs border border-green-100">
+                    <input
+                            class="text-center"
+                      style="width: 30px"
+                      name="userId"
+                      th:value="${user.userId}"
+                    />
+                  </td>
+                  <td class="text-center text-xs border border-green-100">
+                    <input
+                            class="text-center"
+                      style="width: 120px"
+                      id="name"
+                      type="text"
+                      name="firstName"
+                      th:value="${user.firstName}"
+                    />
+                  </td>
+                  <td class="text-center text-xs border border-green-100">
+                    <input
+                            class="text-center"
+                      style="width: 120px"
+                      id="lastName"
+                      type="text"
+                      name="lastName"
+                      th:value="${user.lastName}"
+                    />
+                  </td>
+                  <td class="text-center text-xs border border-green-100">
+                    <input
+                            class="text-center"
+                      style="width: 100px"
+                      type="text"
+                      name="dateOfBirth"
+                      th:value="${user.dateOfBirth}"
+                    />
+                  </td>
+                  <td class="text-center text-xs border border-green-100">
+                    <input
+                            class="text-center"
+                      style="width: 100px"
+                      type="text"
+                      name="phoneNumber"
+                      th:value="${user.phoneNumber != null} ? ${user.phoneNumber} : 'n/a'"
+                    />
+                  </td>
+                  <td class="text-center text-xs border border-green-100">
+                    <input
+                            class="text-center"
+                      style="width: 100px"
+                      type="text"
+                      name="streetName"
+                      th:value="${user.streetName != null} ? ${user.streetName} : 'n/a'"
+                    />
+                  </td>
+                  <td class="text-center text-xs border border-green-100">
+                    <input
+                            class="text-center"
+                      style="width: 50px"
+                      type="text"
+                      name="homeNumber"
+                      th:value="${user.homeNumber != null} ? ${user.homeNumber} : 'n/a'"
+                    />
+                  </td>
+                  <td class="text-center text-xs border border-green-100">
+                    <input
+                            class="text-center"
+                      style="width: 120px"
+                      type="text"
+                      name="userDistrict"
+                      th:value="${user.userDistrict != null} ? ${user.userDistrict} : 'n/a'"
+                    />
+                  </td>
+                  <td class="text-center text-xs border border-green-100">
+                    <input
+                            class="text-center"
+                      type="text"
+                      name="userEmail"
+                      th:value="${user.userEmail != null} ? ${user.userEmail} : 'n/a'"
+                    />
+                  </td>
+                  <td class="text-center text-xs border border-green-100">
+                    <input
+                            class="text-center"
+                      type="text"
+                      name="userPassword"
+                      th:value="${user.userPassword != null} ? ${user.userPassword} : 'n/a'"
+                    />
+                  </td>
+                  <td class="text-center text-xs p-4 border border-green-100">
+                    
+                    <button
+                      class="
+                        bg-red-200
+                        appearance-none
+                        rounded
+                        py-2
+                        px-3
+                        text-white
+                        m-auto
+                        h-10
+                        w-15
+                        leading-tight
+                      "
+                      type="submit"
+                      name="delete"
+                    /><i class="text-sm far fa-trash-alt"></i></button>
+                    <!-- <input th:unless="${user.phoneNumber == null or user.userEmail == null}" type="submit" name="update" value="Update"> -->
+                    <button
+                      class="
+                        bg-green-400
+                        appearance-none
+                        rounded
+                        py-2
+                        px-3
+                        text-white
+                        m-auto
+                        h-10
+                        w-15
+                        leading-tight
+                      "
+                      type="submit"
+                      name="update"
+                    ><i class=" text-sm far fa-save"></i></button>
+                  </td>
+                </tr>
+              </form>
+            </table>
+            <!-- ----------------- USERS TABLE ends ----------------- -->
+          </div>
+        </div>
       </div>
     </div>
 
-  </div>
-</div>
+    <div th:replace="fragments/admin_fragments/admin_footer :: footer">
+      &nbsp;
+    </div>
 
+    <script>
+      const userSearch = () => {
+        let input = document.getElementById("txtSearch");
+        let key = input.value.toUpperCase();
+        let usersTable = document.getElementById("usersTable");
 
-<div th:replace="fragments/admin_fragments/admin_footer :: footer">&nbsp;</div>
+        let tr = usersTable.getElementsByTagName("tr");
+        let name = document
+          .getElementById("usersTable")
+          .rows[1].cells[1].getElementsByTagName("input")[0].value;
+        console.log(tr);
 
+        for (let i = 1; i < tr.length; i++) {
+          let name = document
+            .getElementById("usersTable")
+            .rows[i].cells[1].getElementsByTagName("input")[0]
+            .value.toUpperCase();
+          let lastName = document
+            .getElementById("usersTable")
+            .rows[i].cells[2].getElementsByTagName("input")[0]
+            .value.toUpperCase();
 
-<script>
-  const userSearch = () => {
-    let input = document.getElementById("txtSearch");
-    let key = input.value.toUpperCase();
-    let usersTable = document.getElementById("usersTable");
-
-    let tr = usersTable.getElementsByTagName("tr");
-    let name = document.getElementById("usersTable").rows[1].cells[1].getElementsByTagName('input')[0].value;
-    console.log(tr)
-
-    for (let i = 1; i < tr.length; i++) {
-      let name = document.getElementById("usersTable").rows[i].cells[1].getElementsByTagName('input')[0].value.toUpperCase();
-      let lastName = document.getElementById("usersTable").rows[i].cells[2].getElementsByTagName('input')[0].value.toUpperCase();
-
-      if (name.includes(key) || lastName.includes(key)) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-  /*Toggle dropdown list*/
-  /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
-
-  var userMenuDiv = document.getElementById("userMenu");
-  var userMenu = document.getElementById("userButton");
-
-  var navMenuDiv = document.getElementById("nav-content");
-  var navMenu = document.getElementById("nav-toggle");
-
-  document.onclick = check;
-
-  function check(e) {
-    var target = (e && e.target) || (event && event.srcElement);
-
-    //User Menu
-    if (!checkParent(target, userMenuDiv)) {
-      // click NOT on the menu
-      if (checkParent(target, userMenu)) {
-        // click on the link
-        if (userMenuDiv.classList.contains("invisible")) {
-          userMenuDiv.classList.remove("invisible");
-        } else {
-          userMenuDiv.classList.add("invisible");
+          if (name.includes(key) || lastName.includes(key)) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
         }
-      } else {
-        // click both outside link and outside menu, hide menu
-        userMenuDiv.classList.add("invisible");
-      }
-    }
+      };
+      /*Toggle dropdown list*/
+      /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
 
-    //Nav Menu
-    if (!checkParent(target, navMenuDiv)) {
-      // click NOT on the menu
-      if (checkParent(target, navMenu)) {
-        // click on the link
-        if (navMenuDiv.classList.contains("hidden")) {
-          navMenuDiv.classList.remove("hidden");
-        } else {
-          navMenuDiv.classList.add("hidden");
+      var userMenuDiv = document.getElementById("userMenu");
+      var userMenu = document.getElementById("userButton");
+
+      var navMenuDiv = document.getElementById("nav-content");
+      var navMenu = document.getElementById("nav-toggle");
+
+      document.onclick = check;
+
+      function check(e) {
+        var target = (e && e.target) || (event && event.srcElement);
+
+        //User Menu
+        if (!checkParent(target, userMenuDiv)) {
+          // click NOT on the menu
+          if (checkParent(target, userMenu)) {
+            // click on the link
+            if (userMenuDiv.classList.contains("invisible")) {
+              userMenuDiv.classList.remove("invisible");
+            } else {
+              userMenuDiv.classList.add("invisible");
+            }
+          } else {
+            // click both outside link and outside menu, hide menu
+            userMenuDiv.classList.add("invisible");
+          }
         }
-      } else {
-        // click both outside link and outside menu, hide menu
-        navMenuDiv.classList.add("hidden");
+
+        //Nav Menu
+        if (!checkParent(target, navMenuDiv)) {
+          // click NOT on the menu
+          if (checkParent(target, navMenu)) {
+            // click on the link
+            if (navMenuDiv.classList.contains("hidden")) {
+              navMenuDiv.classList.remove("hidden");
+            } else {
+              navMenuDiv.classList.add("hidden");
+            }
+          } else {
+            // click both outside link and outside menu, hide menu
+            navMenuDiv.classList.add("hidden");
+          }
+        }
       }
-    }
-  }
 
-  function checkParent(t, elm) {
-    while (t.parentNode) {
-      if (t == elm) {
-        return true;
+      function checkParent(t, elm) {
+        while (t.parentNode) {
+          if (t == elm) {
+            return true;
+          }
+          t = t.parentNode;
+        }
+        return false;
       }
-      t = t.parentNode;
-    }
-    return false;
-  }
 
-  function togglePassword() {
-    let passwordInput = document.getElementById("userPassword");
-    if (passwordInput.type === "password") {
-      passwordInput.type = "text";
-    } else {
-      passwordInput.type = "password";
-    }
-  }
-</script>
-
-</body>
+      function togglePassword() {
+        let passwordInput = document.getElementById("userPassword");
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+        } else {
+          passwordInput.type = "password";
+        }
+      }
+    </script>
+  </body>
 </html>
-
-
-
-
-
-
-
