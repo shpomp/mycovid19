@@ -17,7 +17,7 @@
     />
   </head>
 
-  <body class="bg-blue-100 font-sans leading-normal tracking-normal">
+  <body class="bg-yellow-100 font-sans leading-normal tracking-normal">
     <nav
       id="header"
       th:replace="fragments/admin_fragments/admin_nav_stats :: statistics"
@@ -398,10 +398,16 @@
 
         <!--/ Console Content-->
       </div>
+
+
+    </div>
+
     </div>
     <!--/container-->
 
-
+    <div th:replace="fragments/user_fragments/user_footer :: footer">
+      &nbsp;
+    </div>
 
 
 
@@ -410,9 +416,7 @@
 
 
     <!-- footer -->
-    <div th:replace="fragments/user_fragments/user_footer :: footer">
-      &nbsp;
-    </div>
+
 
     <script>
       /*Toggle dropdown list*/
