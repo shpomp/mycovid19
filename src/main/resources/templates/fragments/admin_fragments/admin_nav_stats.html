@@ -29,12 +29,10 @@
               >
                 <img
                   class="w-8 h-8 rounded-full mr-4"
-                  src="https://pbs.twimg.com/profile_images/589081644989943810/TCsr9vN6_400x400.jpg"
+                  src="https://images.businessoffashion.com/profiles/asset/1797/43897e2e4a6d155d72dd9df352017b546ef9e229.jpeg?auto=format%2Ccompress&fit=crop&crop=faces&h=256&min-w=256&max-w=256"
                   alt="Avatar of User"
                 />
-                <span class="hidden md:inline-block font-bold">
-                  Hi
-                </span>
+                <span class="hidden md:inline-block font-bold">ADMIN</span>
                 <svg
                   class="pl-2 h-2"
                   version="1.1"
@@ -157,7 +155,7 @@
             <!-- ******* PROFILE ******* -->
             <li class="mr-6 my-2 md:my-0">
               <a
-                href="#"
+                href="/admin/statistics"
                 class="
                   block
                   py-1
@@ -166,11 +164,13 @@
                   align-middle
                   text-orange-500
                   no-underline
-                  border-b-2 border-blue-600
+                  border-b-2 border-yellow-500
                 "
               >
-                <i class="fas fa-user fa-fw mr-1 text-orange-600"></i
-                ><span class="pb-1 md:pb-0 text-sm">Statistics</span>
+                <i class="fas fa-chart-bar fa-fw mr-1 text-yellow-500"></i
+                ><span class="pb-1 md:pb-0 text-sm text-yellow-500"
+                  >Statistics</span
+                >
               </a>
             </li>
             <!-- ******* PROFILE ends ******* -->
@@ -178,7 +178,7 @@
             <!-- ******* BOOK TEST ******* -->
             <li class="mr-6 my-2 md:my-0">
               <a
-                href="/user/book_tests"
+                href="/admin/all_users"
                 class="
                   block
                   py-1
@@ -189,10 +189,10 @@
                   no-underline
                   hover:text-gray-900
                   border-b-2 border-white
-                  hover:border-turqoise-500
+                  hover:border-green-500
                 "
               >
-                <i class="fa fa-syringe fa-fw mr-1"></i
+                <i class="fa fa-user-friends fa-fw mr-1"></i
                 ><button class="pb-1 md:pb-0 text-sm">Users</button>
               </a>
             </li>
@@ -201,7 +201,7 @@
             <!-- *******MY TESTS *******-->
             <li class="mr-6 my-2 md:my-0">
               <a
-                href="/user/my_tests"
+                href="/admin/all_tests"
                 class="
                   block
                   py-1
@@ -223,7 +223,7 @@
             <!-- ******* MY RESULTS *******-->
             <li class="mr-6 my-2 md:my-0">
               <a
-                href="/user/my_results"
+                href="/admin/all_tests_results"
                 class="
                   block
                   py-1
@@ -246,7 +246,6 @@
         </div>
       </div>
     </nav>
-
 
     <!-- -------------------- PROFILE END -------------------- -->
   </body>
