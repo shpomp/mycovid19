@@ -1,7 +1,6 @@
 
 package com.example.mycovid19.Security;
 
-
 import com.example.mycovid19.Service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +11,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -24,16 +20,16 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
   @Autowired
   private UserService userService;
 
-  //@Autowired
-  //private BCryptPasswordEncoder bCryptPasswordEncoder;
+  // @Autowired
+  // private BCryptPasswordEncoder bCryptPasswordEncoder;
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     // http.authorizeRequests().antMatchers("/").permitAll().anyRequest().authenticated().and().formLogin()
     // .loginPage("/login").permitAll().and().logout().permitAll();
-    //http.authorizeRequests().antMatchers("/signup").permitAll().anyRequest().authenticated().and().formLogin();
+    // http.authorizeRequests().antMatchers("/signup").permitAll().anyRequest().authenticated().and().formLogin();
     http.csrf().disable().authorizeRequests().antMatchers("/signup").permitAll().anyRequest().authenticated().and()
-            .formLogin();
+        .formLogin();
   }
 
   @Override
@@ -44,10 +40,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
   @Bean
   public DaoAuthenticationProvider daoAuthenticationProvider() {
     DaoAuthenticationProvider dap = new DaoAuthenticationProvider();
-    PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
     dap.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
-            dap.setUserDetailsService(userService);
-    //dap.setPasswordEncoder(encoder);
+    dap.setUserDetailsService(userService);
     return dap;
   }
 }
