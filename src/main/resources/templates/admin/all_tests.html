@@ -34,8 +34,9 @@
           <div class="ml-10 mb-5 p-5">
             <!-- <button type="button"><a href="/">Back to Home</a></button> -->
 
+<!-- ----------------- ADD TEST ----------------- -->
             <form
-              class="mb-10 mx-20 border-2 border-red-100 grid grid-cols-4"
+              class="mb-10 mx-20 border-2 border-red-100 grid grid-cols-3 items-center"
               method="post"
               action="/create_test"
             >
@@ -47,11 +48,13 @@
                   rounded
                   p-2
                   text-gray-700
-                  m-2
+                  mx-auto
+                  my-2
                   leading-tight
                   focus:outline-none
                   focus:shadow-outline
                 "
+                style="width:200px"
                 type="date"
                 name="testDate"
                 min="2021-05-01"
@@ -65,16 +68,19 @@
                   rounded
                   p-2
                   text-gray-700
-                  m-2
+                  mx-auto
+                  my-2
                   leading-tight
                   focus:outline-none
                   focus:shadow-outline
                 "
+                                style="width:200px"
+
                 type="time"
                 name="testTime"
                 required
               />
-              <input
+     <!--         <input
                 class="
                   text-sm
                   bg-pink-50
@@ -91,11 +97,11 @@
                 name="testStatus"
                 value="available"
                 required
-              />
+              /> -->
               <button
                 class="
                   text-sm
-                  bg-pink-300
+                  bg-red-300
                   appearance-none
                   rounded
                   py-2
@@ -113,6 +119,8 @@
                 add test
               </button>
             </form>
+<!-- ----------------- ADD TEST ends ----------------- -->
+
 
                         <!-- ----------------- TESTS TABLE ----------------- -->
 
@@ -122,25 +130,21 @@
                 <th class="
                     text-xs
                     p-4
-                    bg-gray-100
                     text-center text-pink-900
                   ">ID</th>
                 <th class="
                     text-xs
                     p-4
-                    bg-gray-100
                     text-center text-pink-900
                   ">date</th>
                 <th class="
                     text-xs
                     p-4
-                    bg-gray-100
                     text-center text-pink-900
                   ">time</th>
                 <th class="
                     text-xs
                     p-4
-                    bg-gray-100
                     text-center text-pink-900
                   ">status</th>
                 <th ></th>
@@ -154,7 +158,7 @@
              <tr>
 <td>   
   <input
-              style="width: 30px"
+              style="width: 35px"
                 class="
                   text-sm
                   bg-gray-100
@@ -217,7 +221,7 @@
                 th:value="${test.testStatus}"
               />
             </td>
-<td>           <button
+<td th:unless="${test.testStatus == 'done'}">           <button
                       class="
                         bg-red-200
                         appearance-none
