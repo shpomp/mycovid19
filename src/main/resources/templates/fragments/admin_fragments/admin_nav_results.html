@@ -31,7 +31,7 @@
                   src="https://images.businessoffashion.com/profiles/asset/1797/43897e2e4a6d155d72dd9df352017b546ef9e229.jpeg?auto=format%2Ccompress&fit=crop&crop=faces&h=256&min-w=256&max-w=256"
                   alt="Avatar of User"
                 />
-                <span class="hidden md:inline-block font-bold">ADMIN</span>
+                <span class="hidden md:inline-block font-bold" th:text="${userCred.getUsername()}"></span>
                 <svg
                   class="pl-2 h-2"
                   version="1.1"
