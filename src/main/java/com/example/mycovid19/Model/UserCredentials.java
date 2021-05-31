@@ -28,7 +28,7 @@ public class UserCredentials implements UserDetails {
     return Collections.singletonList(new GrantedAuthority() {
       @Override
       public String getAuthority() {
-        return getUsername().equals("admin") ? "ADMIN" : "USER";
+        return getUsername().equals("admin") || getUsername().equals("secretary") ? "ADMIN" : "USER";
       }
     });
   }
