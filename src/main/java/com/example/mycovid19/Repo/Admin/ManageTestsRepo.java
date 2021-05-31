@@ -31,18 +31,15 @@ public class ManageTestsRepo {
     RowMapper<Test> rowMapper = new BeanPropertyRowMapper<>(Test.class);
     return jdbc.query(sql, rowMapper);
   }
-  // WHERE test_status = 'available'
 
 
   public int addTest (Test test){
-    //test table
     String sql = " INSERT INTO " + testTable +" VALUES (?,?,?,?,?)";
     return jdbc.update(sql, null, test.getTestDate(), test.getTestTime(), "available", null);
   }
 
 
   public int updateTest (Test test){
-    //update test table
     String sql = "UPDATE test SET test_date = ?, test_time = ? WHERE test_id = ?";
     return jdbc.update(sql, test.getTestDate(), test.getTestTime(), test.getTest_id());
   }
@@ -50,7 +47,6 @@ public class ManageTestsRepo {
 
 
   public int deleteTest (int test_id){
-    //delete test by id
     System.out.println(test_id);
 
     String sql = "DELETE FROM " + testTable + " WHERE test_id = ?";
@@ -58,8 +54,6 @@ public class ManageTestsRepo {
   }
 
   // RESULTS
-
-
   public List<TestResult> fetchAllTestsResults() throws SQLException {
     return manageTestsService.ResultSet();
   }
@@ -71,7 +65,6 @@ public class ManageTestsRepo {
   }
 
   public int deleteResult (int test_id){
-    //delete test by id
     System.out.println(test_id);
     String sql = "DELETE FROM " + testTable + " WHERE test_id = ?";
     return jdbc.update(sql, test_id);

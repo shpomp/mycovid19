@@ -23,17 +23,6 @@ public class BookTestController {
     return "/user/book_tests";
   }
 
-  /*
-   * @PostMapping("/createTest") public String addTest(Test test){
-   * testRepo.addTest(test); return "redirect:/test"; }
-   */
-
-  /*
-   * @PostMapping(value = "/editTest", params="cancel") public String
-   * cancelTest(@RequestParam("test_id") int test_id){
-   * testRepo.cancelTest(test_id); return "redirect:/test"; }
-   */
-
   @PostMapping(value = "/edit_book_test", params = "update")
   public String bookTest(@RequestParam("test_id") int test_id,
       @AuthenticationPrincipal UserCredentials userCredentials) {

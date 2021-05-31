@@ -7,5 +7,5 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
 public class MyTestsResultsService {
-  // Don't think we need this...
+  // restructured for experimental purposes
 }

@@ -34,7 +34,7 @@ public class SeeAllUsersController {
 
   @PostMapping("/create_user")
   public String addUser(UserDTO user){
-      userService.signUpUser(user); // using user service for the user creation method
+      userService.signUpUser(user); // borrowing user service for the user creation method
     return "redirect:/admin/all_users";
   }
 
@@ -49,7 +49,6 @@ public class SeeAllUsersController {
 
 
   @PostMapping(value = "/update_user_info", params="delete")
-  //public String deleteUser(@RequestParam("user_id") int user_id) {
   public String deleteUser(@RequestParam("userId") String userId) {
     seeAllUsersRepo.deleteUser(userId);
     return "redirect:/admin/all_users";

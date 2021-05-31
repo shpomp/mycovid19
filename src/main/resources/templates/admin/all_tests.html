@@ -32,7 +32,6 @@
             <h5 class="font-bold uppercase text-gray-600 ml-3">TESTS</h5>
           </div>
           <div class="ml-10 mb-5 p-5">
-            <!-- <button type="button"><a href="/">Back to Home</a></button> -->
 
 <!-- ----------------- ADD TEST ----------------- -->
             <form
@@ -80,24 +79,7 @@
                 name="testTime"
                 required
               />
-     <!--         <input
-                class="
-                  text-sm
-                  bg-pink-50
-                  appearance-none
-                  rounded
-                  p-2
-                  text-gray-700
-                  m-2
-                  leading-tight
-                  focus:outline-none
-                  focus:shadow-outline
-                "
-                type="text"
-                name="testStatus"
-                value="available"
-                required
-              /> -->
+
               <button
                 class="
                   text-sm
@@ -114,7 +96,6 @@
                 "
                 type="submit"
                 value="Add test"
-                required
               >
                 add test
               </button>
@@ -174,6 +155,7 @@
                 type="text"
                 name="test_id"
                 th:value="${test.test_id}"
+              required
               /></td>
 <td>
   <input class="
@@ -187,7 +169,7 @@
                   leading-tight
                   focus:outline-none
                   focus:shadow-outline
-                " type="date" name="testDate" th:value="${test.testDate}" />
+                " type="date" name="testDate" th:value="${test.testDate}" required/>
 </td>
 <td>
   <input class="
@@ -201,7 +183,7 @@
                   leading-tight
                   focus:outline-none
                   focus:shadow-outline
-                " type="time" name="testTime" th:value="${test.testTime}" />
+                " type="time" name="testTime" th:value="${test.testTime}" required/>
 </td>
 <td>
   <input class="
@@ -219,6 +201,7 @@
                 type="text"
                 name="testStatus"
                 th:value="${test.testStatus}"
+         required
               />
             </td>
 <td th:unless="${test.testStatus == 'done' }">

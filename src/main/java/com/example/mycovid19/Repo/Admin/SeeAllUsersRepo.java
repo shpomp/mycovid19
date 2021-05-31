@@ -26,7 +26,6 @@ public class SeeAllUsersRepo {
   }
 
   // UPDATE
-
   public int updateUser (MyProfile user){
     //update user table
     String sql = "UPDATE user SET first_name = ?, last_name = ?, date_of_birth = ? WHERE user_id = ?";

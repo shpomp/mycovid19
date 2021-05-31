@@ -8,5 +8,5 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class MyProfileService {
-  // Don't think we need this...
+  // restructured for experimental purposes
 }
