@@ -514,6 +514,7 @@
                   <td class="text-center text-xs p-4 border border-green-100">
                     
                     <button
+                            th:unless="${userCred.getUsername() == 'secretary' }"
                       class="
                         bg-red-200
                         appearance-none
@@ -528,8 +529,7 @@
                       "
                       type="submit"
                       name="delete"
-                    /><i class="text-sm far fa-trash-alt"></i></button>
-                    <!-- <input th:unless="${user.phoneNumber == null or user.userEmail == null}" type="submit" name="update" value="Update"> -->
+                    /><i th:unless="${userCred.getUsername() == 'secretary' }" class="text-sm far fa-trash-alt"></i></button>
                     <button
                       class="
                         bg-green-400
