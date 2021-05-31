@@ -28,8 +28,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     // http.authorizeRequests().antMatchers("/").permitAll().anyRequest().authenticated().and().formLogin()
     // .loginPage("/login").permitAll().and().logout().permitAll();
     // http.authorizeRequests().antMatchers("/signup").permitAll().anyRequest().authenticated().and().formLogin();
-    http.csrf().disable().authorizeRequests().antMatchers("/signup").permitAll().anyRequest().authenticated().and()
-        .formLogin();
+    http.csrf().disable().authorizeRequests().antMatchers("/signup").permitAll()
+        .antMatchers("/user/**/*", "/edit_my_tests", "/edit_my_tests", "/update_profile")
+        .hasAnyAuthority("USER", "ADMIN").antMatchers("/admin/**/*").hasAuthority("ADMIN").anyRequest().authenticated()
+        .and().formLogin().loginPage("/login").permitAll();
   }
 
   @Override
