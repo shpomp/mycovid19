@@ -2,10 +2,12 @@ package com.example.mycovid19.Repo.User;
 
 import com.example.mycovid19.Model.MyProfile;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
@@ -21,15 +23,20 @@ public class MyProfileRepo {
 
   // public List<MyProfile> fetchAllUsers(){ }
 
-  public MyProfile joinUserProfileInfo() throws SQLException {
+  public MyProfile joinUserProfileInfo(int id) throws SQLException {
     String sql = "SELECT user.user_id, user.first_name, user.last_name, user.date_of_birth,\n "
         + "user_contact_data.phone_number, user_contact_data.street_name, "
         + "user_contact_data.home_number, user_contact_data.district, \n"
         + "user_credentials.email, user_credentials.password\n" + "FROM user  JOIN user_contact_data \n"
         + "ON user.user_id = user_contact_data.user_id\n"
-        + "JOIN user_credentials  ON user_contact_data.user_id = user_credentials.user_id\n" + "WHERE user.user_id = 3";
+        + "JOIN user_credentials  ON user_contact_data.user_id = user_credentials.user_id\n" + "WHERE user.user_id = ?";
 
-    return jdbc.query(sql, new RowMapper<MyProfile>() {
+    return jdbc.query(sql, new PreparedStatementSetter() {
+      @Override
+      public void setValues(PreparedStatement ps) throws SQLException {
+        ps.setInt(1, id);
+      }
+    }, new RowMapper<MyProfile>() {
       @Override
       public MyProfile mapRow(ResultSet rs, int rowNum) throws SQLException {
         String userID = rs.getString(1);

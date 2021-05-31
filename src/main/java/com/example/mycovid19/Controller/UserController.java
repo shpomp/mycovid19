@@ -1,7 +1,6 @@
 
 package com.example.mycovid19.Controller;
 
-
 import com.example.mycovid19.DTO.UserDTO;
 import com.example.mycovid19.Model.User;
 import com.example.mycovid19.Model.UserContactData;
@@ -34,8 +33,4 @@ public class UserController {
     userService.signUpUser(userDTO);
     return "redirect:/";
   }
-
 }
-
-
-

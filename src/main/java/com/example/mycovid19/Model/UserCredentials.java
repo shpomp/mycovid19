@@ -1,8 +1,8 @@
 
 package com.example.mycovid19.Model;
 
-
 import java.util.Collection;
+import java.util.Collections;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,7 +25,12 @@ public class UserCredentials implements UserDetails {
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    return null;
+    return Collections.singletonList(new GrantedAuthority() {
+      @Override
+      public String getAuthority() {
+        return getUsername().equals("admin") || getUsername().equals("secretary") ? "ADMIN" : "USER";
+      }
+    });
   }
 
   @Override
@@ -58,4 +63,7 @@ public class UserCredentials implements UserDetails {
     return true;
   }
 
+  public int getId() {
+    return id;
+  }
 }
