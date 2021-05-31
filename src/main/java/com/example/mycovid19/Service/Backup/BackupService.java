@@ -33,7 +33,7 @@ public class BackupService {
 
         try {
             String memberListFileName = "src/main/java/com/example/mycovid19/Service/Backup/users_list_"+printingDate+".csv";
-            FileWriter userListWriter = new FileWriter(memberListFileName);
+            FileWriter userListWriter = new FileWriter(memberListFileName); //Constructs a FileWriter object given a file name with a boolean indicating whether or not to append the data written.
 
             for(MyProfile user : allUsersList)
             {
@@ -45,7 +45,7 @@ public class BackupService {
 
         catch (IOException e) {
             System.out.println("Error!");
-            e.printStackTrace();
+            e.printStackTrace(); // prints where the error occured to the console. e only prints the vague error
         }
 
     }
