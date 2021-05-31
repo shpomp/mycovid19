@@ -96,7 +96,6 @@
                 "
                 type="submit"
                 value="Add test"
-                required
               >
                 add test
               </button>
@@ -156,7 +155,7 @@
                 type="text"
                 name="test_id"
                 th:value="${test.test_id}"
-
+              required
               /></td>
 <td>
   <input class="
@@ -170,7 +169,7 @@
                   leading-tight
                   focus:outline-none
                   focus:shadow-outline
-                " type="date" name="testDate" th:value="${test.testDate}" />
+                " type="date" name="testDate" th:value="${test.testDate}" required/>
 </td>
 <td>
   <input class="
@@ -184,7 +183,7 @@
                   leading-tight
                   focus:outline-none
                   focus:shadow-outline
-                " type="time" name="testTime" th:value="${test.testTime}" />
+                " type="time" name="testTime" th:value="${test.testTime}" required/>
 </td>
 <td>
   <input class="
@@ -202,6 +201,7 @@
                 type="text"
                 name="testStatus"
                 th:value="${test.testStatus}"
+         required
               />
             </td>
 <td th:unless="${test.testStatus == 'done' }">
