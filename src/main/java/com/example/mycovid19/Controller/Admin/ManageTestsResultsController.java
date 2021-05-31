@@ -32,6 +32,6 @@ public class ManageTestsResultsController {
   @PostMapping(value = "/update_result", params="delete")
   public String deleteTestResult(@RequestParam("test_id") int test_id){
     manageTestsRepo.deleteResult(test_id);
-    return "redirect:/admin/all_users";
+    return "redirect:/admin/all_tests_results";
   }
 }
