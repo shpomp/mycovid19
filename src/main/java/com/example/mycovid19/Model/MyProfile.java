@@ -113,17 +113,12 @@ public class MyProfile {
 
   @Override
   public String toString() {
-    return "UserInfo{" +
-        "userId='" + userId + '\'' +
-        ", firstName='" + firstName + '\'' +
-        ", lastName='" + lastName + '\'' +
-        ", dateOfBirth='" + dateOfBirth + '\'' +
-        ", phoneNumber='" + phoneNumber + '\'' +
-        ", streetName='" + streetName + '\'' +
-        ", homeNumber='" + homeNumber + '\'' +
-        ", userDistrict='" + userDistrict + '\'' +
-        ", userEmail='" + userEmail + '\'' +
-        ", userPassword='" + userPassword + '\'' +
-        '}';
+    return String.format(
+            "| user_id: %-4s | first_name: %-20s | last_name: %-20s | date_of_birth: %-10s " +
+                    "| phone_number: %-17s | street_name: %-17s | home_number: %-5s | user_district: %-15s " +
+                    "| user_email: %-35s | user_password: %-40s | %n",
+            userId, firstName, lastName, dateOfBirth,
+            phoneNumber, streetName, homeNumber, userDistrict,
+            userEmail, userPassword);
   }
 }
