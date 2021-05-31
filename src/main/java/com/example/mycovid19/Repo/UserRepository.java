@@ -1,7 +1,6 @@
 
 package com.example.mycovid19.Repo;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -55,7 +54,8 @@ public class UserRepository {
         String password = rs.getString("password");
 
         return new User(userId, firstName, lastName, dateOfBirth,
-            new UserContactData(phoneNumber, streetName, homeNumber, district), new UserCredentials(email, password));
+            new UserContactData(phoneNumber, streetName, homeNumber, district),
+            new UserCredentials(userId, email, password));
       }
     });
 

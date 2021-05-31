@@ -2,12 +2,14 @@ package com.example.mycovid19.Repo.User;
 
 import com.example.mycovid19.Model.TestResult;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
@@ -17,12 +19,17 @@ public class MyTestsResultsRepo {
   @Autowired
   private JdbcTemplate jdbc;
 
-  public List<TestResult> joinTestsResults() throws SQLException {
+  public List<TestResult> joinTestsResults(int id) throws SQLException {
     String sql = "SELECT u.user_id, first_name, last_name, test_id, test_date, test_time, test_status, test_diagnosis\n"
         + "FROM user u JOIN test t\n" + "ON u.user_id = t.user_id\n"
-        + "JOIN test_result r ON t.test_id = r.test_test_id\n" + " WHERE t.test_status='done' AND u.user_id=30";
+        + "JOIN test_result r ON t.test_id = r.test_test_id\n" + " WHERE t.test_status='done' AND u.user_id = ?";
 
-    return jdbc.query(sql, new RowMapper<TestResult>() {
+    return jdbc.query(sql, new PreparedStatementSetter() {
+      @Override
+      public void setValues(PreparedStatement ps) throws SQLException {
+        ps.setInt(1, id);
+      }
+    }, new RowMapper<TestResult>() {
 
       @Override
       public TestResult mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -40,7 +47,5 @@ public class MyTestsResultsRepo {
 
     });
   }
-
-
 
 }

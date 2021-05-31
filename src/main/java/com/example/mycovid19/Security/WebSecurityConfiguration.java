@@ -31,7 +31,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     http.csrf().disable().authorizeRequests().antMatchers("/signup").permitAll()
         .antMatchers("/user/**/*", "/edit_my_tests", "/edit_my_tests", "/update_profile")
         .hasAnyAuthority("USER", "ADMIN").antMatchers("/admin/**/*").hasAuthority("ADMIN").anyRequest().authenticated()
-        .and().formLogin().loginPage("/login").permitAll();
+        .and().formLogin().loginPage("/login").permitAll().and().logout().logoutSuccessUrl("/login");
   }
 
   @Override
