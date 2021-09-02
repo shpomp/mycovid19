@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>PROFILE shmovid-19</title>
 
-
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -14,24 +13,32 @@
       crossorigin="anonymous"
     />
 
-
-
-
-
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+      crossorigin="anonymous"
+    />
     <!-- old <link href="https://unpkg.com/tailwindcss@next/dist/tailwind.min.css" rel="stylesheet"> -->
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
 
     <!--Replace with your tailwind.css once created-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"
+      integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ="
+      crossorigin="anonymous"
+    ></script>
     <!-- newly added -->
-
   </head>
 
   <body class="bg-blue-100 font-sans leading-normal tracking-normal">
-
-  <nav id="header" th:replace="fragments/user_fragments/user_nav_profile :: profile"></nav>
+    <nav
+      id="header"
+      th:replace="fragments/user_fragments/user_nav_profile :: profile"
+    ></nav>
     <!--Container-->
     <div class="container w-full mx-auto pt-20">
       <div
@@ -49,13 +56,19 @@
             <i class="fas fa-user-shield text-gray-600 text-xl p-4 fa-fw"></i>
             <table class="table-auto p-5 text-gray-700">
               <tr class="bg-gray-100">
-                <th class="p-4 border border-blue-200 text-center text-blue-900">
+                <th
+                  class="p-4 border border-blue-200 text-center text-blue-900"
+                >
                   First name
                 </th>
-                <th class="p-4 border border-blue-200 text-center text-blue-900">
+                <th
+                  class="p-4 border border-blue-200 text-center text-blue-900"
+                >
                   Last name
                 </th>
-                <th class="p-4 border border-blue-200 text-center text-blue-900">
+                <th
+                  class="p-4 border border-blue-200 text-center text-blue-900"
+                >
                   Date of birth
                 </th>
               </tr>
@@ -80,16 +93,24 @@
             <i class="fas fa-home text-gray-600 text-xl p-4 fa-fw mt-10"></i>
             <table class="table-auto p-5 text-gray-700">
               <tr class="bg-gray-100">
-                <th class="p-4 border border-blue-200 text-center text-blue-900">
+                <th
+                  class="p-4 border border-blue-200 text-center text-blue-900"
+                >
                   Phone number
                 </th>
-                <th class="p-4 border border-blue-200 text-center text-blue-900">
+                <th
+                  class="p-4 border border-blue-200 text-center text-blue-900"
+                >
                   Street
                 </th>
-                <th class="p-4 border border-blue-200 text-center text-blue-900">
+                <th
+                  class="p-4 border border-blue-200 text-center text-blue-900"
+                >
                   House number
                 </th>
-                <th class="p-4 border border-blue-200 text-center text-blue-900">
+                <th
+                  class="p-4 border border-blue-200 text-center text-blue-900"
+                >
                   District
                 </th>
               </tr>
@@ -138,8 +159,7 @@
                   text-gray-700
                   mb-1
                   leading-tight
-                  focus:outline-none
-                  focus:shadow-outline
+                  focus:outline-none focus:shadow-outline
                   h-10
                 "
                 type="text"
@@ -158,8 +178,7 @@
                   text-gray-700
                   mb-1
                   leading-tight
-                  focus:outline-none
-                  focus:shadow-outline
+                  focus:outline-none focus:shadow-outline
                   h-10
                   mt-3
                 "
@@ -202,9 +221,9 @@
     <!--/container-->
 
     <!-- footer -->
-    <div th:replace="fragments/user_fragments/user_footer :: footer">&nbsp;</div>
-
-
+    <div th:replace="fragments/user_fragments/user_footer :: footer">
+      &nbsp;
+    </div>
 
     <script>
       /*Toggle dropdown list*/
